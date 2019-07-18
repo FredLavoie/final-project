@@ -5,7 +5,8 @@ exports.up = function(knex) {
   table.foreign('deal_id').references('deals.id');
   table.integer('order_id').unsigned();
   table.foreign('order_id').references('orders.id');
-  table.decimal('price_purchased');
+  table.decimal('deal_price_purchased')
+  table.decimal('total_price_purchased');
   table.integer('quantity_purchased');
   table.timestamp(true, true);
 };
