@@ -1,7 +1,13 @@
 
 exports.up = function(knex) {
-  // See Dom's video here: https://www.youtube.com/watch?v=5cZwdT159WM&feature=youtu.be
-  // time: 1:12 :00
+  table.increments();
+  table.string('first_name');
+  table.string('last_name');
+  table.string('email').unique();
+  table.string('password');
+  table.biginteger('phone_number');
+  table.boolean('is_admin');
+  table.timestamp(true, true)
 };
 
 exports.down = function(knex) {
