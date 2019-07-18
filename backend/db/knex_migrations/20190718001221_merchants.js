@@ -10,7 +10,7 @@ exports.up = function(knex) {
   table.string('postal_code');
   table.biginteger('phone_number');
   table.string('type_of_merchant');
-  table.timestamp(true, true)
+  table.timestamp(true, true);
 };
 
 exports.down = function(knex) {
