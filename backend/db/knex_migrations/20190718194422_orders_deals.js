@@ -9,7 +9,7 @@ exports.up = function(knex) {
   table.decimal('deal_price_purchased')
   table.decimal('total_price_purchased');
   table.integer('quantity_purchased');
-  table.timestamp(true, true);
+  table.timestamps(true, true);
   });
 }
 

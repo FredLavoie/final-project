@@ -8,7 +8,7 @@ exports.up = function(knex) {
   table.string('password');
   table.biginteger('phone_number');
   table.boolean('is_admin');
-  table.timestamp(true, true);
+  table.timestamps(true, true);
   });
 }
 

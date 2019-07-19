@@ -8,7 +8,7 @@ exports.up = function(knex) {
   table.foreign('merchant_id').references('merchants.id').onDelete('CASCADE');
   table.decimal('total');
   table.string('stripe_charge_id');
-  table.timestamp(true, true);
+  table.timestamps(true, true);
 	});
 }
 exports.down = function(knex) {
