@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
-import Main from './Main'
-import Footer from './Footer'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import Component
-
-import Header from './Header'
-
+import Home from './pages/Home';
 
 class App extends Component {
 
@@ -21,10 +18,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <Main/>
-
-        <Footer />
+      <Router>
+        <Route path="/" component={Home} />
+        <Route path="/deals" component={Home} />
+      </Router>
       </div>
     );
   }
