@@ -13,7 +13,7 @@ exports.up = function(knex) {
   table.string('type_of_merchant');
   table.float('latitude').notNullable();
   table.float('longitude').notNullable();
-  table.timestamp(true, true);
+  table.timestamps(true, true);
   });
 }
 

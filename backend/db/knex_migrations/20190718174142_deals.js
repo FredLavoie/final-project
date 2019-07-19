@@ -9,7 +9,7 @@ exports.up = function(knex) {
   table.integer('quantity_available');
   table.string('image_path');  
   table.decimal('current_price');
-  table.timestamp(true, true);
+  table.timestamps(true, true);
   });
 }
 
