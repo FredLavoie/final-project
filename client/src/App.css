@@ -32,7 +32,10 @@ header::before{
   position: relative;
   z-index: 222;
 }
-
+main{
+  padding: 30px;
+  margin-top: 20px;
+}
 @keyframes change-bg {
   0% {
     background: url("../public/img/header-bg-1.jpg");

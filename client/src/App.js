@@ -5,6 +5,7 @@ import M from "materialize-css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import Component
 import Home from './pages/Home';
+import Deals from './pages/Deals';
 
 class App extends Component {
 
@@ -19,8 +20,8 @@ class App extends Component {
     return (
       <div className="App">
       <Router>
-        <Route path="/" component={Home} />
-        <Route path="/deals" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/deals" component={Deals} />
       </Router>
       </div>
     );
