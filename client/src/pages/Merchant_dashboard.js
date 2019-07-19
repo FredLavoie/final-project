@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Header from '../Component/Header';
+import Nav from '../Component/Nav';
 import Footer from '../Component/Footer';
 
 export class Merchant_dashboard extends Component {
     render() {
       return (
         <div>
-          <Header />
+          <Nav />
           <Footer />
         </div>
       )
