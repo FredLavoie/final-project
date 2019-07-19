@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import M from "materialize-css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import Component
+import Home from './pages/Home';
 
 class App extends Component {
 
-  state = { users: [] };
+ state = {text:'hello ll'}
+  
 
   componentDidMount() {
-    fetch('/api/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
-  }
+    M.AutoInit();
 
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
- 
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Router>
+        <Route path="/" component={Home} />
+        <Route path="/deals" component={Home} />
+      </Router>
       </div>
     );
   }
