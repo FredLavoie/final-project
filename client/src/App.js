@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import M from "materialize-css";
+import Main from './Main'
+import Footer from './Footer'
+// import Component
+
+import Header from './Header'
+
 
 class App extends Component {
 
-  state = { users: [] };
+ state = {text:'hello ll'}
+  
 
   componentDidMount() {
-    fetch('/api/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
-  }
+    M.AutoInit();
 
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
- 
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        <Main/>
+
+        <Footer />
       </div>
     );
   }
