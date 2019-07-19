@@ -1,24 +1,71 @@
-.App {
-  text-align: center;
+/* header and nav styles */
+
+header{
+  height: 60vh;
+  animation: change-bg 25s infinite;
+  transition: all 2s;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-shadows {
+  box-shadow: none!important;
+  border: none !important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+header::before{
+  content: '';
+  position: absolute;
+  background: rgba(48, 48, 48, 0.5);
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.summury-header{
   color: white;
+  position: relative;
+  z-index: 222;
 }
 
-.App-intro {
-  font-size: large;
+@keyframes change-bg {
+  0% {
+    background: url("../public/img/header-bg-1.jpg");
+  }
+  50% {
+    background: url("../public/img/header-bg.jpg");
+  }
+  100%{
+    background: url("../public/img/header-bg-1.jpg");
+  }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* main styles */
+
+
+
+@media  screen and (max-width: 700px){
+  section .row{
+    display: flex;
+    flex-direction: column;
+  }
+  .img-container{
+    order: 2;
+  }
+
+.title-container{
+    order: 1;
+  }
+
 }
+
+
+
+
+/* footer style */
+
