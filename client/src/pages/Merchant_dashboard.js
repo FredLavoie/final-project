@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Nav from '../Component/Nav';
+import Main_merchant from '../Component/Main_merchant';
 import Footer from '../Component/Footer';
 
 export class Merchant_dashboard extends Component {
@@ -7,6 +8,7 @@ export class Merchant_dashboard extends Component {
       return (
         <div>
           <Nav />
+          <Main_merchant /> 
           <Footer />
         </div>
       )
