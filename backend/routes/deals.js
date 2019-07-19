@@ -12,21 +12,13 @@ const router 					= express.Router();
 
 // [GET] deals
 router.get('/', function(req, res) {
-  // knex
-  // .select("*")
-  // .from("deals")
-  // .orderBy('id', 'desc')
-  // .then((data) => {
-  //   res.json(data);
-  // });
+  knex
+    .select("*")
+    .from("deals")
+    .then((data) => {
+      res.json(data);
+    });
 
-  const data = {
-    id: 1,
-    name: 'test',
-    price: 10.00
-  };
-
-  res.json(data);
 });
 
 // [POST] deals
@@ -39,6 +31,6 @@ module.exports = router;
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
-function manipulateDeals() {
-  return 'hello world'; 
-}
+// function manipulateDeals() {
+//   return 'hello world'; 
+// }
