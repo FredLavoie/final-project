@@ -1,5 +1,6 @@
 
 exports.up = function(knex) {
+	return knex.schema.createTable('orders', function(table) {
   table.increments();
   table.integer('user_id').unsigned();
   table.foreign('user_id').references('users.id');
@@ -8,9 +9,8 @@ exports.up = function(knex) {
   table.decimal('total');
   table.string('stripe_charge_id');
   table.timestamp(true, true);
-};
-
+	});
+}
 exports.down = function(knex) {
     return knex.schema.dropTable('orders');
-  
 };

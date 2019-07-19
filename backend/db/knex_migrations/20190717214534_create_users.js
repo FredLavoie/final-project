@@ -1,5 +1,6 @@
 
 exports.up = function(knex) {
+  return knex.schema.createTable('users', function(table) {
   table.increments();
   table.string('first_name');
   table.string('last_name');
@@ -8,7 +9,8 @@ exports.up = function(knex) {
   table.biginteger('phone_number');
   table.boolean('is_admin');
   table.timestamp(true, true);
-};
+  });
+}
 
 exports.down = function(knex) {
   return knex.schema.dropTable('users');
