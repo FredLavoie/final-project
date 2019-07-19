@@ -2,8 +2,10 @@
 const faker = require('faker');
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('merchants').del()
-    .then(function () {
+  return Promise.all([
+  knex('merchants').del(),
+  knex.raw('ALTER SEQUENCE merchants_id_seq RESTART WITH 1'),
+    knex('merchants').then(function () {
       // Inserts seed entries
       return knex('merchants').insert([
         {business_name: faker.company.companyName(), email: faker.internet.email(), password: faker.internet.password(), street_address: faker.address.streetAddress(), city: faker.address.city(), province: faker.address.state(), postal_code: faker.address.zipCode(), phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""), type_of_merchant:'Café', latitude: faker.address.latitude(), longitude: faker.address.longitude()},
@@ -22,5 +24,6 @@ exports.seed = function(knex) {
         {business_name: faker.company.companyName(), email: faker.internet.email(), password: faker.internet.password(), street_address: faker.address.streetAddress(), city: faker.address.city(), province: faker.address.state(), postal_code: faker.address.zipCode(), phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""), type_of_merchant:'Café', latitude: faker.address.latitude(), longitude: faker.address.longitude()},
         {business_name: faker.company.companyName(), email: faker.internet.email(), password: faker.internet.password(), street_address: faker.address.streetAddress(), city: faker.address.city(), province: faker.address.state(), postal_code: faker.address.zipCode(), phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""), type_of_merchant:'Café', latitude: faker.address.latitude(), longitude: faker.address.longitude()},
       ]);
-    });
+    })
+  ]);
 };

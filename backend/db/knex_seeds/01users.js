@@ -1,8 +1,10 @@
 
-exports.seed = function(knex, Promise) {
+exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('users').del()
-    .then(function () {
+  return Promise.all([
+  knex('users').del(),
+  knex.raw('ALTER SEQUENCE users_id_seq RESTART WITH 1'),
+    knex('users').then(function () {
       // Inserts seed entries
       return knex('users').insert([
         {first_name: 'Karine', last_name: 'Séguin', email: 'karines@live.ca', password: '1234', phone_number: 6134873203, is_admin: true},
@@ -11,5 +13,6 @@ exports.seed = function(knex, Promise) {
         {first_name: 'Yu', last_name: 'Liang', email: 'yu@live.ca', password: '1234', phone_number: 5144873233, is_admin: false},
         {first_name: 'Rob', last_name: 'Hang', email: 'rob@live.ca', password: '1234', phone_number: 5144113233, is_admin: true},
       ]);
-    });
+    })
+  ]);
 };
