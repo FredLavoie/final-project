@@ -10,6 +10,7 @@ import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Merchant from './pages/Merchant';
+import NewDeal from './pages/New_deal';
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
+        <Route exact path="/newdeal" component={NewDeal} />
       </Router>
       </div>
     );
