@@ -85,10 +85,28 @@ main{
 }
 
 .main-merchant{
-  height: 100vh;
+  height: auto;
 }
 
+.Rtable{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+}
 
+.Rtable-cell{
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%; 
+  padding: 0.8em 1.2em;
+  overflow: hidden;
+  list-style: none;
+  border: solid 3px white;
+}
 
+.Rtable--5cols > .Rtable-cell {
+  width: 16.6%
+}
 /* footer style */
 

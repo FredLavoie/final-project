@@ -6,12 +6,13 @@ export class Main extends Component {
             <main className="main-merchant"> 
                 <a class="waves-effect waves-light btn">Create New Deal</a>
                 <p>Your Deals</p>
+                        
+
                 <container className="title"> 
                 <container classsName="image-container">
                     Image 
                     </container>
-                <container>
-                    </container><div>Product</div>
+                <div>Product</div>
                 <div>Quantity</div>
                 <div>Price</div>
                 <div>Expiry Date</div>
