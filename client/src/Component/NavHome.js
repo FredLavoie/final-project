@@ -18,7 +18,7 @@ import React, { Component } from 'react'
           </div>
           <ul className="sidenav" id="mobile-demo">
           <li><a href="sass.html">Deals</a></li>
-          <li><a href="collapsible.html">login</a></li>
+          <li><a href="collapsible.html">Login</a></li>
           <li><a href="mobile.html">Sign up</a></li>
         </ul>
         </nav>
