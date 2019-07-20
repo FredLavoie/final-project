@@ -10,10 +10,19 @@ const router 					= express.Router();
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
-/* GET users listing. */
-router.get('/', function(req, res) {
-  res.send('respond with a resource');
+// [GET] merchant deals
+router.get('/:merchant_id', function(req, res) {
+  knex
+    .select("*")
+    .from("deals")
+    .where("deals.merchant_id", req.params.merchant_id)
+    .then((data) => {
+      res.json(data);
+    });
+
 });
+
+
 
 module.exports = router;
 
