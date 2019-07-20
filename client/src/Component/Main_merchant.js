@@ -10,7 +10,8 @@ export class Main extends Component {
                 <container classsName="image-container">
                     Image 
                     </container>
-                <div>Product</div>
+                <container>
+                    </container><div>Product</div>
                 <div>Quantity</div>
                 <div>Price</div>
                 <div>Expiry Date</div>

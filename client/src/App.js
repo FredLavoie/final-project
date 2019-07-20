@@ -25,7 +25,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Home} />
         <Route exact path="/deals" component={Deals} />
-        <Route exact path="/merchants" component={Merchant_dashboard} /> 
+        <Route exact path="/merchants/:id" component={Merchant_dashboard} /> 
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
       </Router>
