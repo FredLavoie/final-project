@@ -3,29 +3,30 @@ import React, { Component } from 'react'
 class Login extends Component {
     render() {
         return (
-<div class="container">
+<div className="container">
 <br/>
-    <div class="row">
-        <div class="col m6">
-            <h2 class="center-align">Login</h2>
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate"/>
+    <div className="row">
+        <div className="col m6">
+            <h2 className="center-align">Login</h2>
+            <p className="center-align"><strong><a href="/signup">Sign Up here</a></strong></p>
+            <div className="row">
+                <form className="col s12">
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="email" type="email" className="validate"/>
                             <label for="email">Email</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="pass" type="password" class="validate"/>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="pass" type="password" className="validate"/>
                             <label for="pass">Password</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col m12">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Login</button>
+                    <div className="row">
+                        <div className="col m12">
+                            <p className="right-align">
+                                <button className="btn btn-large waves-effect waves-light" type="button" name="action">Login</button>
                             </p>
                         </div>
                     </div>

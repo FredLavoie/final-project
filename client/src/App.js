@@ -9,6 +9,7 @@ import Merchant_dashboard from './pages/Merchant_dashboard';
 import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import Merchant from './pages/Merchant';
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ class App extends Component {
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
+        <Route exact path="/register" component={Merchant} />
       </Router>
       </div>
     );
