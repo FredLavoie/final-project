@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import Nav from '../Component/Nav';
-import RegistrationComponent from '../Component/Registration';
+import MerchantComponent from '../Component/Merchant';
 import Footer from '../Component/Footer';
 
-export class Registration extends Component {
+
+export class Merchant extends Component {
     render() {
         return (
             <div>
                 <Nav/>
-                <RegistrationComponent/>
+                <MerchantComponent/>
                 <Footer/>
             </div>
         )
     }
 }
 
-export default Registration
+export default Merchant
