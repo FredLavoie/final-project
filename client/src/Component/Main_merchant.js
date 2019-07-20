@@ -4,6 +4,8 @@ export class Main extends Component {
     render() {
         return (
             <main> 
+                <p>Your Deals</p>
+                <container> Product Quantity Price/unit Total</container>
                <p>Here are you current deals:</p>
                <p>Deal #1</p>
                <p>item name: cronut</p>
