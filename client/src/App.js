@@ -5,6 +5,7 @@ import M from "materialize-css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Component
 import Home from './pages/Home';
+import Merchant_dashboard from './pages/Merchant_dashboard';
 import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
@@ -35,6 +36,7 @@ class App extends Component {
       <div className="App">
       <Router>
         <Route exact path="/" component={Home} />
+        <Route exact path="/merchants/:id" component={Merchant_dashboard} /> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
