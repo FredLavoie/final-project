@@ -12,7 +12,7 @@ const logger          = require('morgan');
 const session         = require("express-session");
 const passport        = require("passport");
 const LocalStrategy   = require("passport-local").Strategy;
-const knexConfig      = require('../knexfile');
+const knexConfig      = require('./knexfile');
 const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 

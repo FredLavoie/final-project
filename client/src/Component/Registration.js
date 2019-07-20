@@ -7,8 +7,7 @@ export class Registration extends Component {
   <div className="row">
     <form className="col s12">
     <h2 className="center-align">Sign Up</h2>
-    <p className="center-align"><strong>Go to <a href="/login">Login</a></strong></p>
-    <p className="center-align"><strong>Sign up for a <a href="/register">business</a> account here</strong></p>
+    <p className="center-align"><strong>Sign up for a <a href="/register">Business</a> account here</strong></p>
       <div className="row">
         <div className="input-field col s6">
           <input id="first_name" type="text" className="validate"/>
