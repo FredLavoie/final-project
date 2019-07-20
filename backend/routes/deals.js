@@ -16,6 +16,7 @@ router.get('/', function(req, res) {
     .select("*")
     .from("deals")
     .then((data) => {
+      console.log(data);
       res.json(data);
     });
 
@@ -31,10 +32,7 @@ router.post('/', function(req, res) {
   dealObject.quantity_available = req.body.quantity_available;
   dealObject.image_path = req.body.image_path;
   dealObject.current_price = req.body.current_price;
-
-  console.log(req.body);
-  // console.log(req.body.name);
-  // console.log(dealObject);
+  
   knex
     .insert(dealObject)
     .into('deals')
