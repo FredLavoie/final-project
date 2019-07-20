@@ -72,6 +72,7 @@ main{
 .title{
   display: flex; 
   justify-content: space-around; 
+  border-bottom: 1px solid black;
 }
 
 .image-container{
@@ -86,6 +87,7 @@ main{
 .main-merchant{
   height: 100vh;
 }
+
 
 
 /* footer style */
