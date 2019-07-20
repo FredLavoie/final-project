@@ -6,6 +6,7 @@ export class Registration extends Component {
 <div className="container">
   <div class="row">
     <form class="col s12">
+    <h2 class="center-align">Sign Up</h2>
       <div class="row">
         <div class="input-field col s6">
           <input id="first_name" type="text" class="validate"/>
