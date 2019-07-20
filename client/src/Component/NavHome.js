@@ -6,7 +6,7 @@ import React, { Component } from 'react'
    }
     render() {
         return (
-          <nav className="no-shadows green">
+          <nav style={this.props.styleNave} className="transparent no-shadows">
           <div className="nav-wrapper container">
             <a href="/" className="brand-logo">Food<span className="green">Cycle</span></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>

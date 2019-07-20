@@ -5,7 +5,11 @@ export class Main extends Component {
         return (
             <main> 
                 <p>Your Deals</p>
-                <container> Product Quantity Price/unit Total</container>
+                <container className="title"> 
+                <div>White Chocolate</div>
+                <div>5</div>
+                <div>$2.00</div>
+                </container>
                <p>Here are you current deals:</p>
                <p>Deal #1</p>
                <p>item name: cronut</p>

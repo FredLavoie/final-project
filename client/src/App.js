@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import Component
 import Home from './pages/Home';
 import Merchant_dashboard from './pages/Merchant_dashboard';
+import Deals from './pages/Deals';
 
 class App extends Component {
 
@@ -21,8 +22,8 @@ class App extends Component {
       <div className="App">
       <Router>
         <Route exact path="/" component={Home} />
-        <Route path="/deals" component={Home} />
-        <Route path="/merchants" component={Merchant_dashboard} />
+        <Route exact path="/deals" component={Deals} />
+        <Route exact path="/merchants" component={Merchant_dashboard} /> 
       </Router>
       </div>
     );
