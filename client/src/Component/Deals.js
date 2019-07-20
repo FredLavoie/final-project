@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 
-const titleCardStyle = {position:'absolute',top:'0', left:'100px',height:'30px', padding:'3px', background:'red'}
+const titleCardStyle = {transform:'translateY(-180px)',transform:'translateX(-10px)',background:'#ff405c',padding:'5px',fontSize:'16px',boxShadow:'2px 3px 15px red'}
 
 
 export class Deals extends Component {
@@ -10,20 +10,19 @@ export class Deals extends Component {
     super(props)
   }
   render() {
-  
     return (
     <div className="col s12 m4" id={this.props.deal.id} style={{position:'relative'}}>
       <div className="card">
         <div className="card-image">
           <img style={{height:'15em',width:'100%'}} src={this.props.deal.image_path} />
-          <span className="card-title" style={titleCardStyle}>{this.props.deal.name}</span>
+          <span className="card-title" style={titleCardStyle}>Ends in: 30 mins</span>
         </div>
         <div className="card-content">
           <strong>{this.props.deal.name}</strong>
           <p>{this.props.deal.current_price} $</p>
         </div>
         <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-          <a  href="#">add to cart</a>
+          <a  href="/user/{this.props.deal.id}">add to cart</a>
         </div>
       </div>
     </div>
