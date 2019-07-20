@@ -3,7 +3,6 @@ import Nav from '../Component/Nav';
 import MerchantComponent from '../Component/Merchant';
 import Footer from '../Component/Footer';
 
-
 export class Merchant extends Component {
     render() {
         return (
