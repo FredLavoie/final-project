@@ -6,10 +6,10 @@ import React, { Component } from 'react'
    }
     render() {
         return (
-          <nav style={this.props.styleNave} className="transparent no-shadows">
+          <nav className="transparent no-shadows">
           <div className="nav-wrapper container">
             <a href="/" className="brand-logo">Food<span className="green">Cycle</span></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down menu-item">
               <li><a href="/deals">Deals</a></li>
               <li><a href="collapsible.html">login</a></li>
