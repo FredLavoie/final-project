@@ -35,6 +35,7 @@ header::before{
 main{
   padding: 30px;
   margin-top: 20px;
+  position: relative;
 }
 @keyframes change-bg {
   0% {

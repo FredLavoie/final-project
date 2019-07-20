@@ -11,19 +11,30 @@ import Registration from './pages/Registration';
 
 class App extends Component {
 
- state = {text:'hello ll'}
+ state = {
+   deals: [],
+   readydom: false
+  }
   
 
   componentDidMount() {
     M.AutoInit();
-
+    fetch('/deals')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({deals: data})
+    })
+    setTimeout(() =>{
+      this.setState({readydom: true})
+    },1000)
+    
   }
   render() {
     return (
       <div className="App">
       <Router>
         <Route exact path="/" component={Home} />
-        <Route exact path="/deals" component={Deals} />
+        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
       </Router>
