@@ -71,6 +71,20 @@ main{
 
 .title{
   display: flex; 
+  justify-content: space-around; 
+}
+
+.image-container{
+  height: 100px;
+  width: 100px; 
+}
+
+.responsive{
+  height: 50px;
+}
+
+.main-merchant{
+  height: 100vh;
 }
 
 
