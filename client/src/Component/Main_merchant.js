@@ -6,48 +6,55 @@ export class Main extends Component {
             <main className="main-merchant"> 
                 <a class="waves-effect waves-light btn">Create New Deal</a>
                 <p>Your Deals</p>
-                        
+        <table>
+        <thead>
+          <tr>
+             <th>Image</th>
+              <th>Product</th>
+              <th>Quantity </th>
+              <th>Price</th>
+              <th>Expiry Date</th>
+          </tr>
+        </thead>
 
-                <container className="title"> 
-                <container classsName="image-container">
-                    Image 
-                    </container>
-                <div>Product</div>
-                <div>Quantity</div>
-                <div>Price</div>
-                <div>Expiry Date</div>
-                </container>
-                <br></br>
-                <container className="title"> 
-                <container classsName="image-container">
+        <tbody>
+          <tr>
+            <td>
+            <container classsName="image-container">
                     <img className="responsive" src="https://images.deliveryhero.io/image/fd-ca/LH/e3ng-listing.jpg?width=800&height=584"/> 
                     </container>
-                <div>White Chocolate</div>
-                <div>5</div>
-                <div>$2.00</div>
-                <div>09/01/2019</div>
-                </container>
-                <br></br>
-                <container className="title"> 
-                <container classsName="image-container">
+            </td>
+            <td>Cronuts</td>
+            <td>1</td>
+            <td>$0.87</td>
+            <td>09/10/19</td>
+          </tr>
+          <tr>
+            <td>
+            <container classsName="image-container">
                     <img className="responsive" src="https://images.deliveryhero.io/image/fd-ca/LH/e3ng-listing.jpg?width=800&height=584"/> 
                     </container>
-                <div>Most amazing Chocolate Ever</div>
-                <div>5</div>
-                <div>$2.00</div>
-                <div>09/01/2019</div>
-                </container>
-                <br></br>
-                <container className="title"> 
-                <container classsName="image-container">
+            </td>
+            <td>Salad</td>
+            <td>10</td>
+            <td>$3.76</td>
+            <td>09/11/19</td>
+          </tr>
+          <tr>
+            <td>
+            <container classsName="image-container">
                     <img className="responsive" src="https://images.deliveryhero.io/image/fd-ca/LH/e3ng-listing.jpg?width=800&height=584"/> 
                     </container>
-                <div>Most amazing Chocolate Ever</div>
-                <div>5</div>
-                <div>$2.00</div>
-                <div>09/01/2019</div>
-                </container>
-                <br></br>
+            </td>
+            <td>Chocolate</td>
+            <td>2</td>
+            <td>$7.00</td>
+            <td>08/01/2019</td>
+          </tr>
+        </tbody>
+      </table> 
+
+                
 
                
             </main>
