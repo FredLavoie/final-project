@@ -22,15 +22,6 @@ class Login extends Component {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12">
-                            <p>
-                                <input type="checkbox" id="remember"/>
-                                <label for="remember">Remember me</label>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
                         <div class="col m12">
                             <p class="right-align">
                                 <button class="btn btn-large waves-effect waves-light" type="button" name="action">Login</button>
