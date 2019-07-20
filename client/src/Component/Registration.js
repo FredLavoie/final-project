@@ -19,7 +19,7 @@ export class Registration extends Component {
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate"/>
+          <input Placeholder="At least 5 characters" id="password" type="password" class="validate"/>
           <label for="password">Password</label>
         </div>
       </div>
