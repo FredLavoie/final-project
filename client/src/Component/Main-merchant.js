@@ -4,7 +4,7 @@ export class Main extends Component {
     render() {
         return (
             <main className="main-merchant"> 
-                <a class="waves-effect waves-light btn">Create New Deal</a>
+                <a className="waves-effect waves-light btn">Create New Deal</a>
                 <p>Your Deals</p>
         <table>
         <thead>
@@ -21,12 +21,12 @@ export class Main extends Component {
           <tr>
             <td>
             <container classsName="image-container">
-                    <img className="responsive" src="https://images.deliveryhero.io/image/fd-ca/LH/e3ng-listing.jpg?width=800&height=584"/> 
+                    <img className="responsive" src={this.props.deals.image_path}/> 
                     </container>
             </td>
-            <td>Cronuts</td>
-            <td>1</td>
-            <td>$0.87</td>
+            <td>{this.props.deals.name}</td>
+            <td>{this.props.deals.quantity_available}</td>
+            <td>{this.props.deals.current_price}</td>
             <td>09/10/19</td>
           </tr>
           <tr>
