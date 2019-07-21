@@ -8,6 +8,7 @@ const express 				= require('express');
 const passport        = require('passport');
 const router 					= express.Router();
 
+
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
@@ -18,8 +19,7 @@ router.get('/', function(req, res) {
 
 // [LOGIN] get login page
 router.post('/login', passport.authenticate('local'), function(req, res) {
-
-  res.json({user: req.user}); // not sure what to do after this??
+  res.json(req.user);
 });
 
 // [LOGOUT] get logOUT page
