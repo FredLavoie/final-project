@@ -8,7 +8,7 @@ export class New_deal extends Component {
               <form className="col s12">
               <h2 className="center-align">Add new Deals</h2>
                 <div className="row">
-                  <div className="input-field col s6 m6">
+                  <div className="input-field col s6 m4">
                     <input id="deal_name" type="text" className="validate"/>
                     <label for="deal_name">Name</label>
                   </div>
@@ -20,35 +20,30 @@ export class New_deal extends Component {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="input-field col s12 m1">
-                  <label for="price">Price</label>
-                    <input id="price" type="dollar" className="validate"/>
+                  <div className="input-field col s6 m1">
+                    <label>Price $ <br/>
+                    <input id="price" type="price" className="validate"/></label>
                   </div>
                 </div>
-                <div class="input-field col s12 m2">
-                <select>
-                  <option value="" disabled selected>Quantity</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
+                <div className="row">
+                  <div className="input-field col s6 m1">
+                  <label for="quantity">Quantity left <br/>                    
+                    <input id="quantity" type="integer" className="validate"/></label>
+                  </div>
                 </div>
-                <div class="input-field col s12 m2">
-                <select>
-                  <option value="" disabled selected>Expire Date</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-                </div>                
-                <div class="input-field col s12 m2">
-                <select>
-                  <option value="" disabled selected>Expire Time</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
+                <br/>
+                <div class="input-field col s12 m4">
+                <div>
+                  <label>Expiry Date<br/>
+                    <input type="date"/></label>
                 </div>
+                </div>
+                <div class="input-field col s12 m1">
+                <div>
+                <label>Expiry Time<br/>
+                  <input type="time"/></label>
+                </div>
+                </div>                  
                   <div className="row">
                     <div className="col m12">
                       <p className="right-align">
