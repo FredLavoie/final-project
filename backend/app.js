@@ -52,7 +52,6 @@ passport.use(new LocalStrategy({ usernameField: "email", passwordField: "passwor
       .where("email", email)
       .first()
       .then(merchant => {
-        console.log(`merchant: ${merchant.id}`);
         if(!merchant || password != merchant.password) {
           return done(null, false, { message: 'Invalid credentials' });
         } else {
