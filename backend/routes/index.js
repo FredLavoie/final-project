@@ -43,7 +43,7 @@ router.post('/register', function(req, res) {
   newUserObj.postal_code = req.body.postal_code;
   newUserObj.phone_number = req.body.phone_number;
   newUserObj.type_of_merchant = req.body.type_of_merchant;
-  newUserObj. = req.body.;
+  // newUserObj. = req.body.;
 
   knex
     .insert(newUserObj)
