@@ -15,9 +15,12 @@ import NewDeal from './pages/New_deal';
 class App extends Component {
  state = {
    deals: [],
-   readydom: false
+   readydom: false,
+   location:null
   }
   
+
+
   loginUser = (e) => {
     e.preventDefault();
     // const email = e.target.email.value;
@@ -44,7 +47,10 @@ class App extends Component {
     setTimeout(() =>{
       this.setState({readydom: true})
     },1000)
-    
+    // Get location of user
+    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
+    .then(res => res.json())
+    .then(data => console.log(data));
   }
   render() {
     return (
