@@ -29,7 +29,7 @@ class App extends Component {
       this.setState({deals: data})
     })
     //for merchant to view their own deals
-    fetch('/merchants/2')
+    fetch('/merchants/7')
     .then(res => res.json())
     .then(data => {
       console.log("test")
