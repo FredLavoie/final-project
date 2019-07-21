@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import Nav from '../Component/Nav';
 import Main_merchant from '../Component/Main-merchant';
 import Footer from '../Component/Footer';
+import Loading from '../Component/Loading';
 
 export class MerchantDashboard extends Component {
+  constructor(props){
+    super(props)
+}
     render() {
         let merchantDeals = this.props.deals
        
@@ -13,8 +17,8 @@ export class MerchantDashboard extends Component {
        );
       return (
         <div>
-          <Nav />
-          {datamerchantDeals}  
+          <Nav /> 
+          {this.props.isready ? datamerchantDeals : <Loading /> }
           <Footer />
         </div>
       )
