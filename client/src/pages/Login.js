@@ -8,7 +8,7 @@ class Login extends Component {
     return (
       <div>
         <Nav/>
-        <LoginComponent/>
+        <LoginComponent userAuth={this.props.userAuth}/>
         <Footer/>
       </div>
     )
