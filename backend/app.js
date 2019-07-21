@@ -10,11 +10,11 @@ const cookieParser    = require('cookie-parser');
 const bodyParser      = require('body-parser');
 const logger          = require('morgan');
 const session         = require("express-session");
-const passport        = require("passport");
-const LocalStrategy   = require("passport-local").Strategy;
-const knexConfig      = require('../knexfile');
+const knexConfig      = require('./knexfile');
 const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
+const passport        = require("passport");
+const LocalStrategy   = require("passport-local").Strategy;
 
 //********************************* EXTERNAL ROUTES ***********************************/
 //*************************************************************************************/
@@ -23,7 +23,7 @@ const indexRouter = require('./routes/index');
 const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
 
-const app = express(); // should we have the port attached to this?
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,7 +44,7 @@ app.use('/', indexRouter);
 app.use('/merchants', merchantsRouter);
 app.use('/deals', dealsRouter);
 
-passport.use(new LocalStrategy({ email: "email", password: "password"},
+passport.use(new LocalStrategy({ usernameField: "email", passwordField: "password"},
   function(email, password, done) {
     knex
       .select('*')
@@ -52,14 +52,23 @@ passport.use(new LocalStrategy({ email: "email", password: "password"},
       .where("email", email)
       .first()
       .then(merchant => {
+        console.log(`merchant: ${merchant.id}`);
         if(!merchant || password != merchant.password) {
           return done(null, false, { message: 'Invalid credentials' });
         } else {
-          // do something
+          return done(null, merchant);
         }      
       });
   }
 ));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 	
 //****************************** ERROR & CATCH ROUTES *********************************/
 //*************************************************************************************/
