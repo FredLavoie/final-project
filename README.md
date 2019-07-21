@@ -2,7 +2,7 @@
 
 FoodCycle is an application that allows merchants to post an add for food that remains at the end of the day or week that would otherwise be thrown out. The merchant is then about to recouperate some lost revenue by selling these remaining items at a discount. Users of the app can browse deals in their area and pay for them directly on the site, then simply pick them up before the end of the day.
 
-The project team consists of [Karine Seguin](https://github.com/karineseguin22), [Yu Liang](https://github.com/keefu) [Saad Hafa](https://github.com/leboss125) & [Fred Lavoie](https://github.com/FredLavoie).
+The project team consists of [Karine Seguin](https://github.com/karineseguin22), [Yu Liang](https://github.com/keefu), [Saad Hafa](https://github.com/leboss125) & [Fred Lavoie](https://github.com/FredLavoie).
 
 ### Front-end:
 The html content is rendered on the client side using the [ReactJS](https://reactjs.org/) framework/library. React allow the developer to create the interactive parts of the app in JavaScript and render the html  needed as well as change the html elements quickly making the application dynamic. 
