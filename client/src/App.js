@@ -30,15 +30,6 @@ class App extends Component {
     .then(data => {
       this.setState({deals: data})
     })
-    //for merchant to view their own deals
-    // console.log('I can see this part')
-    // console.log(this.props.match); //this part is undefined 
-    // const { handle } = this.props.match.params
-    // fetch(`/merchants/${handle}`)
-    // .then(res => res.json())
-    // .then(data => {  
-    //   this.setState({merchant_deals: data})
-    // })
 
     setTimeout(() =>{
       this.setState({readydom: true})

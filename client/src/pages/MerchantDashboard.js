@@ -17,19 +17,11 @@ export class MerchantDashboard extends Component {
 componentDidMount() {
   M.AutoInit();
   //for merchant to view their own deals
-  console.log('I can see this part')
-  console.log(this.props.match); 
-  console.log(this.props.match.params.id); //this is the id 
   const id = this.props.match.params.id
-  console.log(`/merchants/7/${id}`);
   const { handle }  = this.props.match.params
-  console.log(handle); 
-  console.log(`/merchants/7/${handle}`);
     fetch(`/merchants/${id}/dashboard`)
     .then(res => res.json())
     .then(data => {  
-      console.log('Am I receiving data from server?')
-      console.log(data);
       this.setState({merchant_deals: data})
     }) 
 }
@@ -52,4 +44,3 @@ componentDidMount() {
   }
   
   export default MerchantDashboard
-  
