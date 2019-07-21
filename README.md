@@ -14,11 +14,6 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 
 ## Screenshot
 
-<img src="./docs/#.png" width="800">
-<img src="./docs/#.png" width="800">
-<img src="./docs/#.png" width="800">
-<img src="./docs/#.png" width="800">
-<img src="./docs/#.png" width="800">
 
 ## Getting started
 - clone repository to your local machine
