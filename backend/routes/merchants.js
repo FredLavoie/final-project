@@ -10,8 +10,20 @@ const router 					= express.Router();
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
-// [GET] merchant deals
+// [GET] merchant information
 router.get('/:merchant_id', function(req, res) {
+  knex
+    .select("*")
+    .from("merchants")
+    .where("merchants.id", req.params.merchant_id)
+    .then((data) => {
+      res.json(data);
+    });
+
+});
+
+// [GET] merchant deals
+router.get('/:merchant_id/dashboard', function(req, res) {
   knex
     .select("*")
     .from("deals")
