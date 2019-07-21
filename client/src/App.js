@@ -47,7 +47,7 @@ class App extends Component {
     setTimeout(() =>{
       this.setState({readydom: true})
     },1000)
-    // Get location
+    // Get location of user
     fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
     .then(res => res.json())
     .then(data => console.log(data));

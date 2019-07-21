@@ -42,15 +42,17 @@ export class New_deal extends Component {
                   </div>
                   <br/>
                   <div>
-                    <div class="input-field col s12 m4">
-                      <div>
-                        <label>Expiry Date<br/>
-                          <input type="date"/></label>
+                    <div className="row">
+                      <div class="input-field col s12 m4">
+                        <div>
+                          <label>Expiry Date<br/>
+                            <input type="date"/></label>
+                        </div>
                       </div>
-                    </div>
-                    <div class="input-field col s12 m1">
-                      <label>Expiry Time<br/>
-                        <input type="time"/></label>
+                      <div class="input-field col s12 m2">
+                        <label>Expiry Time<br/>
+                          <input type="time"/></label>
+                      </div>
                     </div>
                   </div>
                   <div className="row">
