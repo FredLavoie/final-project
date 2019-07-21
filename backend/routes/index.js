@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 
 // [LOGIN] get login page
 router.post('/login', passport.authenticate('local'), function(req, res) {
-  console.log(`Authenticated user: ${req.user.email}\n password: ${req.user.password}`);
+  // console.log(`Authenticated user: ${req.user.email}\n password: ${req.user.password}`);
   res.json(req.user);
 });
 
@@ -43,7 +43,7 @@ router.post('/register', function(req, res) {
   newUserObj.postal_code = req.body.postal_code;
   newUserObj.phone_number = req.body.phone_number;
   newUserObj.type_of_merchant = req.body.type_of_merchant;
-  newUserObj. = req.body.;
+  // newUserObj. = req.body.;
 
   knex
     .insert(newUserObj)
