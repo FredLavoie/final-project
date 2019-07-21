@@ -10,6 +10,7 @@ import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Merchant from './pages/Merchant';
+import NewDeal from './pages/New_deal';
 
 class App extends Component {
 
@@ -18,6 +19,10 @@ class App extends Component {
    readydom: false
   }
   
+  loginUser = (e) => {
+    e.preventDefault();
+    console.log(e)
+  }
 
   componentDidMount() {
     M.AutoInit();
@@ -38,9 +43,10 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/merchants/:id" component={Merchant_dashboard} /> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login" render={() => <Login userAuth={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
+        <Route exact path="/newdeal" component={NewDeal} />
       </Router>
       </div>
     );
