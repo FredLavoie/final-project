@@ -19,6 +19,7 @@ router.get('/', function(req, res) {
 
 // [LOGIN] get login page
 router.post('/login', passport.authenticate('local'), function(req, res) {
+  console.log(`Authenticated user: ${req.user.email}\n password: ${req.user.password}`);
   res.json(req.user);
 });
 
