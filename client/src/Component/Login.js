@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 class Login extends Component {
     render() {
         return (
-<div className="container">
-<br/>
+<main className="container">
     <div className="row">
         <div className="col m6">
             <h2 className="center-align">Login</h2>
@@ -34,7 +33,7 @@ class Login extends Component {
             </div>
         </div>
     </div>
-</div>
+</main>
         )
     }
 }
