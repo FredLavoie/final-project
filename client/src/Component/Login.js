@@ -15,13 +15,13 @@ class Login extends Component {
                   <form className="col s12" onSubmit={this.props.userAuth}>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="email" type="email" className="validate"/>
+                            <input name="email" id="email" type="email" className="validate"/>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="pass" type="password" className="validate"/>
+                            <input name="password" id="pass" type="password" className="validate"/>
                             <label for="pass">Password</label>
                         </div>
                     </div>

@@ -13,7 +13,6 @@ import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 
 class App extends Component {
-
  state = {
    deals: [],
    readydom: false
@@ -21,15 +20,26 @@ class App extends Component {
   
   loginUser = (e) => {
     e.preventDefault();
-    console.log(e)
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
+    // const obj = {
+    //   email,
+    //   password
+    // }
+
+    fetch('/login', {
+      method:'POST',
+      headers:{ "Content-Type" : "application/json" },
+      body: JSON.stringify({ email: "Julius_Kuhn34@yahoo.com",  password: "0JtAphtS4kVsD7z" })
+   })
   }
 
   componentDidMount() {
     M.AutoInit();
     fetch('/deals')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({deals: data})
+    .then( res => res.json() )
+    .then( data => {
+      this.setState( { deals: data } )
     })
     setTimeout(() =>{
       this.setState({readydom: true})
@@ -52,5 +62,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
