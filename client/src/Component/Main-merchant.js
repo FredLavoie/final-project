@@ -18,6 +18,8 @@ export class Main extends Component {
               <th>Quantity </th>
               <th>Price</th>
               <th>Expiry Date</th>
+              <th></th>
+              <th></th>
           </tr>
         </thead>
       {datamerchantDeals}  

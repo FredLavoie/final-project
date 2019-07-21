@@ -14,6 +14,12 @@ export class Row extends Component {
             <td>{this.props.deal.quantity_available}</td>
             <td>{this.props.deal.current_price}</td>
             <td>09/10/19</td>
+            <td>
+            <a class="waves-effect waves-light btn">delete</a>
+            </td>
+            <td>
+            <a class="waves-effect waves-light btn">edit</a>
+            </td>
           </tr>
         </tbody>     
         )
