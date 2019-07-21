@@ -5,13 +5,9 @@ import Footer from '../Component/Footer';
 import Loading from '../Component/Loading';
 
  class Deals extends Component {
-  constructor(props){
-    super(props);
-  }
-
 
   render() {
-   const deals = this.props.deals.map(deal => <DealsComponent deal={deal} /> )
+   const deals = this.props.deals.map(deal => <DealsComponent key={deal.id} deal={deal} /> )
     return (
       <div>
       <Nav/>

@@ -6,9 +6,9 @@ export class New_deal extends Component {
           <div className="container">
             <div className="row">
               <form className="col s12">
-              <h2 className="center-align">Add new Deals</h2>
+              <h2 className="center-align">Create new Deal</h2>
                 <div className="row">
-                  <div className="input-field col s6 m6">
+                  <div className="input-field col s6 m4">
                     <input id="deal_name" type="text" className="validate"/>
                     <label for="deal_name">Name</label>
                   </div>
@@ -26,13 +26,35 @@ export class New_deal extends Component {
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text"/>
+<<<<<<< HEAD
+=======
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s6 m1">
                     <label>Price $ <br/>
+                    <input id="price" type="price" className="validate"/></label>
+>>>>>>> master
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s6 m1">
+<<<<<<< HEAD
+                    <label>Price $ <br/>
 @@ -38,19 +47,19 @@ export class New_deal extends Component {
                     <input type="date"/></label>
+=======
+                  <label for="quantity">Quantity left <br/>                    
+                    <input id="quantity" type="integer" className="validate"/></label>
+                  </div>
+                </div>
+                <br/>
+                <div class="input-field col s12 m4">
+                <div>
+                  <label>Expiry Date<br/>
+                    <input type="date"/></label>
+                </div>
+>>>>>>> master
                 </div>
                 </div>
                 <div class="input-field col s12 m1">
@@ -42,19 +64,26 @@ export class New_deal extends Component {
                   <input type="time"/></label>
                 </div>
                 </div>                  
+<<<<<<< HEAD
                   <div className="row">
                     <div className="col m12">
                       <p className="right-align">
                         <button className="btn btn-large waves-effect waves-light" type="button" name="action">Create Deal</button>
                       </p>
                     </div>
+=======
+>>>>>>> master
                 <div className="row">
                   <div className="col m12">
                     <p className="right-align">
                       <button className="btn btn-large waves-effect waves-light" type="button" name="action">Create Deal</button>
                     </p>
+<<<<<<< HEAD
                     </div>
+=======
+>>>>>>> master
                   </div>
+                </div>
               </form>
             </div>        
           </div>

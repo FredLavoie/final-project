@@ -25,7 +25,8 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 // [LOGOUT] get logOUT page
 router.get('/logout', function(req, res) {
   req.session.destroy(function (err) {
-    res.clearCookie();
+    res.clearCookie('connect.sid');
+
     res.json({ authorize: false, user: {} });
   });
 });
