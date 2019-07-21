@@ -6,7 +6,7 @@ export class New_deal extends Component {
           <div className="container">
             <div className="row">
               <form className="col s12">
-              <h2 className="center-align">Create new Deals</h2>
+              <h2 className="center-align">Create new Deal</h2>
                 <div className="row">
                   <div className="input-field col s6 m4">
                     <input id="deal_name" type="text" className="validate"/>
