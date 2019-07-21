@@ -21,7 +21,7 @@ componentDidMount() {
   const { handle }  = this.props.match.params
     fetch(`/merchants/${id}/dashboard`)
     .then(res => res.json())
-    .then(data => {  
+    .then(data => {   
       this.setState({merchant_deals: data})
     }) 
 }
@@ -30,13 +30,13 @@ componentDidMount() {
         let merchantDeals = this.state.merchant_deals
        
         let datamerchantDeals = merchantDeals.map((deals) => {
-            return(<Main_merchant deals={deals}/>)
+            return(<Merchant-deal-row deals={deals}/>)
         }
        );
       return (
         <div>
           <Nav /> 
-          {this.props.isready ? datamerchantDeals : <Loading /> }
+          <Main_merchant  deals={this.state.merchant_deals} /> 
           <Footer />
         </div>
       )

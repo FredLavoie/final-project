@@ -1,7 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Row from './Merchant-deal-row';
 
 export class Main extends Component {
     render() {
+      let merchantDeals = this.props.deals
+       
+      const datamerchantDeals = merchantDeals.map( deal => <Row key={deal.id} deal={deal}/> ) 
         return (
             <main className="main-merchant"> 
                 <a className="waves-effect waves-light btn">Create New Deal</a>
@@ -16,23 +20,9 @@ export class Main extends Component {
               <th>Expiry Date</th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td>
-            <container classsName="image-container">
-                    <img className="responsive" src={this.props.deals.image_path}/> 
-                    </container>
-            </td>
-            <td>{this.props.deals.name}</td>
-            <td>{this.props.deals.quantity_available}</td>
-            <td>{this.props.deals.current_price}</td>
-            <td>09/10/19</td>
-          </tr>
-        </tbody>
+      {datamerchantDeals}  
       </table> 
 
-                
 
                
             </main>
