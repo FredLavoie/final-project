@@ -19,6 +19,15 @@ export class New_deal extends Component {
                     <label for="description">Description</label>
                   </div>
                 </div>
+                <div class="file-field input-field m6">
+                  <div class="btn">
+                    <span>Photo</span>
+                    <input type="file"/>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text"/>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="input-field col s6 m1">
                     <label>Price $ <br/>
@@ -38,19 +47,19 @@ export class New_deal extends Component {
                     <input type="date"/></label>
                 </div>
                 </div>
-                <div class="input-field col s12 m1">
+                <div class="input-field col s12 m2">
                 <div>
                 <label>Expiry Time<br/>
                   <input type="time"/></label>
                 </div>
                 </div>                  
-                  <div className="row">
-                    <div className="col m12">
-                      <p className="right-align">
-                        <button className="btn btn-large waves-effect waves-light" type="button" name="action">Create Deal</button>
-                      </p>
-                    </div>
+                <div className="row">
+                  <div className="col m12">
+                    <p className="right-align">
+                      <button className="btn btn-large waves-effect waves-light" type="button" name="action">Create Deal</button>
+                    </p>
                   </div>
+                </div>
               </form>
             </div>        
           </div>
