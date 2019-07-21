@@ -19,6 +19,7 @@ class App extends Component {
    merchant_deals: [],
    readydom: false
   }
+  console.log('I am in the constructor'); 
 }
 
 
@@ -30,14 +31,14 @@ class App extends Component {
       this.setState({deals: data})
     })
     //for merchant to view their own deals
-    //const { handle } = this.props.match.params
-    console.log('Hello'); 
-    console.log(this.props.match)  
-    fetch(`/merchants/7`)
-    .then(res => res.json())
-    .then(data => {  
-      this.setState({merchant_deals: data})
-    })
+    // console.log('I can see this part')
+    // console.log(this.props.match); //this part is undefined 
+    // const { handle } = this.props.match.params
+    // fetch(`/merchants/${handle}`)
+    // .then(res => res.json())
+    // .then(data => {  
+    //   this.setState({merchant_deals: data})
+    // })
 
     setTimeout(() =>{
       this.setState({readydom: true})
@@ -45,12 +46,14 @@ class App extends Component {
     
   }
 
+  
+
   render() {
     return (
       <div className="App">
       <Router>
         <Route exact path="/" component={Home} />
-        <Route exact path="/merchants/:id" render={() => <MerchantDashboard isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
+        <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/> } />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Registration} />
