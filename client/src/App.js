@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
+import Edit_deal from './pages/Edit_deal';
 
 class App extends Component {
  state = {
@@ -19,21 +20,30 @@ class App extends Component {
    location:null
   }
   
+  createNew = (event) => {
+    event.preventDefault();
+    console.log("Testing 1:",event.target.name.value)
+    console.log("Testing 2:",event.target.description.value)
+    fetch('/deals/new', {
+      method: 'POST',
+      headers:{ "Content-Type" : "application/json" },
+      body: JSON.strintify({
+        merchant_id: 100,
+        name: event.target.name.value,
+        description: event.target.description.value,
+        quantity_available: event.target.quantity.value,
+        image_path: event.target.photo.value,
+        current_price: event.target.price.value
+      })
+    })
+  }
 
-
-  loginUser = (e) => {
-    e.preventDefault();
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // const obj = {
-    //   email,
-    //   password
-    // }
-
+  loginUser = (event) => {
+    event.preventDefault();
     fetch('/login', {
       method:'POST',
       headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({ email: "Julius_Kuhn34@yahoo.com",  password: "0JtAphtS4kVsD7z" })
+      body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
    })
   }
 
@@ -62,7 +72,8 @@ class App extends Component {
         <Route exact path="/login" render={() => <Login userAuth={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
-        <Route exact path="/newdeal" component={NewDeal} />
+        <Route exact path="/update" component={Edit_deal} />
+        <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
       </Router>
       </div>
     );
