@@ -107,8 +107,6 @@ function dateToMilliseconds(date) {
   let month = date;
   let day = date;
 
-
-
   return 
 }
 
