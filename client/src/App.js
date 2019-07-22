@@ -53,6 +53,11 @@ class App extends Component {
 addTocart = (data) =>{
   console.log('Test1')
  console.log(data); 
+ const shopping = [...this.state.shoppingcart,data]
+ this.setState({ shoppingcart: shopping})
+ console.log(shopping)
+ console.log('this is the state');
+ console.log(this.state);
 }
 
 
