@@ -51,13 +51,10 @@ class App extends Component {
 
 
 addTocart = (data) =>{
-  console.log('Test1')
- console.log(data); 
- const shopping = [...this.state.shoppingcart,data]
- this.setState({ shoppingcart: shopping})
- console.log(shopping)
- console.log('this is the state');
- console.log(this.state);
+ //const shopping = [...this.state.shoppingcart,data]
+ this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+  console.log("cart",this.state.shoppingcart);
+ })
 }
 
 
@@ -92,7 +89,7 @@ addTocart = (data) =>{
         <Route exact path="/register" component={Merchant} />
         <Route exact path="/update" component={Edit_deal} />
         <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props}/>}/> 
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
       </Router>
       </div>
     );

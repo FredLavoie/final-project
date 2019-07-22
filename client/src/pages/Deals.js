@@ -7,8 +7,6 @@ import Loading from '../Component/Loading';
  class Deals extends Component {
 
   render() {
-    console.log('test2')
-    console.log(this.props.add); 
    const deals = this.props.deals.map(deal => <DealsComponent key={deal.id} deal={deal} add={this.props.add}/> )
     return (
       <div>
