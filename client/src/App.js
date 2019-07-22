@@ -19,7 +19,6 @@ class App extends Component {
    location:null
   }
   
-<<<<<<< HEAD
   createNew = (event) => {
     event.preventDefault();
     console.log("Testing 1:",event.target.name.value)
@@ -37,18 +36,6 @@ class App extends Component {
       })
     })
   }
-=======
-
-
-  loginUser = (e) => {
-    e.preventDefault();
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // const obj = {
-    //   email,
-    //   password
-    // }
->>>>>>> master
 
   loginUser = (event) => {
     event.preventDefault();
