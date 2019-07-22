@@ -32,17 +32,15 @@ deleteDeal = (id) => {
   const url = `/deals/${id}/delete`
   fetch(url,{method:"POST"}).then(result =>{
     if(result.ok){
-      this.setState({Redirect:true})
+        const data = this.state.merchant_deals.filter(deal => deal.id != id)
+        this.setState({merchant_deals: data})
     }
   })
 
 }
 
     render() {
-      if (this.state.Redirect === true) {
-        this.setState({Redirect: false})
-        return <Redirect to='/' />
-      }
+     
   
         let merchantDeals = this.state.merchant_deals
        
