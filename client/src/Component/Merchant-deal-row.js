@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 export class Row extends Component {
+
     render() {
+        console.log("the id ", this.props)
         return (
         <tbody>
           <tr>
@@ -15,7 +17,7 @@ export class Row extends Component {
             <td>{this.props.deal.current_price}</td>
             <td>09/10/19</td>
             <td>
-            <a class="waves-effect waves-light btn">delete</a>
+            <button class="waves-effect waves-light btn" onClick={() => this.props.deleteDeal(this.props.deal.id)}>delete</button>
             </td>
             <td>
             <a class="waves-effect waves-light btn">edit</a>
