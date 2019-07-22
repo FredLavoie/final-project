@@ -17,11 +17,11 @@ componentDidMount() {
 }
 
     render() {
-     
+     console.log("shooping", this.props.shoppingcart)
       return (
         <div>
           <Nav /> 
-          <MainShoppingCart />
+          <MainShoppingCart  />
           <Footer />
         </div>
       )
