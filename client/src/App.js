@@ -18,7 +18,8 @@ class App extends Component {
  state = {
    deals: [],
    readydom: false,
-   location:null
+   location:null,
+   shoppingcart: []
   }
   
   createNew = (event) => {
@@ -48,6 +49,13 @@ class App extends Component {
    })
   }
 
+
+addTocart = (data) =>{
+  console.log('Test1')
+ console.log(data); 
+}
+
+
   componentDidMount() {
     M.AutoInit();
     fetch('/deals')
@@ -73,7 +81,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Home} />
         <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
-        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
+        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" render={() => <Login loginUser={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
