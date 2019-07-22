@@ -5,10 +5,12 @@ import Footer from '../Component/Footer';
 
 class Login extends Component {
   render() {
+    console.log('Props Login: ', this.props);
+    
     return (
       <div>
         <Nav/>
-        <LoginComponent userAuth={this.props.userAuth}/>
+        <LoginComponent loginUser={this.props.loginUser} />
         <Footer/>
       </div>
     )
