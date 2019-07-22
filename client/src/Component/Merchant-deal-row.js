@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Edit_deal from "./Edit_deal"
 
 export class Row extends Component {
-
+  state= {edit: false}
     render() {
-      console.log(this.props.isUpdate)
+
         return (
         <tbody>
           <tr>
@@ -16,15 +16,15 @@ export class Row extends Component {
             <td>{this.props.deal.name}</td>
             <td>{this.props.deal.quantity_available}</td>
             <td>{this.props.deal.current_price}</td>
-            <td>09/10/19</td>
+            <td>{this.props.deal.end_date}</td>
             <td>
             <button class="waves-effect waves-light btn" onClick={() => this.props.deleteDeal(this.props.deal.id)}>delete</button>
             </td>
             <td>
-            <a class="waves-effect waves-light btn" onClick={this.props.updateDeal}>edit</a>
+            <a class="waves-effect waves-light btn" onClick={() =>  this.state.edit ? this.setState({edit: false }) : this.setState({edit: true})}>edit</a>
             </td>
           </tr>
-         {this.props.isUpdate ? <Edit_deal /> : ""} 
+         {this.state.edit ? <Edit_deal updateDeal={this.props.updateDeal} deal={this.props.deal}  /> : ""} 
         </tbody>     
         )
     }

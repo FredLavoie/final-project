@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export class Edit_deal extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="container">
@@ -10,13 +11,13 @@ export class Edit_deal extends Component {
                 <h2 className="center-align">Update Deal</h2>
                   <div className="row">
                     <div className="input-field col s6 m4">
-                      <input Placeholder="Contain previous info"id="deal_name" type="text" className="validate"/>
+                      <input value={this.props.deal.name} id="deal_name" type="text" className="validate"/>
                       <label for="deal_name">Name</label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s6 m6">
-                      <input Placeholder="Contain previous info"id="description" type="text" className="validate"/>
+                      <input value={this.props.deal.description} id="description" type="text" className="validate"/>
                       <label for="description">Description</label>
                     </div>
                   </div>
@@ -26,19 +27,19 @@ export class Edit_deal extends Component {
                       <input type="file"/>
                     </div>
                     <div class="file-path-wrapper">
-                      <input Placeholder="Contain previous info" class="file-path validate" type="text"/>
+                      <input value={this.props.deal.image_path} class="file-path validate" type="text"/>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s6 m1">
                       <label>Price $ <br/>
-                      <input Placeholder="Contain previous info" id="price" type="price" className="validate"/></label>
+                      <input  value={this.props.deal.current_price} id="price" type="price" className="validate"/></label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s6 m1">
                     <label for="quantity">Quantity left <br/>                    
-                      <input Placeholder="Contain previous info" id="quantity" type="integer" className="validate"/></label>
+                      <input value={this.props.deal.quantity_available} id="quantity" type="integer" className="validate"/></label>
                     </div>
                   </div>
                   <br/>
