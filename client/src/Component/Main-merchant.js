@@ -9,7 +9,7 @@ export class Main extends Component {
        }
       const datamerchantDeals = merchantDeals.map( deal => <Row deleteDeal={this.props.deleteDeal} key={deal.id} deal={deal}/> ) 
         return (
-            <main className="main-merchant"> 
+            <main className="main-page"> 
                 <a className="waves-effect waves-light btn">Create New Deal</a>
                 <p>Your Deals</p>
         <table>

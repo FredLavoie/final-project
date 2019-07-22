@@ -12,6 +12,7 @@ import Registration from './pages/Registration';
 import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
+import ShoppingCart from './pages/Shopping_cart';
 
 class App extends Component {
  state = {
@@ -78,6 +79,7 @@ class App extends Component {
         <Route exact path="/register" component={Merchant} />
         <Route exact path="/update" component={Edit_deal} />
         <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props}/>}/> 
       </Router>
       </div>
     );
