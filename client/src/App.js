@@ -5,7 +5,7 @@ import M from "materialize-css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Component
 import Home from './pages/Home';
-import Merchant_dashboard from './pages/Merchant_dashboard';
+import MerchantDashboard from './pages/MerchantDashboard';
 import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
@@ -54,6 +54,7 @@ class App extends Component {
     .then( data => {
       this.setState( { deals: data } )
     })
+
     setTimeout(() =>{
       this.setState({readydom: true})
     },1000)
@@ -62,12 +63,15 @@ class App extends Component {
     .then(res => res.json())
     .then(data => console.log(data));
   }
+
+  
+
   render() {
     return (
       <div className="App">
       <Router>
         <Route exact path="/" component={Home} />
-        <Route exact path="/merchants/:id" component={Merchant_dashboard} /> 
+        <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
         <Route exact path="/login" render={() => <Login userAuth={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
