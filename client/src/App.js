@@ -76,10 +76,7 @@ class App extends Component {
         <Route exact path="/login" render={() => <Login loginUser={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
-<<<<<<< HEAD
-=======
         <Route exact path="/update" component={Edit_deal} />
->>>>>>> master
         <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
       </Router>
       </div>
