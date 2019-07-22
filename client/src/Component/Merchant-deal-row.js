@@ -4,6 +4,7 @@ import Edit_deal from "./Edit_deal"
 export class Row extends Component {
 
     render() {
+      console.log(this.props.isUpdate)
         return (
         <tbody>
           <tr>
@@ -23,6 +24,7 @@ export class Row extends Component {
             <a class="waves-effect waves-light btn" onClick={this.props.updateDeal}>edit</a>
             </td>
           </tr>
+         {this.props.isUpdate ? <Edit_deal /> : ""} 
         </tbody>     
         )
     }

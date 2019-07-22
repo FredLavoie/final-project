@@ -13,10 +13,10 @@ export class MerchantDashboard extends Component {
       merchant_deals: [],
       edit: false,
      }
-
 }
 
 updateDeal = () =>{
+  this.setState({edit:true})
   console.log("#Test", this.state.edit, this.state.merchant_deals)
 }
 
@@ -40,14 +40,10 @@ deleteDeal = (id) => {
         this.setState({merchant_deals: data})
     }
   })
-
 }
 
     render() {
-     
-  
         let merchantDeals = this.state.merchant_deals
-       
         let datamerchantDeals = merchantDeals.map((deals) => {
             return(<Merchant-deal-row  deals={deals}/>)
         }
@@ -55,7 +51,7 @@ deleteDeal = (id) => {
       return (
         <div>
           <Nav /> 
-          <Main_merchant updateDeal={this.updateDeal}  deleteDeal={this.deleteDeal}  deals={this.state.merchant_deals} /> 
+          <Main_merchant isUpdate={this.state.edit} updateDeal={this.updateDeal} deleteDeal={this.deleteDeal} deals={this.state.merchant_deals} /> 
           <Footer />
         </div>
       )
