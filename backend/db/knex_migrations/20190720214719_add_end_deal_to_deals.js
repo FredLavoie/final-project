@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
   return knex.schema.table('deals', function(table){
-    table.datetime('end_date');
+    table.datetime('end_date');  
   });
 }
 
