@@ -73,7 +73,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
-        <Route exact path="/login" render={() => <Login userAuth={this.loginUser}/>}/>
+        <Route exact path="/login" render={() => <Login loginUser={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <Route exact path="/update" component={Edit_deal} />

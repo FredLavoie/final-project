@@ -12,7 +12,7 @@ class Login extends Component {
                 <h2 className="center-align">Login</h2>
                 <p className="center-align"><strong><a href="/signup">Sign Up here</a></strong></p>
                 <div className="row">
-                  <form className="col s12" onSubmit={this.props.userAuth}>
+                  <form className="col s12" onSubmit={this.props.loginUser}>
                     <div className="row">
                         <div className="input-field col s12">
                             <input name="email" id="email" type="email" className="validate"/>
