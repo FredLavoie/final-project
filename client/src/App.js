@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
@@ -50,11 +51,24 @@ addTocart = (data) =>{
  //const shopping = [...this.state.shoppingcart,data]
  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
   console.log("cart",this.state.shoppingcart);
+  this.saveToLocal(); 
  })
+}
+
+saveToLocal() {
+  const local = this.state.shoppingcart;
+  localStorage.set('saveShoppingcart', JSON.stringify(local));
+}
+
+getFromLocal(){
+  const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+console.log(shoppingItems)
+this.setState({ shoppingcart: [shoppingItems]})
 }
 
 
   componentDidMount() {
+    this.getFromLocal();
     M.AutoInit();
     fetch('/deals')
     .then( res => res.json() )
