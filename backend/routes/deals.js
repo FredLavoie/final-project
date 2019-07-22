@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
   knex
     .select("*")
     .from("deals")
+    //.orderBy('')
     .then((data) => {
       res.json(data);
     });
@@ -36,9 +37,9 @@ router.get('/:id', function(req, res) {
 // [CREATE] a new deal
 router.post('/new', function(req, res) { // update with time remaining 
 
-  // let dateEntered = req.body.exDate
-  // let timeEntered = req.body.exTime
-  // let combined = 
+  let dateEntered = dateToMilliseconds(req.body.exDate);
+  let timeEntered = req.body.exTime
+  let combined = 
   
   let dealObject = {};
   dealObject.merchant_id = req.body.merchant_id;
@@ -96,3 +97,18 @@ router.post('/:deal_id/delete', function(req, res) {
 });
 
 module.exports = router;
+
+
+//************************************** ROUTES ***************************************/
+//*************************************************************************************/
+
+function dateToMilliseconds(date) {
+  let year = date; 
+  let month = date;
+  let day = date;
+
+
+
+  return 
+}
+
