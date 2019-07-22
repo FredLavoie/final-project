@@ -3,6 +3,7 @@ import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { withRouter } from "react-router"
 // import Component
 import Home from './pages/Home';
 import MerchantDashboard from './pages/MerchantDashboard';
@@ -38,13 +39,8 @@ class App extends Component {
     })
   }
 
-  loginUser = (event) => {
-    event.preventDefault();
-    fetch('/login', {
-      method:'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
-   })
+  loginUser = (merchant_id) => {
+    this.setState({merchant_id: merchant_id});
   }
 
   componentDidMount() {
