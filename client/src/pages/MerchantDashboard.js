@@ -11,9 +11,11 @@ export class MerchantDashboard extends Component {
     super(props)
     this.state = {
       merchant_deals: [],
-      Redirect: {status: false, url:"" },
      }
+}
 
+updateDeal = () =>{
+  console.log("#Test", this.state.edit, this.state.merchant_deals)
 }
 
 componentDidMount() {
@@ -36,14 +38,10 @@ deleteDeal = (id) => {
         this.setState({merchant_deals: data})
     }
   })
-
 }
 
     render() {
-     
-  
         let merchantDeals = this.state.merchant_deals
-       
         let datamerchantDeals = merchantDeals.map((deals) => {
             return(<Merchant-deal-row  deals={deals}/>)
         }
@@ -51,7 +49,7 @@ deleteDeal = (id) => {
       return (
         <div>
           <Nav /> 
-          <Main_merchant  deleteDeal={this.deleteDeal}  deals={this.state.merchant_deals} /> 
+          <Main_merchant updateDeal={this.updateDeal} deleteDeal={this.deleteDeal} deals={this.state.merchant_deals} /> 
           <Footer />
         </div>
       )
