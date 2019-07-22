@@ -29,7 +29,7 @@ export class Deals extends Component {
           <p style={{ textAlign:'right' }}>{this.props.deal.quantity_available} left</p>
         </div>
         <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-          <a  href="#" onClick={() => this.props.add('Hello')}>add to cart</a>
+          <a  href="#" onClick={() => this.props.add(this.props.deal)}>add to cart</a>
         </div>
       </div>
     </div>
