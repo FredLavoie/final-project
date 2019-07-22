@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import Nav from '../Component/Nav';
-import LoginComponent from '../Component/Login';
 import Footer from '../Component/Footer';
+import NewDealComponent from '../Component/New_deal';
 
-class Login extends Component {
+
+export class New_deal extends Component {
   render() {
     return (
       <div>
         <Nav/>
-        <LoginComponent userAuth={this.props.userAuth}/>
+        <NewDealComponent/>
         <Footer/>
       </div>
     )
   }
 }
 
-export default Login
+export default New_deal
