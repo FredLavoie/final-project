@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Row extends Component {
   state= {edit: false}
     render() {
-            console.log("item", this.props.shoppingcart)
+            console.log("quantity", this.props.shoppingcart.cart_quantity)
 
             //create a map
         let quantity = this.props.entireshoppingcart.filter((object) => {
@@ -22,7 +22,7 @@ export class Row extends Component {
                         </p>    
                 </td>
                 <td>{this.props.shoppingcart.name}</td>
-                <td>{quantity.length}</td>
+                <td>{this.props.shoppingcart.cart_quantity}</td>
                 <td>{this.props.shoppingcart.current_price}</td>
                 <td>x2</td>
             </tr>

@@ -45,49 +45,32 @@ class App extends Component {
 
 
 addTocart = (data) =>{
-   const incomingData = data;
-     //find if deall already exist 
-     const itemInCart = this.state.shoppingcart.find(item => item.id ===incomingData.id);
-     console.log('iteminCart',itemInCart); 
-     if(itemInCart){
-       // deal exists
-// update its quantity  
-const updateQuantity = this.state.shoppingcart.map(item => {
-  if (item.id === incomingData.id) {
-    incomingData.cart_quantity += 1;
-  }
-return item;
-})
+  const incomingData = data;
+  const itemInCart = this.state.shoppingcart.find(item => item.id ===incomingData.id);
+  if(itemInCart){
+    const updateQuantity = this.state.shoppingcart.map(item => {
+      if (item.id === incomingData.id) {
+      incomingData.cart_quantity += 1;
+    }
+  return item;
+  })
 
-// replacing the deals with updatedDeals in the state
-this.setState({shoppingcart: updateQuantity}, () => {
-  console.log('state when update',this.state.shoppingcart); 
-}
-  )
-
-     }else{
-        // deal does not exist. Create a cart_quantity property
-        incomingData.cart_quantity = 1;
-
-
-  // Update the state with the new deal
-  this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
-    console.log('state when new',this.state.shoppingcart); 
+  // replacing the deals with updatedDeals in the state
+  this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
+  })}else{
+    // deal does not exist. Create a cart_quantity property
+    incomingData.cart_quantity = 1;
+
+    // Update the state with the new deal
+    this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
+      console.log('state when new',this.state.shoppingcart); 
+      this.saveToLocal(); 
+    })
   }
-    )
-     }
-//      currentDeal = this.state.deals.finc(deal => deal.id === data.id)
-//  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-//   this.saveToLocal(); 
-//  })
 }
 
-// addTocart = (data) =>{
-// this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-//  this.saveToLocal(); 
-// })
-// }
+
 
 saveToLocal() {
   const local = this.state.shoppingcart;
