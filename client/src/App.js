@@ -3,7 +3,7 @@ import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 // import { withRouter } from "react-router"
 // import Component
 import Home from './pages/Home';
@@ -15,6 +15,7 @@ import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
+import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
  state = {
@@ -24,12 +25,33 @@ class App extends Component {
    shoppingcart: []
   }
   
+<<<<<<< HEAD
   loginUser = (merchant_id) => {
     this.setState({merchant_id: merchant_id});
   }
 
+=======
+  createNew = (event) => {
+    event.preventDefault();
+    console.log("Testing 1:",event.target.name.value)
+    console.log("Testing 2:",event.target.description.value)
+    fetch('/deals/new', {
+      method: 'POST',
+      headers:{ "Content-Type" : "application/json" },
+      body: JSON.strintify({
+        merchant_id: 100,
+        name: event.target.name.value,
+        description: event.target.description.value,
+        quantity_available: event.target.quantity.value,
+        image_path: event.target.photo.value,
+        current_price: event.target.price.value
+      })
+    })
+  }
+
+
+>>>>>>> master
 addTocart = (data) =>{
- //const shopping = [...this.state.shoppingcart,data]
  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
   this.saveToLocal(); 
  })
@@ -70,17 +92,18 @@ getFromLocal(){
   render() {
     return (
       <div className="App">
-      <Router>
+      <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
+        {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
+        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />/> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
-        <Route exact path="/login" render={() => <Login loginUser={this.loginUser}/>}/>
+        <Route exact path="/login" component={Login}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
-        <Route exact path="/update" component={Edit_deal} />
-        <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
+        <PrivateRoute exact path="/update" component={Edit_deal} />
+        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
-      </Router>
+      </Switch>
       </div>
     );
   }
