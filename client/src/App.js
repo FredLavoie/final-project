@@ -48,10 +48,7 @@ class App extends Component {
 
 
 addTocart = (data) =>{
-  console.log('Is the function being called?')
- //const shopping = [...this.state.shoppingcart,data]
  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-  console.log("cart",this.state.shoppingcart);
   this.saveToLocal(); 
  })
 }
@@ -61,13 +58,10 @@ saveToLocal() {
   localStorage.set('saveShoppingcart', JSON.stringify(local));
 }
 
-getFromLocal(){
-  console.log("local storage", JSON.parse(localStorage.get('saveShoppingcart')) !== null);  
+getFromLocal(){  
   if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
     const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-console.log('what is my format', shoppingItems)
-this.setState({ shoppingcart: shoppingItems}, () =>{
-  console.log('state of cart',this.state);  
+this.setState({ shoppingcart: shoppingItems}, () =>{ 
   })
   }
   

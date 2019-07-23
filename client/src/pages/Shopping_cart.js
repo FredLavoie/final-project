@@ -10,7 +10,6 @@ export class ShoppingCart extends Component {
 }
 
     render() {
-     console.log("shopping", this.props.shoppingcart)
       return (
         <div>
           <Nav /> 
