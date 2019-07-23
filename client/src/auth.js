@@ -14,14 +14,16 @@ class Auth {
  
   }
 
-  logout(cb){
+   logout(cb){
     this.isAuthenticated = false;
+    localStorage.clear()
     cb()
   }
 
-  isAuthenticated(){
-    console.log('Authenticated -> ',this.isAuthenticated)
-    return this.isAuthenticated;
+  getAuthenticated(){
+    const merchantId = localStorage.getItem('merchant_id');
+    console.log('id ->> ',merchantId)
+    return merchantId ? true : false
   }
 
 }

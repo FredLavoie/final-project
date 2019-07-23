@@ -88,13 +88,14 @@ this.setState({ shoppingcart: shoppingItems})
       <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
+        {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
+        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />/> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
-        <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
+        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
       </Switch>
       </div>

@@ -19,11 +19,10 @@ handleSubmit = event => {
       localStorage.setItem("merchant_id", merchant_info.merchant_id);
       Auth.login(() => {
         this.props.history.push('/merchants/dashboard')
-        console.log('isAuthenticated ->',Auth.isAuthenticated)
+        console.log('isAuthenticated from login  ->',Auth.isAuthenticated)
       } )
       });
 }
-
     render() {
         return (
           <main className="container">
