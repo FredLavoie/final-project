@@ -62,8 +62,8 @@ saveToLocal() {
 
 getFromLocal(){
   const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-console.log(shoppingItems)
-this.setState({ shoppingcart: [shoppingItems]})
+console.log('what is my format', shoppingItems)
+this.setState({ shoppingcart: shoppingItems})
 }
 
 

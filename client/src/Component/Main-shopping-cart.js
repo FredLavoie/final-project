@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import Row from './Shopping-cart-row'; 
 
 export class MainShoppingCart extends Component {
     render() {
+        let shoppingCart = this.props.shoppingCart
+        console.log('What is here?', shoppingCart); 
+        const dataShopping = shoppingCart.map( item => <Row shoppingcart={item}  key={item.id} /> ) 
         return (
             <main className="main-page"> 
                 <p>Your Shopping Cart</p>
@@ -12,12 +16,10 @@ export class MainShoppingCart extends Component {
               <th>Product</th>
               <th>Quantity </th>
               <th>Price</th>
-              <th>Price*Quantity</th>
-              <th></th>
-              <th></th>
+              <th>Price*Quantity</th> 
           </tr>
         </thead>
-
+        {dataShopping}
       </table> 
             </main>
 
