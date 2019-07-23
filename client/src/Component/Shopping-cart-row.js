@@ -9,7 +9,7 @@ export class Row extends Component {
           <tr>
             <td>
             <tr classsName="image-container">
-                    <img className="responsive" src={this.props.shoppingcart.image_path}/> 
+                    <img className="responsive" alt="" src={this.props.shoppingcart.image_path}/> 
                     </tr>
             </td>
             <td>{this.props.shoppingcart.name}</td>
