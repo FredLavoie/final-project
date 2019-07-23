@@ -47,24 +47,24 @@ class App extends Component {
   }
 
 
-addTocart = (data) =>{
- //const shopping = [...this.state.shoppingcart,data]
- this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-  console.log("cart",this.state.shoppingcart);
-  this.saveToLocal(); 
- })
-}
+  addTocart = (data) =>{
+  //const shopping = [...this.state.shoppingcart,data]
+  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+    console.log("cart",this.state.shoppingcart);
+    this.saveToLocal(); 
+  })
+  }
 
-saveToLocal() {
-  const local = this.state.shoppingcart;
-  localStorage.set('saveShoppingcart', JSON.stringify(local));
-}
+  saveToLocal() {
+    const local = this.state.shoppingcart;
+    localStorage.set('saveShoppingcart', JSON.stringify(local));
+  }
 
-getFromLocal(){
-  const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-console.log('what is my format', shoppingItems)
-this.setState({ shoppingcart: shoppingItems})
-}
+  getFromLocal(){
+    const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+  console.log('what is my format', shoppingItems)
+  this.setState({ shoppingcart: shoppingItems})
+  }
 
 
   componentDidMount() {
