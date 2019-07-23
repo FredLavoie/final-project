@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
+import {Animated} from "react-animated-css";
 
 export class Edit_deal extends Component {
   render() {
-    console.log(this.props)
     return (
-      <div>
-        <div className="container">
-            <div className="row">
-              <form className="col s12">
+      <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+              <form className="col s12" style={{transition: 'all 3s liner'}}>
                 <h2 className="center-align">Update Deal</h2>
                   <div className="row">
                     <div className="input-field col s6 m4">
@@ -65,9 +63,7 @@ export class Edit_deal extends Component {
                     </div>
                   </div>
               </form>
-            </div>        
-          </div>      
-      </div>
+              </Animated>
     )
   }
 }

@@ -24,7 +24,9 @@ export class Row extends Component {
             <a class="waves-effect waves-light btn" onClick={() =>  this.state.edit ? this.setState({edit: false }) : this.setState({edit: true})}>edit</a>
             </td>
           </tr>
+          <td className="container" colspan="6" style={{width:'100%', position:"relative",margin:'auto'}}>
          {this.state.edit ? <Edit_deal updateDeal={this.props.updateDeal} deal={this.props.deal}  /> : ""} 
+         </td>
         </tbody>     
         )
     }
