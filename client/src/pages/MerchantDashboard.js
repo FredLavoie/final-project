@@ -26,7 +26,7 @@ updateDeal = () =>{
 componentDidMount() {
   M.AutoInit();
   //for merchant to view their own deals
-  const id = this.props.match.params.id
+  const id = localStorage.getItem("merchant_id");
   const { handle }  = this.props.match.params
   console.log('Token? ',localStorage.getItem('token'));
     fetch(`/merchants/${id}/dashboard`, {

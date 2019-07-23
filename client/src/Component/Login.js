@@ -19,6 +19,7 @@ handleSubmit = event => {
     .then( merchant_info => {
       // this.setState({merchant_id: merchant_info.merchant_id});
       localStorage.setItem("token", merchant_info.token);
+      localStorage.setItem("merchant_id", merchant_info.merchant_id);
       this.setState({ toDashboard: true, merchant_id: merchant_info.merchant_id });
       this.props.loginUser(merchant_info.merchant_id);
       });
