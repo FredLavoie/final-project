@@ -23,6 +23,24 @@ router.get('/current_merchant', auth, function(req, res) {
     });
 });
 
+// [GET] merchant information
+router.get('/:id/dashboard', auth, function(req, res) {
+  console.log(req.params.id);
+  console.log(req.merchant_id);
+  
+  if(req.params.id !== req.merchant_id) {
+    // sometihing
+  }
+
+  knex
+    .select("*")
+    .from("deals")
+    .where("merchant_id", req.params.id)
+    .then((data) => {
+      res.json(data);
+    });
+});
+
 // [GET] merchant deals
 router.get('/deals', auth, function(req, res) {
   knex
