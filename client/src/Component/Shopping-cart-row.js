@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export class Row extends Component {
   state= {edit: false}
     render() {
-        console.log('what is in row', this.props.shoppingcart)
         return (
         <tbody>
           <tr>

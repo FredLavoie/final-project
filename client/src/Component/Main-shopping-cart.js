@@ -4,7 +4,6 @@ import Row from './Shopping-cart-row';
 export class MainShoppingCart extends Component {
     render() {
         let shoppingCart = this.props.shoppingCart
-        console.log('What is here?', shoppingCart); 
         const dataShopping = shoppingCart.map( item => <Row shoppingcart={item}  key={item.id} /> ) 
         return (
             <main className="main-page"> 
