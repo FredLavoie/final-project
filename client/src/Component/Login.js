@@ -23,7 +23,6 @@ handleSubmit = event => {
       this.props.loginUser(merchant_info.merchant_id);
       });
 }
-
     render() {
       if (this.state.toDashboard === true) {
         let path = `/merchants/${this.state.merchant_id}/dashboard`;
