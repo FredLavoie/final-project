@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export class New_deal extends Component {
   handleSubmit = event => {
+    
     event.preventDefault();
     console.log('DATE:', event.target.date.value)
     console.log('TIME:', event.target.time.value)
@@ -13,7 +14,7 @@ export class New_deal extends Component {
           merchant_id: localStorage.getItem('merchant_id'),
           name: event.target.name.value, 
           description: event.target.description.value,  
-          image_path: event.target.photo_path.value, 
+          image_path: `http://localhost:8080/images/${event.target.photo_path.value}`, 
           current_price: event.target.price.value, 
           quantity_available: event.target.quantity.value, 
           date: event.target.date.value,
