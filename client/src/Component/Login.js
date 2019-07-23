@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import Auth from '../auth';
 
 class Login extends Component {
-state = {
-  toDashboard: false,
-  merchant_id: null
-}
+
 handleSubmit = event => {
   event.preventDefault();
     fetch('/merchants/login', {
@@ -17,19 +15,16 @@ handleSubmit = event => {
       return response.json();
     })
     .then( merchant_info => {
-      // this.setState({merchant_id: merchant_info.merchant_id});
       localStorage.setItem("token", merchant_info.token);
       localStorage.setItem("merchant_id", merchant_info.merchant_id);
-      this.setState({ toDashboard: true, merchant_id: merchant_info.merchant_id });
-      this.props.loginUser(merchant_info.merchant_id);
+      Auth.login(() => {
+        this.props.history.push('/merchants/dashboard')
+        console.log('isAuthenticated ->',Auth.isAuthenticated)
+      } )
       });
 }
 
     render() {
-      if (this.state.toDashboard === true) {
-        let path = `/merchants/${this.state.merchant_id}/dashboard`;
-        return <Redirect to={path}/>
-      }
         return (
           <main className="container">
             <div className="row">
@@ -66,5 +61,5 @@ handleSubmit = event => {
     }
 }
 
-export default Login
+export default withRouter(Login) 
 
