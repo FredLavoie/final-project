@@ -35,9 +35,16 @@ router.get('/:id', function(req, res) {
 });
 
 // [CREATE] a new deal
-router.post('/new', function(req, res) { // update with time remaining 
+router.post('/new', function(req, res) { 
 
-  let combined = req.body.date + req.body.time;
+  console.log('REQ:', req.body.merchant_id)
+  let dateArr = (req.body.date).split('-');
+  let timeArr = (req.body.time).split(':');
+  let year= Number(dateArr[0]);
+  let month= Number(dateArr[1])-1;
+  let day= Number(dateArr[2]);
+  let hour= Number(timeArr[0]);
+  let min= Number(timeArr[1]);
   
   let dealObject = {};
   dealObject.merchant_id = req.body.merchant_id;
@@ -46,12 +53,12 @@ router.post('/new', function(req, res) { // update with time remaining
   dealObject.quantity_available = req.body.quantity_available;
   dealObject.image_path = req.body.image_path;
   dealObject.current_price = req.body.current_price;
-  dealObject.expiryDate = combined;
-  
+  dealObject.end_date = new Date(year,month,day,hour,min);
+
   knex
     .insert(dealObject)
     .into('deals')
-    .then( function() {
+    .then((data) => {
       res.json(data);
     });
 

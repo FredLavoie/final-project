@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 
 export class New_deal extends Component {
   handleSubmit = event => {
-    console.log("DATE:", event.target.date.value)
-    console.log("TIME:", event.target.time.value)
     event.preventDefault();
+    console.log('DATE:', event.target.date.value)
+    console.log('TIME:', event.target.time.value)
+    console.log('Merchant:', localStorage.getItem('merchant_id'))
       fetch('/deals/new', {
         method:'POST',
         headers:{ "Content-Type" : "application/json" },
         body: JSON.stringify({ 
+          merchant_id: localStorage.getItem('merchant_id'),
           name: event.target.name.value, 
           description: event.target.description.value,  
           image_path: event.target.photo_path.value, 
@@ -30,22 +32,22 @@ export class New_deal extends Component {
             <div className="row">
               <div className="input-field col s6 m4">
                 <input name="name" id="deal_name" type="text" className="validate"/>
-                <label for="deal_name">Name</label>
+                <label htmlfor="deal_name">Name</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s6 m6">
                 <input name="description" Placeholder="(Optional)"id="description" type="text" className="validate"/>
-                <label for="description">Description</label>
+                <label htmlfor="description">Description</label>
               </div>
             </div>
-            <div className="file-field input-field m6" name="photo_path">
+            <div className="file-field input-field m6" >
               <div className="btn" >
                 <span>Photo</span>
                 <input type="file"/>
               </div>
               <div className="file-path-wrapper">
-                <input className="file-path validate" type="text"/>
+                <input className="file-path validate" type="text" name="photo_path"/>
               </div>
             </div>
             <div className="row">
@@ -56,21 +58,21 @@ export class New_deal extends Component {
             </div>
             <div className="row">
               <div className="input-field col s6 m1" name="quantity">
-              <label for="quantity">Quantity left <br/>                    
+              <label htmlfor="quantity">Quantity left <br/>                    
                 <input id="quantity" type="integer" className="validate"/></label>
               </div>
             </div>
             <br/>
-            <div className="input-field col s12 m4" name="date">
+            <div className="input-field col s12 m4" >
             <div>
               <label>Expiry Date<br/>
-                <input type="date"/></label>
+                <input type="date" name="date"/></label>
             </div>
             </div>
-            <div className="input-field col s12 m2" name="time">
+            <div className="input-field col s12 m2" >
             <div>
             <label>Expiry Time<br/>
-              <input type="time"/></label>
+              <input type="time" name="time"/></label>
             </div>
             </div>                  
             <div className="row">
