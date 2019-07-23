@@ -12,7 +12,12 @@ export class MerchantDashboard extends Component {
     this.state = {
       merchant_deals: [],
      }
-}
+  }
+  state = {
+    toDashboard: false,
+    merchant_id: null
+  }
+
 
 updateDeal = () =>{
   console.log("#Test", this.state.edit, this.state.merchant_deals)
@@ -23,10 +28,14 @@ componentDidMount() {
   //for merchant to view their own deals
   const id = this.props.match.params.id
   const { handle }  = this.props.match.params
-    fetch(`/merchants/${id}/dashboard`)
+  console.log('Token? ',localStorage.getItem('token'));
+    fetch(`/merchants/${id}/dashboard`, {
+      headers: {"authorization": localStorage.getItem('token')}})
     .then(res => res.json())
     .then(data => {   
-      this.setState({merchant_deals: data})
+      this.setState({ merchant_deals: data })
+      this.setState({ toDashboard: true })
+      this.setState({ merchant_id: id })
     }) 
 }
 
@@ -41,6 +50,12 @@ deleteDeal = (id) => {
 }
 
     render() {
+    console.log('toDashboard: ', this.state.toDashboard);
+
+      if (this.state.toDashboard === false) {
+        return <Redirect to='/login'/>
+      }
+
         let merchantDeals = this.state.merchant_deals
         let datamerchantDeals = merchantDeals.map((deals) => {
             return(<Merchant-deal-row  deals={deals}/>)
