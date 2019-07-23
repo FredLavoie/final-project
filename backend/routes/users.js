@@ -13,6 +13,8 @@ const auth            = require('../auth/auth');
 router.post('/new', function(req, res) {
 const {firstName, lastName, email, password, confirm_password  } = req.body;
 
+console.log(req);
+
 if(firstName && lastName && email && password && confirm_password && password === confirm_password ){
   knex
   .insert([{first_name: firstName, last_name: lastName, email: email , password: password, phone_number: null, is_admin: false}])
