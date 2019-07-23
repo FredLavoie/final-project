@@ -22,7 +22,8 @@ if(firstName && lastName && email && password && confirm_password && password ==
   .then(result => {
     console.log(result)
     res.status(200).json({
-      message:'user created'
+      message:'user created',
+      good: true
     })
   }).catch((e) => {
     
