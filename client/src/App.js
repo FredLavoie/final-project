@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
@@ -13,12 +14,14 @@ import Registration from './pages/Registration';
 import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
+import ShoppingCart from './pages/Shopping_cart';
 
 class App extends Component {
  state = {
    deals: [],
    readydom: false,
-   location:null
+   location:null,
+   shoppingcart: []
   }
   
   createNew = (event) => {
@@ -43,7 +46,29 @@ class App extends Component {
     this.setState({merchant_id: merchant_id});
   }
 
+
+addTocart = (data) =>{
+ //const shopping = [...this.state.shoppingcart,data]
+ this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+  console.log("cart",this.state.shoppingcart);
+  this.saveToLocal(); 
+ })
+}
+
+saveToLocal() {
+  const local = this.state.shoppingcart;
+  localStorage.set('saveShoppingcart', JSON.stringify(local));
+}
+
+getFromLocal(){
+  const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+console.log('what is my format', shoppingItems)
+this.setState({ shoppingcart: shoppingItems})
+}
+
+
   componentDidMount() {
+    this.getFromLocal();
     M.AutoInit();
     fetch('/deals')
     .then( res => res.json() )
@@ -68,12 +93,13 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Home} />
         <Route exact path="/merchants/:id/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/> 
-        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals}/>} />
+        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" render={() => <Login loginUser={this.loginUser}/>}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <Route exact path="/update" component={Edit_deal} />
         <Route exact path="/newdeal" render={() => <NewDeal createNew={this.createNew}/>} />
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
       </Router>
       </div>
     );

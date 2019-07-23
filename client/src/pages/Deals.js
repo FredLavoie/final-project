@@ -7,7 +7,7 @@ import Loading from '../Component/Loading';
  class Deals extends Component {
 
   render() {
-   const deals = this.props.deals.map(deal => <DealsComponent key={deal.id} deal={deal} /> )
+   const deals = this.props.deals.map(deal => <DealsComponent key={deal.id} deal={deal} add={this.props.add}/> )
     return (
       <div>
       <Nav/>
