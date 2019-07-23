@@ -16,8 +16,8 @@ const auth            = require('../auth/auth');
 router.get('/current_merchant', auth, function(req, res) { 
   knex
     .select("*")
-    .from("merchants")
-    .where("merchants.id", req.merchant_id)
+    .from("deals")
+    .where("merchants_id", req.merchant_id)
     .then((data) => {
       res.json(data);
     });

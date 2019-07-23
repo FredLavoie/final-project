@@ -11,14 +11,14 @@ export class Main extends Component {
                             <h3 style={{color: '#263238', fontSize: '20px'}}>Rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé</h3>
                         </div>
                         <div className="col m6 s12 center">
-                            <img style={{maxWidth:'100%', height:'auto'}} src="img/home-img.jpg" />
+                            <img style={{maxWidth:'100%', height:'auto'}} alt="" src="img/home-img.jpg" />
                         </div>
                     </div>
                 </section>
                 <section className="container" style={{background:'#e8f5e9', padding:'20px'}}> 
                 <div className="row">
                         <div className="col m6 s12 center img-container">
-                        <img style={{maxWidth:'100%', height:'auto'}} src="img/home-img.jpg" />
+                        <img style={{maxWidth:'100%', height:'auto'}} alt="" src="img/home-img.jpg" />
                         </div>
                         <div className="col m6 s12 center title-container">
                         <h2 style={{color: '#263238',fontSize:'35px'}}>Oeuvre de la littérature latine</h2>
@@ -34,7 +34,7 @@ export class Main extends Component {
                          <h3 style={{color: '#263238', fontSize: '20px'}}>Rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé</h3>
                         </div>
                         <div className="col m6 s12 center img-container">
-                            <img style={{maxWidth:'100%', height:'auto'}} src="img/home-img.jpg" />
+                            <img style={{maxWidth:'100%', height:'auto'}} alt="" src="img/home-img.jpg" />
                         </div>
                     </div>
                 </section>
