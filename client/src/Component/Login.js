@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
 state = {
-  toDashboard: false
+  toDashboard: false,
+  merchant_id: null
 }
 handleSubmit = event => {
   event.preventDefault();
@@ -18,14 +19,15 @@ handleSubmit = event => {
     .then( merchant_info => {
       // this.setState({merchant_id: merchant_info.merchant_id});
       localStorage.setItem("token", merchant_info.token);
-      this.setState({ toDashboard: true });
+      this.setState({ toDashboard: true, merchant_id: merchant_info.merchant_id });
       this.props.loginUser(merchant_info.merchant_id);
       });
 }
 
     render() {
       if (this.state.toDashboard === true) {
-        return <Redirect to='/'/>
+        let path = `/merchants/${this.state.merchant_id}/dashboard`;
+        return <Redirect to={path}/>
       }
         return (
           <main className="container">
