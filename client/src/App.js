@@ -25,32 +25,10 @@ class App extends Component {
    shoppingcart: []
   }
   
-<<<<<<< HEAD
   loginUser = (merchant_id) => {
     this.setState({merchant_id: merchant_id});
   }
 
-=======
-  createNew = (event) => {
-    event.preventDefault();
-    console.log("Testing 1:",event.target.name.value)
-    console.log("Testing 2:",event.target.description.value)
-    fetch('/deals/new', {
-      method: 'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.strintify({
-        merchant_id: 100,
-        name: event.target.name.value,
-        description: event.target.description.value,
-        quantity_available: event.target.quantity.value,
-        image_path: event.target.photo.value,
-        current_price: event.target.price.value
-      })
-    })
-  }
-
-
->>>>>>> master
 addTocart = (data) =>{
  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
   this.saveToLocal(); 
