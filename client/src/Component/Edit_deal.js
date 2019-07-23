@@ -21,13 +21,13 @@ export class Edit_deal extends Component {
                   <label htmlFor="description">Description</label>
                 </div>
               </div>
-              <div class="file-field input-field m6">
-                <div class="btn">
+              <div className="file-field input-field m6">
+                <div className="btn">
                   <span>Photo</span>
                   <input type="file"/>
                 </div>
-                <div class="file-path-wrapper">
-                  <input value={this.props.deal.image_path} class="file-path validate" type="text"/>
+                <div className="file-path-wrapper">
+                  <input value={this.props.deal.image_path} className="file-path validate" type="text"/>
                 </div>
               </div>
               <div className="row">
@@ -45,13 +45,13 @@ export class Edit_deal extends Component {
               <br/>
               <div>
                 <div className="row">
-                  <div class="input-field col s12 m4">
+                  <div className="input-field col s12 m4">
                     <div>
                       <label>Expiry Date<br/>
                         <input type="date"/></label>
                     </div>
                   </div>
-                  <div class="input-field col s12 m2">
+                  <div className="input-field col s12 m2">
                     <label>Expiry Time<br/>
                       <input type="time"/></label>
                   </div>

@@ -18,11 +18,11 @@ import ShoppingCart from './pages/Shopping_cart';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
- state = {
-   deals: [],
-   readydom: false,
-   location:null,
-   shoppingcart: []
+  state = {
+    deals: [],
+    readydom: false,
+    location:null,
+    shoppingcart: []
   }
   
   loginUser = (merchant_id) => {
@@ -30,60 +30,60 @@ class App extends Component {
   }
 
 addTocart = (data) =>{
- this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-  this.saveToLocal(); 
- })
+  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+    this.saveToLocal(); 
+  });
 }
 
-  saveToLocal() {
-    const local = this.state.shoppingcart;
-    localStorage.set('saveShoppingcart', JSON.stringify(local));
-  }
+saveToLocal() {
+  const local = this.state.shoppingcart;
+  localStorage.set('saveShoppingcart', JSON.stringify(local));
+}
 
 getFromLocal(){
   if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
     const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
     this.setState({ shoppingcart: shoppingItems}, () => {
       console.log("STATE2:", this.state.shoppingcart);
-    })
+    });
   }
 }
 
-  componentDidMount() {
-    this.getFromLocal();
-    M.AutoInit();
-    fetch('/deals')
+componentDidMount() {
+  this.getFromLocal();
+  M.AutoInit();
+  fetch('/deals')
     .then( res => res.json() )
     .then( data => {
-      this.setState( { deals: data } )
-    })
+      this.setState( { deals: data } );
+    });
 
-    setTimeout(() =>{
-      this.setState({readydom: true})
-    },1000)
-    // Get location of user
-    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
+  setTimeout(() =>{
+    this.setState({readydom: true});
+  },1000);
+  // Get location of user
+  fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
     .then(res => res.json())
     .then(data => console.log(data));
-  }
+}
 
-  render() {
-    return (
-      <div className="App">
+render() {
+  return (
+    <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
-        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />/> 
+        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
-        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
+        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/>
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
       </Switch>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 }
 export default App;

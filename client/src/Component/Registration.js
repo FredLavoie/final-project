@@ -11,31 +11,31 @@ export class Registration extends Component {
             <div className="row">
               <div className="input-field col s6">
                 <input id="first_name" type="text" className="validate"/>
-                <label for="first_name">First Name</label>
+                <label htmlFor="first_name">First Name</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s6">
                 <input id="last_name" type="text" className="validate"/>
-                <label for="last_name">Last Name</label>
+                <label htmlFor="last_name">Last Name</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12 m6">
                 <input id="email" type="email" className="validate"/>
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12 m6">
                 <input Placeholder="At least 5 characters" id="password" type="password" className="validate" />
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12 m6">
                 <input id="password-confirm" type="password" className="validate"/>
-                <label for="password">Password Confirmation</label>
+                <label htmlFor="password">Password Confirmation</label>
               </div>
             </div>
             <div className="row">

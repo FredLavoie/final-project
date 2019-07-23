@@ -12,53 +12,53 @@ export class Merchant extends Component {
               <div className="row">
                 <div className="input-field col s12 m6">
                   <input id="company-name" type="text" className="validate"/>
-                  <label for="company-name">Company Name</label>
+                  <label htmlFor="company-name">Company Name</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6">
                   <input id="email" type="text" className="validate"/>
-                  <label for="email">Business email</label>
+                  <label htmlFor="email">Business email</label>
                 </div>
                 <div className="input-field col s6">
                   <input id="email-confirm" type="text" className="validate"/>
-                  <label for="email-confirm">Retype Business email</label>
+                  <label htmlFor="email-confirm">Retype Business email</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6">
                   <input id="password" type="password" className="validate"/>
-                  <label for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                 </div>
                 <div className="input-field col s6">
                   <input id="password-confirm" type="password" className="validate"/>
-                  <label for="password-confirm">Password Confirmation</label>
+                  <label htmlFor="password-confirm">Password Confirmation</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12 m6">
                   <input id="street-addresse" type="email" className="validate"/>
-                  <label for="street-addresse">Street Address</label>
+                  <label htmlFor="street-addresse">Street Address</label>
                 </div>
                 <div className="row">
                   <div className="input-field col s6 m3">
                     <input id="lat" type="text" className="validate"/>
-                    <label for="latutide">Latitude</label>
+                    <label htmlFor="latutide">Latitude</label>
                   </div>
                   <div className="input-field col s6 m3">
                     <input id="lng" type="text" className="validate"/>
-                    <label for="longitude">Longitude</label>
+                    <label htmlFor="longitude">Longitude</label>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6 m4">
                   <input id="city" type="text" className="validate"/>
-                  <label for="city">City</label>
+                  <label htmlFor="city">City</label>
                 </div>
                 <div className="input-field col s6 m4">
                   <input id="postal-code" type="text" className="validate"/>
-                  <label for="postal-code">Postal Code</label>
+                  <label htmlFor="postal-code">Postal Code</label>
                 </div>
                 <div className="input-field col s12 m4">
                   <select>
@@ -76,7 +76,7 @@ export class Merchant extends Component {
                 </div>
                 <div className="input-field col s6 m4">
                   <input id="icon_telephone" type="tel" className="validate"/>
-                  <label for="icon_telephone">Telephone</label>
+                  <label htmlFor="icon_telephone">Telephone</label>
                 </div>
                 <div className="input-field col s12 m2">
                   <select>

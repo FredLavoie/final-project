@@ -4,10 +4,9 @@ import React, { Component } from 'react';
 
 const titleCardStyle = {
   
-  transform:'translateY(-180px)',
-  transform:'translateX(-10px)',
-  background:'#ff405c'
-  ,padding:'5px',
+  transform:'translateY(-180px) translateX(-10px)',
+  background:'#ff405c',
+  padding:'5px',
   fontSize:'16px',
   boxShadow:'2px 3px 15px red'
 };

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import Auth from '../auth';
 
 class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-      fetch('/merchants/login', {
-        method:'POST',
-        headers:{ "Content-Type" : "application/json" },
-        body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
-      })
+    fetch('/merchants/login', {
+      method:'POST',
+      headers:{ "Content-Type" : "application/json" },
+      body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
+    })
       .then(function(response) {
         return response.json();
       })
@@ -18,9 +18,9 @@ class Login extends Component {
         localStorage.setItem("token", merchant_info.token);
         localStorage.setItem("merchant_id", merchant_info.merchant_id);
         Auth.login(() => {
-          this.props.history.push('/merchants/dashboard')
-          console.log('isAuthenticated from login  ->',Auth.isAuthenticated)
-        } )
+          this.props.history.push('/merchants/dashboard');
+          console.log('isAuthenticated from login  ->',Auth.isAuthenticated);
+        } );
       });
   }
   render() {
@@ -50,9 +50,9 @@ class Login extends Component {
           </form>
         </div>
       </main>
-    )
+    );
   }
 }
 
-export default withRouter(Login) 
+export default withRouter(Login); 
 
