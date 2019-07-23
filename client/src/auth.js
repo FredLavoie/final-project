@@ -4,26 +4,26 @@ class Auth {
   }
   login(cb){
     const merchantId = localStorage.getItem('merchant_id') ;
-    console.log('string login', merchantId)
+    console.log('string login', merchantId);
     if(merchantId){
       this.isAuthenticated = true;
     }else{
       this.isAuthenticated = false;
     }
-    cb()
+    cb();
  
   }
 
-   logout(cb){
+  logout(cb){
     this.isAuthenticated = false;
-    localStorage.clear()
-    cb()
+    localStorage.clear();
+    cb();
   }
 
   getAuthenticated(){
     const merchantId = localStorage.getItem('merchant_id');
-    console.log('id ->> ',merchantId)
-    return merchantId ? true : false
+    console.log('id ->> ',merchantId);
+    return merchantId ? true : false;
   }
 
 }

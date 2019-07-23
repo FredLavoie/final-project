@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import LoginComponent from '../Component/Login';
 import Footer from '../Component/Footer';
@@ -13,8 +13,8 @@ class Login extends Component {
         <LoginComponent loginUser={this.props.loginUser} />
         <Footer/>
       </div>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;

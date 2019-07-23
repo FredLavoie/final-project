@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Header from '../Component/Header';
 import Main from '../Component/Main';
 import Footer from '../Component/Footer';
@@ -11,8 +11,8 @@ export class Home extends Component {
         <Main />
         <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default Home
+export default Home;
