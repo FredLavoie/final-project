@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import Footer from '../Component/Footer';
 import NewDealComponent from '../Component/New_deal';
@@ -12,8 +12,8 @@ export class New_deal extends Component {
         <NewDealComponent/>
         <Footer/>
       </div>
-    )
+    );
   }
 }
 
-export default New_deal
+export default New_deal;

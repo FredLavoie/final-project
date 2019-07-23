@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
- class Nav extends Component {
+class Nav extends Component {
   
   logoutFcn(event) {
     event.preventDefault();
@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 
     let inOut = "";
     if(localStorage.getItem('token')) {
-      inOut = <a onClick={this.logoutFcn} >Logout</a>
+      inOut = <a onClick={this.logoutFcn} >Logout</a>;
     } else {
       inOut = <a href='/login'>Login</a>;
     }
@@ -33,7 +33,7 @@ import React, { Component } from 'react';
           <li><a href="/signup">Sign Up</a></li>
         </ul>
       </nav>
-    )
+    );
   }
 }
-export default Nav
+export default Nav;
