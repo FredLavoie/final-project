@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import localStorage from 'local-storage';
+//import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
@@ -71,8 +71,8 @@ deleteCartItem = (id) => {
   // replacing the deals with updatedDeals in the state
   this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
-  })}
-  
+  })
+  }
 }
 
 removeOneCartItem = (data) => {
@@ -112,17 +112,17 @@ removeOneCartItem = (data) => {
 
 saveToLocal() {
   const local = this.state.shoppingcart;
-  localStorage.set('saveShoppingcart', JSON.stringify(local));
+  localStorage.setItem('saveShoppingcart', JSON.stringify(local));
+
+  // localStorage.setItem('saveShoppingcart',local);
 }
 
 getFromLocal(){  
-  if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
-    const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+  if(JSON.parse(localStorage.getItem('saveShoppingcart')) !== null){
+    const shoppingItems = JSON.parse(localStorage.getItem('saveShoppingcart'));
     this.setState({ shoppingcart: shoppingItems}, () =>{ 
   })}
 }
-
-  
 
   componentDidMount() {
     this.getFromLocal();
