@@ -15,6 +15,7 @@ import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
+import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
@@ -156,6 +157,7 @@ render() {
         <PrivateRoute exact path="/update" component={Edit_deal} />
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
+        <Route exact path="/order" render={() => <OrderCustomer/>}/> 
       </Switch>
     </div>
   );
