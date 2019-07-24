@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Row from './Shopping-cart-row'; 
+import TakeMoney from './Stripe'; 
 
 export class MainShoppingCart extends Component {
     render() {
@@ -7,7 +8,11 @@ export class MainShoppingCart extends Component {
         const dataShopping = shoppingCart.map( item => 
     <Row shoppingcart={item}  key={item.id} entireshoppingcart={this.props.shoppingCart} deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/> ) 
     const totalPrice = shoppingCart.map(cart => (cart.current_price) * (cart.cart_quantity) );
-    const decimalPrice = parseFloat(Math.round(totalPrice * 100) / 100).toFixed(2);
+    let price = 0; 
+    totalPrice.forEach(element => {
+      price += element
+    });
+    const decimalPrice = parseFloat(Math.round(price * 100) / 100).toFixed(2);
     console.log('price',totalPrice);
         return (
             <main className="main-page"> 
@@ -26,7 +31,7 @@ export class MainShoppingCart extends Component {
         {dataShopping}
         <tbody> 
             <tr>
-                <th>total</th>
+                <th>Total</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -37,7 +42,7 @@ export class MainShoppingCart extends Component {
             </tbody>     
       </table> 
 
-        <a class="waves-effect waves-light btn">Pay Now</a>
+        <TakeMoney /> 
             </main>
 
             
