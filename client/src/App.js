@@ -18,31 +18,22 @@ import ShoppingCart from './pages/Shopping_cart';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
- state = {
-   deals: [],
-   readydom: false,
-   location:null,
-   shoppingcart: []
+  state = {
+    deals: [],
+    readydom: false,
+    location:null,
+    shoppingcart: []
   }
   
-  createNew = (event) => {
-    event.preventDefault();
-    console.log("Testing 1:",event.target.name.value)
-    console.log("Testing 2:",event.target.description.value)
-    fetch('/deals/new', {
-      method: 'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.strintify({
-        merchant_id: 100,
-        name: event.target.name.value,
-        description: event.target.description.value,
-        quantity_available: event.target.quantity.value,
-        image_path: event.target.photo.value,
-        current_price: event.target.price.value
-      })
-    })
+  loginUser = (merchant_id) => {
+    this.setState({merchant_id: merchant_id});
   }
 
+  addTocart = (data) =>{
+    this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+      this.saveToLocal(); 
+    });
+  }
 
 addTocart = (data) =>{
   const incomingData = data;
@@ -126,50 +117,52 @@ saveToLocal() {
 getFromLocal(){  
   if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
     const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-this.setState({ shoppingcart: shoppingItems}, () =>{ 
-  })
-  }
-  
+    this.setState({ shoppingcart: shoppingItems}, () =>{ 
+  })}
 }
 
+  
 
   componentDidMount() {
     this.getFromLocal();
     M.AutoInit();
     fetch('/deals')
-    .then( res => res.json() )
-    .then( data => {
-      this.setState( { deals: data } )
-    })
+      .then( res => res.json() )
+      .then( data => {
+        this.setState( { deals: data } );
+    });
 
-    setTimeout(() =>{
-      this.setState({readydom: true})
-    },1000)
-    // Get location of user
-    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
+  setTimeout(() =>{
+    this.setState({readydom: true});
+  },2000);
+  // Get location of user
+  fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
     .then(res => res.json())
     .then(data => console.log(data));
-  }
+}
 
-  
-
-  render() {
-    return (
-      <div className="App">
+render() {
+  return (
+    <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
-        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />/> 
+        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
+<<<<<<< HEAD
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
+=======
+        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/>
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
+>>>>>>> master
       </Switch>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 }
 export default App;

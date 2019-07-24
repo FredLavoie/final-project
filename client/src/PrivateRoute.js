@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Auth from './auth';
 
 const PrivateRoute = ({component: Component,isready,deals,createNew, ...rest}) => {
-  console.log(Auth)
+  console.log(Auth);
   return (
     <Route
       {...rest}
@@ -21,6 +21,6 @@ const PrivateRoute = ({component: Component,isready,deals,createNew, ...rest}) =
       }
     />
   );
-}
+};
 
-export default PrivateRoute
+export default PrivateRoute;

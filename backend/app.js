@@ -21,6 +21,7 @@ const jwt             = require('jsonwebtoken');
 const indexRouter = require('./routes/index');
 const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
+const users = require('./routes/users')
 
 const app = express();
 
@@ -36,9 +37,11 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
 app.use('/', indexRouter);
 app.use('/merchants', merchantsRouter);
 app.use('/deals', dealsRouter);
+app.use('/users',users);
 
 
 	

@@ -3,11 +3,11 @@ import Row from './Merchant-deal-row';
 
 export class Main extends Component {
   render() {
-    let merchantDeals = this.props.deals     
-    const datamerchantDeals = merchantDeals.map( deal => <Row deleteDeal={this.props.deleteDeal} updateDeal={this.props.updateDeal} key={deal.id} deal={deal} /> ) 
+    let merchantDeals = this.props.deals;     
+    const datamerchantDeals = merchantDeals.map( deal => <Row deleteDeal={this.props.deleteDeal} updateDeal={this.props.updateDeal} key={deal.id} deal={deal} /> ); 
     return (
       <main className="main-page"> 
-        <a className="waves-effect waves-light btn">Create New Deal</a>
+        <a className="waves-effect waves-light btn" href="/newdeal">Create New Deal</a>
         <p>Your Deals</p>
         <table>
           <thead>
@@ -24,8 +24,8 @@ export class Main extends Component {
           {datamerchantDeals}  
         </table>                
       </main>          
-    )
+    );
   }
 }
-export default Main
+export default Main;
 

@@ -13,9 +13,9 @@ export class MainShoppingCart extends Component {
             <main className="main-page"> 
                 <p>Your Shopping Cart</p>
         <table>
-        <thead>
-          <tr>
-             <th>Image</th>
+          <thead>
+            <tr>
+              <th>Image</th>
               <th>Product</th>
               <th>Quantity </th>
               <th>Price</th>
@@ -41,7 +41,7 @@ export class MainShoppingCart extends Component {
             </main>
 
             
-        )
-    }
+    );
+  }
 }
-export default MainShoppingCart
+export default MainShoppingCart;

@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import Footer from '../Component/Footer';
-import MainShoppingCart from '../Component/Main-shopping-cart'
+import MainShoppingCart from '../Component/Main-shopping-cart';
 
 export class ShoppingCart extends Component {
   constructor(props){
-    super(props)
+    super(props);
+    this.state = {
+    };
 
-}
+  }
 
     render() {
       return (
@@ -19,5 +21,6 @@ export class ShoppingCart extends Component {
       )
     }
   }
+}
   
-  export default ShoppingCart
+export default ShoppingCart;

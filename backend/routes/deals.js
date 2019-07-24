@@ -35,27 +35,30 @@ router.get('/:id', function(req, res) {
 });
 
 // [CREATE] a new deal
-router.post('/new', function(req, res) { // update with time remaining 
+router.post('/new', function(req, res) {
+  let dateArr = (req.body.date).split('-');
+  let timeArr = (req.body.time).split(':');
+  let year= Number(dateArr[0]);
+  let month= Number(dateArr[1])-1;
+  let day= Number(dateArr[2]);
+  let hour= Number(timeArr[0]);
+  let min= Number(timeArr[1]);
+  
+  let dealObject = {};
+  dealObject.merchant_id = req.body.merchant_id;
+  dealObject.name = req.body.name;
+  dealObject.description = req.body.description;
+  dealObject.quantity_available = req.body.quantity_available;
+  dealObject.image_path = req.body.image_path;
+  dealObject.current_price = req.body.current_price;
+  dealObject.end_date = new Date(year,month,day,hour,min);
 
-  // let dateEntered = dateToMilliseconds(req.body.exDate);
-  // let timeEntered = req.body.exTime
-  // let combined = 
-  
-  // //  let dealObject = {};
-  // dealObject.merchant_id = req.body.merchant_id;
-  // dealObject.name = req.body.name;
-  // dealObject.description = req.body.description;
-  // dealObject.quantity_available = req.body.quantity_available;
-  // dealObject.image_path = req.body.image_path;
-  // dealObject.current_price = req.body.current_price;
-  // dealObject.expiryDate = combined;
-  
-  // knex
-  //   .insert(dealObject)
-  //   .into('deals')
-  //   .then( function() {
-  //     res.redirect('/');
-  //   });
+  knex
+    .insert(dealObject)
+    .into('deals')
+    .then((data) => {
+      res.json(data);
+    });
 
 });
 

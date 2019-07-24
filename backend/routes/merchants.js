@@ -16,21 +16,18 @@ const auth            = require('../auth/auth');
 router.get('/current_merchant', auth, function(req, res) { 
   knex
     .select("*")
-    .from("merchants")
-    .where("merchants.id", req.merchant_id)
+    .from("deals")
+    .where("merchants_id", req.merchant_id)
     .then((data) => {
       res.json(data);
     });
 });
 
 // [GET] merchant information
-router.get('/:id/dashboard', auth, function(req, res) {
-  console.log(req.params.id);
-  console.log(req.merchant_id);
-  
-  if(req.params.id !== req.merchant_id) {
-    // sometihing
-  }
+router.get('/:id/dashboard', auth, function(req, res) {  
+  // if(req.params.id !== req.merchant_id) {
+  //   // sometihing
+  // }
 
   knex
     .select("*")
@@ -55,17 +52,14 @@ router.get('/deals', auth, function(req, res) {
 // [LOGIN] get login page
 router.post('/login', function(req, res) {
   const { email, password } = req.body;
-  console.log('This is the body: ',req.body);
+
   
   knex
     .select("*")
     .from("merchants")
     .where("merchants.email", email)
     .then(([ merchant ]) => {
-      console.log('Merchant post knex: ', merchant);
-      if(merchant.password === password) {
-        console.log('before signing token. Passwords match');
-        
+      if(merchant.password === password) {        
         jwt.sign(
           { merchant_id: merchant.id },
           process.env.JWT_SECRET,
@@ -117,10 +111,4 @@ router.post('/register', function(req, res) {
 
 
 module.exports = router;
-
-
-
-// /merchants/:id/deals
-
-// /merchants/:id/deals
 

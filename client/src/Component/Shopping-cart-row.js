@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class Row extends Component {
   state= {edit: false}
@@ -24,4 +24,4 @@ export class Row extends Component {
             )
     }
 }
-export default Row 
+export default Row; 
