@@ -61,8 +61,8 @@ router.post('/login', function(req, res) {
     )
   })
   .catch((exception) => {
-    console.error('Invalid input', exception)
-    res.status(400).json({message: 'User does not exist.'})
+    console.error('User does not exist.', exception)
+    res.status(400).json({message: 'Invalid input'})
   })
 });
 

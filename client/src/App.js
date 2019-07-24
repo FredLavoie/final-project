@@ -16,6 +16,7 @@ import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
 import PrivateRoute from './PrivateRoute';
+import UserLogin from './Component/User_login';
 
 class App extends Component {
   state = {
@@ -150,6 +151,7 @@ render() {
         <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
         <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/users/login" component={UserLogin}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />

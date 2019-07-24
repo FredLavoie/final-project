@@ -5,7 +5,7 @@ import Nav from '../Component/Nav';
 import MerchantComponent from '../Component/Merchant';
 import Footer from '../Component/Footer';
 
-class Login extends Component {
+class UserLogin extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
@@ -23,13 +23,13 @@ class Login extends Component {
         Auth.login(() => {
           this.props.history.push('/deals'); 
           console.log('isAuthenticated from login  ->',Auth.isAuthenticated);
-        } );
+        });
       });
   }
   render() {
     return (
-        <div>
-        <Nav/>
+    <div>
+    <Nav/>
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
@@ -55,11 +55,11 @@ class Login extends Component {
           </form>
         </div>
       </main>
-      <Footer/>
-      </div>
+    <Footer/>
+    </div>
     );
   }
 }
 
-export default withRouter(Login); 
+export default withRouter(UserLogin); 
 
