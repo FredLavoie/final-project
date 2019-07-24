@@ -29,38 +29,38 @@ class App extends Component {
     this.setState({merchant_id: merchant_id});
   }
 
-addTocart = (data) =>{
-  this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-    this.saveToLocal(); 
-  });
-}
-
-saveToLocal() {
-  const local = this.state.shoppingcart;
-  localStorage.set('saveShoppingcart', JSON.stringify(local));
-}
-
-getFromLocal(){
-  if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
-    const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-    this.setState({ shoppingcart: shoppingItems}, () => {
-      console.log("STATE2:", this.state.shoppingcart);
+  addTocart = (data) =>{
+    this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+      this.saveToLocal(); 
     });
   }
-}
 
-componentDidMount() {
-  this.getFromLocal();
-  M.AutoInit();
-  fetch('/deals')
-    .then( res => res.json() )
-    .then( data => {
-      this.setState( { deals: data } );
+  saveToLocal() {
+    const local = this.state.shoppingcart;
+    localStorage.set('saveShoppingcart', JSON.stringify(local));
+  }
+
+  getFromLocal(){
+    if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
+      const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+      this.setState({ shoppingcart: shoppingItems}, () => {
+        console.log("STATE2:", this.state.shoppingcart);
+      });
+    }
+  }
+
+  componentDidMount() {
+    this.getFromLocal();
+    M.AutoInit();
+    fetch('/deals')
+      .then( res => res.json() )
+      .then( data => {
+        this.setState( { deals: data } );
     });
 
   setTimeout(() =>{
     this.setState({readydom: true});
-  },1000);
+  },2000);
   // Get location of user
   fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
     .then(res => res.json())
