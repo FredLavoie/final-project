@@ -62,7 +62,6 @@ render() {
     <div>
       <Nav /> 
       <Main_merchant updateDeal={this.updateDeal} deleteDeal={this.deleteDeal} deals={this.state.merchant_deals} /> 
-      <Footer />
     </div>
   );
 }

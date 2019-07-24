@@ -12,10 +12,14 @@ const router 					= express.Router();
 
 // [GET] deals
 router.get('/', function(req, res) {
+  let currentTime = new Date();
+  
   knex
     .select("*")
     .from("deals")
-    //.orderBy('')
+    .where("quantity_available", ">", 0)
+    .where("end_date", ">", currentTime)
+    .orderBy("end_date")
     .then((data) => {
       res.json(data);
     });

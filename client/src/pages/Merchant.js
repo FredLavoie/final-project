@@ -9,7 +9,6 @@ export class Merchant extends Component {
       <div>
         <Nav/>
         <MerchantComponent/>
-        <Footer/>
       </div>
     );
   }

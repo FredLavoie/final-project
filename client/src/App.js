@@ -15,6 +15,7 @@ import Merchant from './pages/Merchant';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
+import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
 import UserLogin from './Component/User_login';
 
@@ -96,8 +97,9 @@ removeOneCartItem = (data) => {
     console.log('is the addOnecARTiTEM WOEKING?'); 
       if(true){
         const updateQuantity = this.state.shoppingcart.filter(item => {
-          console.log('condit',item.cart_quantity);
-          if (item === incomingData & item.quantity_available >= incomingData.cart_quantity) {
+          console.log('merchant quanity',item.cart_quantity);
+          console.log('customer quantity', incomingData.cart_quantity)
+          if (item === incomingData & item.quantity_available > incomingData.cart_quantity) {
             incomingData.cart_quantity += 1;
           }
       return item;
@@ -144,7 +146,7 @@ getFromLocal(){
 
 render() {
   return (
-    <div className="App">
+    <div className="App" style={{minHeight:'100vh', position:'relative', paddingBottom:100}}>
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
@@ -157,7 +159,9 @@ render() {
         <PrivateRoute exact path="/update" component={Edit_deal} />
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
+        <Route exact path="/order" render={() => <OrderCustomer/>}/> 
       </Switch>
+      <Footer />
     </div>
   );
 }

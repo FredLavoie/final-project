@@ -11,7 +11,6 @@ class Login extends Component {
       <div>
         <Nav/>
         <LoginComponent loginUser={this.props.loginUser} />
-        <Footer/>
       </div>
     );
   }
