@@ -18,6 +18,7 @@ import ShoppingCart from './pages/Shopping_cart';
 import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
 import UserLogin from './Component/User_login';
+import Footer from './Component/Footer';
 
 class App extends Component {
   state = {
