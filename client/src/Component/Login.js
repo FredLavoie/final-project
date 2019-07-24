@@ -19,7 +19,6 @@ class Login extends Component {
         localStorage.setItem("merchant_id", merchant_info.merchant_id);
         Auth.login(() => {
           this.props.history.push('/merchants/dashboard');
-          console.log('isAuthenticated from login  ->',Auth.isAuthenticated);
         } );
       });
   }

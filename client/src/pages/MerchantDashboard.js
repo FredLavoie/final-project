@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import Main_merchant from '../Component/Main-merchant';
-import Footer from '../Component/Footer';
 import M from "materialize-css";
 import { Redirect } from 'react-router-dom';
 
