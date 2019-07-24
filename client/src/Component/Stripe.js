@@ -21,7 +21,7 @@ export class TakeMoney extends React.Component {
       // ...
       <StripeCheckout
         token={this.onToken}
-        stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
+        stripeKey="pk_test_erkimzsfpiATUMptnrxecI7i00Bpky1ynN"
       />
     )
   }
