@@ -34,6 +34,10 @@ header::before{
   z-index: 222;
 }
 
+.stripe-button-el {
+  background-color: white;
+}
+
 main{
   padding: 30px;
   margin-top: 20px;

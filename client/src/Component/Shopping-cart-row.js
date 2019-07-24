@@ -15,10 +15,10 @@ export class Row extends Component {
           </p>    
           </td>
           <td>{this.props.shoppingcart.name}</td>
-          <td><i class="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i class="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
+          <td><i className="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i class="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
           <td>{this.props.shoppingcart.current_price}</td>
           <td>{decimalPrice}</td>
-          <td><button class="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
+          <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
       </tr>
       </tbody>     
       )
