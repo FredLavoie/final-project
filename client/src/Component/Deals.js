@@ -1,9 +1,7 @@
-
 import React, { Component } from 'react';
-
+var moment = require('moment');
 
 const titleCardStyle = {
-  
   transform:'translateY(-180px) translateX(-10px)',
   background:'#ff405c',
   padding:'5px',
@@ -13,14 +11,16 @@ const titleCardStyle = {
 
 
 export class Deals extends Component {
-
+  
   render() {
+    let timeLeft = moment(this.props.deal.end_date).fromNow();
+
     return (
       <div className="col s12 m4"style={{position:'relative'}}>
         <div className="card">
-          <div className="card-image">
-            <img alt="just an img for now" style={{height:'15em',width:'100%'}} src={this.props.deal.image_path} />
-            <span className="card-title" style={titleCardStyle}>Ends in: 30 mins</span>
+          <div style={{height:"220px"}} className="card-image">
+            <img alt="just an img for now" style={{objectFit:"cover",height:"inherit"}} src={this.props.deal.image_path} />
+            <span className="card-title" style={titleCardStyle}>Ends {timeLeft}</span>
           </div>
           <div className="card-content">
             <strong style={{fontWeight:'bolder',fontSize:'20px'}}>{this.props.deal.name}</strong>

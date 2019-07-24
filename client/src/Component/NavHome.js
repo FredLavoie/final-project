@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 
+
 class Nav extends Component {
 
   logoutFcn(event) {
     event.preventDefault();
     localStorage.clear();
+    window.location.assign('/');
   }
   
   render() {
 
     let inOut = "";
     if(localStorage.getItem('token')) {
-      inOut = <a onClick={this.logoutFcn} >Logout</a>;
+      inOut = <a onClick={this.logoutFcn}>Logout</a>
     } else {
-      inOut = <a href='/login'>Login</a>;
+      inOut = <a href='/login'>Login</a>
     }
     
     return (
