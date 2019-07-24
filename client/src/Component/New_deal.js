@@ -7,7 +7,7 @@ export class New_deal extends Component {
     console.log('DATE:', event.target.date.value);
     console.log('TIME:', event.target.time.value);
     console.log('Merchant:', localStorage.getItem('merchant_id'));
-    fetch('/deals/new', {
+    fetch('/api/deals/new', {
       method:'POST',
       headers:{ "Content-Type" : "application/json" },
       body: JSON.stringify({ 
