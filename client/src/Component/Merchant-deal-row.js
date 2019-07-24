@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import EditDeal from "./Edit_deal";
+var moment = require('moment');
 
 export class Row extends Component {
   state = {edit: false}
   render() {
-
+    
+    let timeStamp = moment(this.props.deal.end_date).format('MMM Do, h:mm a');
+    
     return (
       <tbody>
         <tr>
@@ -16,7 +19,7 @@ export class Row extends Component {
           <td>{this.props.deal.name}</td>
           <td>{this.props.deal.quantity_available}</td>
           <td>{this.props.deal.current_price}</td>
-          <td>{this.props.deal.end_date}</td>
+          <td>{timeStamp}</td>
           <td>
             <button className="waves-effect waves-light btn" onClick={() => this.props.deleteDeal(this.props.deal.id)}>delete</button>
           </td>
