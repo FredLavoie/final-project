@@ -35,9 +35,7 @@ router.get('/:id', function(req, res) {
 });
 
 // [CREATE] a new deal
-router.post('/new', function(req, res) { 
-
-  console.log('REQ:', req.body.merchant_id)
+router.post('/new', function(req, res) {
   let dateArr = (req.body.date).split('-');
   let timeArr = (req.body.time).split(':');
   let year= Number(dateArr[0]);
