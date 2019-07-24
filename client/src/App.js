@@ -35,19 +35,93 @@ class App extends Component {
     });
   }
 
-  saveToLocal() {
-    const local = this.state.shoppingcart;
-    localStorage.set('saveShoppingcart', JSON.stringify(local));
+addTocart = (data) =>{
+  const incomingData = data;
+  const itemInCart = this.state.shoppingcart.find(item => item.id ===incomingData.id);
+  if(itemInCart){
+    const updateQuantity = this.state.shoppingcart.map(item => {
+      if (item.id === incomingData.id) {
+      incomingData.cart_quantity += 1;
+    }
+  return item;
+  })
+
+  // replacing the deals with updatedDeals in the state
+  this.setState({shoppingcart: updateQuantity}, () => {
+    this.saveToLocal(); 
+  })}else{
+    // deal does not exist. Create a cart_quantity property
+    incomingData.cart_quantity = +1;
+
+    // Update the state with the new deal
+    this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
+      this.saveToLocal(); 
+    })
+  }
+}
+
+deleteCartItem = (id) => {
+  if(true){
+    const updateQuantity = this.state.shoppingcart.filter(item => {
+      if (item.id !== id) {
+        return item;
+    }
+  })
+  // replacing the deals with updatedDeals in the state
+  this.setState({shoppingcart: updateQuantity}, () => {
+    this.saveToLocal(); 
+  })}
+  
+}
+
+removeOneCartItem = (data) => {
+  const incomingData = data;
+    if(true){
+      const updateQuantity = this.state.shoppingcart.filter(item => {
+        if (item === data & incomingData.cart_quantity >= 1) {
+          incomingData.cart_quantity --;
+        }
+    return item;
+    })
+    // replacing the deals with updatedDeals in the state
+    this.setState({shoppingcart: updateQuantity}, () => {
+      this.saveToLocal(); 
+    })}
+    
   }
 
-  getFromLocal(){
-    if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
-      const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
-      this.setState({ shoppingcart: shoppingItems}, () => {
-        console.log("STATE2:", this.state.shoppingcart);
-      });
+  addOneCartItem = (data) => {
+    const incomingData = data;
+    console.log('is the addOnecARTiTEM WOEKING?'); 
+      if(true){
+        const updateQuantity = this.state.shoppingcart.filter(item => {
+          console.log('condit',item.cart_quantity);
+          if (item === incomingData & item.quantity_available >= incomingData.cart_quantity) {
+            incomingData.cart_quantity += 1;
+          }
+      return item;
+      })
+      // replacing the deals with updatedDeals in the state
+      this.setState({shoppingcart: updateQuantity}, () => {
+        this.saveToLocal(); 
+      })}
+      
     }
-  }
+
+
+saveToLocal() {
+  const local = this.state.shoppingcart;
+  localStorage.set('saveShoppingcart', JSON.stringify(local));
+}
+
+getFromLocal(){  
+  if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
+    const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+    this.setState({ shoppingcart: shoppingItems}, () =>{ 
+  })}
+}
+
+  
 
   componentDidMount() {
     this.getFromLocal();
@@ -79,8 +153,8 @@ render() {
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
-        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/>
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart}/>}/> 
+        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
       </Switch>
     </div>
   );
