@@ -130,7 +130,7 @@ getFromLocal(){
   componentDidMount() {
     this.getFromLocal();
     M.AutoInit();
-    fetch('/deals')
+    fetch('/api/deals')
       .then( res => res.json() )
       .then( data => {
         this.setState( { deals: data } );
@@ -152,7 +152,7 @@ render() {
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
         <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
-        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
+        <Route  path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/users/login" component={UserLogin}/>
         <Route exact path="/signup" component={Registration} />
