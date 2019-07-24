@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export class Main extends Component {
   render() {
     return (
-      <main> 
+      <main style={{minHeight: "100%", position: "relative", bottom: "20px"}}> 
         <section className="home-section container" style={{background:'#fafafa',padding:'30px',marginTop:'10px'}} >
           <div className="row">
             <div className="col m6 s12 center">

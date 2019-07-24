@@ -17,6 +17,7 @@ import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
 import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
+import Footer from './Component/Footer';
 
 class App extends Component {
   state = {
@@ -145,7 +146,7 @@ getFromLocal(){
 
 render() {
   return (
-    <div className="App">
+    <div className="App" style={{minHeight:'100vh', position:'relative', paddingBottom:100}}>
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
@@ -159,6 +160,7 @@ render() {
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
         <Route exact path="/order" render={() => <OrderCustomer/>}/> 
       </Switch>
+      <Footer />
     </div>
   );
 }

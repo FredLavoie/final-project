@@ -6,10 +6,9 @@ import Footer from '../Component/Footer';
 export class Registration extends Component {
   render() {
     return (
-      <div>
+      <div >
         <Nav/>
         <RegistrationComponent/>
-        <Footer/>
       </div>
     );
   }

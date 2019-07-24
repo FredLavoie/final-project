@@ -47,7 +47,7 @@ handleSubmit = (event) =>{
       return <Redirect to="/login" />
     }
     return (
-      <div className="container">
+      <div className="container" style={{marginBottom:50}}>
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
             <h2 className="center-align">Sign Up</h2>

@@ -10,7 +10,6 @@ export class New_deal extends Component {
       <div>
         <Nav/>
         <NewDealComponent/>
-        <Footer/>
       </div>
     );
   }
