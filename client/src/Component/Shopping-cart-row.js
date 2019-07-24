@@ -5,6 +5,7 @@ export class Row extends Component {
     render() {
            const price = (this.props.shoppingcart.cart_quantity)*(this.props.shoppingcart.current_price)
            const decimalPrice = parseFloat(Math.round(price * 100) / 100).toFixed(2);
+           console.log('shopping item', this.props.shoppingcart)
             return (
             
             <tbody> 

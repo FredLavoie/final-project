@@ -95,8 +95,9 @@ removeOneCartItem = (data) => {
     console.log('is the addOnecARTiTEM WOEKING?'); 
       if(true){
         const updateQuantity = this.state.shoppingcart.filter(item => {
-          console.log('condit',item.cart_quantity);
-          if (item === incomingData & item.quantity_available >= incomingData.cart_quantity) {
+          console.log('merchant quanity',item.cart_quantity);
+          console.log('customer quantity', incomingData.cart_quantity)
+          if (item === incomingData & item.quantity_available > incomingData.cart_quantity) {
             incomingData.cart_quantity += 1;
           }
       return item;
