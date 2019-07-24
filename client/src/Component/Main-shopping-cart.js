@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Row from './Shopping-cart-row'; 
+import TakeMoney from './Stripe'; 
 
 export class MainShoppingCart extends Component {
     render() {
@@ -30,7 +31,7 @@ export class MainShoppingCart extends Component {
         {dataShopping}
         <tbody> 
             <tr>
-                <th>total</th>
+                <th>Total</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -41,7 +42,7 @@ export class MainShoppingCart extends Component {
             </tbody>     
       </table> 
 
-        <a class="waves-effect waves-light btn">Pay Now</a>
+        <TakeMoney /> 
             </main>
 
             
