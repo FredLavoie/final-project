@@ -8,7 +8,7 @@ export class Merchant extends Component {
           <div className="row">
             <form className="col s12">
               <h2 className="center-align">Business Registration</h2>
-              <p className="center-align"><strong><a href="/signup">Sign up as user</a></strong></p>
+              <p className="center-align"><strong>Sign up as a <a href="/signup">User</a></strong></p>
               <div className="row">
                 <div className="input-field col s12 m6">
                   <input id="company-name" type="text" className="validate"/>

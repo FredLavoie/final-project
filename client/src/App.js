@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import localStorage from 'local-storage';
+//import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
@@ -17,6 +17,7 @@ import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
 import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
+import UserLogin from './Component/User_login';
 import Footer from './Component/Footer';
 
 class App extends Component {
@@ -72,8 +73,8 @@ deleteCartItem = (id) => {
   // replacing the deals with updatedDeals in the state
   this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
-  })}
-  
+  })
+  }
 }
 
 removeOneCartItem = (data) => {
@@ -113,22 +114,22 @@ removeOneCartItem = (data) => {
 
 saveToLocal() {
   const local = this.state.shoppingcart;
-  localStorage.set('saveShoppingcart', JSON.stringify(local));
+  localStorage.setItem('saveShoppingcart', JSON.stringify(local));
+
+  // localStorage.setItem('saveShoppingcart',local);
 }
 
 getFromLocal(){  
-  if(JSON.parse(localStorage.get('saveShoppingcart')) !== null){
-    const shoppingItems = JSON.parse(localStorage.get('saveShoppingcart'));
+  if(JSON.parse(localStorage.getItem('saveShoppingcart')) !== null){
+    const shoppingItems = JSON.parse(localStorage.getItem('saveShoppingcart'));
     this.setState({ shoppingcart: shoppingItems}, () =>{ 
   })}
 }
 
-  
-
   componentDidMount() {
     this.getFromLocal();
     M.AutoInit();
-    fetch('/deals')
+    fetch('/api/deals')
       .then( res => res.json() )
       .then( data => {
         this.setState( { deals: data } );
@@ -150,8 +151,9 @@ render() {
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
         <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
-        <Route exact path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
+        <Route  path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/users/login" component={UserLogin}/>
         <Route exact path="/signup" component={Registration} />
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />

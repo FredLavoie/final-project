@@ -27,7 +27,7 @@ componentDidMount() {
   //for merchant to view their own deals
   const id = localStorage.getItem('merchant_id');
   console.log('Token? ',localStorage.getItem('token'));
-  fetch(`/merchants/${id}/dashboard`, {
+  fetch(`/api/merchants/${id}/dashboard`, {
     headers: {"authorization": localStorage.getItem('token')}})
     .then(res => res.json())
     .then(data => {   
@@ -38,7 +38,7 @@ componentDidMount() {
 }
 
 deleteDeal = (id) => {
-  const url = `/deals/${id}/delete`;
+  const url = `/api/deals/${id}/delete`;
   fetch(url,{method:"POST"}).then(result =>{
     if(result.ok){
       const data = this.state.merchant_deals.filter(deal => deal.id !== id);
