@@ -21,7 +21,7 @@ handleSubmit = (event) =>{
   }
   console.log(newUser)
   const sendUser = async () =>{ 
-      const query = await fetch('/users/new',{method: "POST",
+      const query = await fetch('/api/users/new',{method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

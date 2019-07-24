@@ -8,7 +8,7 @@ class UserLogin extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    fetch('/users/login', {
+    fetch('/api/users/login', {
       method:'POST',
       headers:{ "Content-Type" : "application/json" },
       body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })

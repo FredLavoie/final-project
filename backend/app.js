@@ -38,10 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.use('/', indexRouter);
-app.use('/merchants', merchantsRouter);
-app.use('/deals', dealsRouter);
-app.use('/users',users);
+app.use('/api', indexRouter);
+app.use('/api/merchants', merchantsRouter);
+app.use('/api/deals', dealsRouter);
+app.use('/api/users',users);
 
 
 	

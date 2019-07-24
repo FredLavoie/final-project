@@ -6,7 +6,7 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    fetch('/merchants/login', {
+    fetch('/api/merchants/login', {
       method:'POST',
       headers:{ "Content-Type" : "application/json" },
       body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
