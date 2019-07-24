@@ -10,16 +10,22 @@ class Nav extends Component {
   }
 
   render() {
-    const localItem = localStorage.getItem('saveShoppingcart')
-    const items = JSON.parse(localItem);
-
-    let cartCounter = (itemss) => {
-      let counter = 0;
-      for(let item of itemss) {
-         counter += item.cart_quantity
-      } 
-      return counter;
-    }
+    // let isOk = false;
+    // const localItem = localStorage.getItem('saveShoppingcart')
+    // const items = JSON.parse(localItem);
+    // let cartCounter;
+    // if(localItem !== null) {
+    //   isOk = true;
+    //   cartCounter = (itemss) => {
+    //    let counter = 0;
+    //    for(let item of itemss) {
+         
+    //       counter += item.cart_quantity
+    //    } 
+    //    return counter;
+    //  }
+    // }
+    
   
     let inOut = "";
     if(localStorage.getItem('token')) {
@@ -36,7 +42,7 @@ class Nav extends Component {
             <li><a href="/deals">Deals</a></li>
             <li>{inOut}</li>
             <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/shoppingcart">Cart({cartCounter(items)})</a></li>
+            <li><a href="/shoppingcart">Cart()</a></li>
           </ul>
         </div>
         <ul className="sidenav" id="mobile-demo">
