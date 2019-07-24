@@ -13,7 +13,7 @@ const router 					= express.Router();
 // [GET] deals
 router.get('/', function(req, res) {
   let currentTime = new Date();
-  console.log('this is the current time: ', currentTime);
+  
   knex
     .select("*")
     .from("deals")
