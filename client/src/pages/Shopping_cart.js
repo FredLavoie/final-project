@@ -11,20 +11,15 @@ export class ShoppingCart extends Component {
 
   }
 
-  componentDidMount() {
-  
+    render() {
+      return (
+        <div>
+          <Nav /> 
+        <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/>
+          <Footer />
+        </div>
+      )
+    }
   }
-
-  render() {
-    console.log("shopping", this.props.shoppingcart);
-    return (
-      <div>
-        <Nav /> 
-        <MainShoppingCart shoppingCart={this.props.shoppingcart} />
-        <Footer />
-      </div>
-    );
-  }
-}
   
 export default ShoppingCart;
