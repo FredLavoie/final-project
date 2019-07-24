@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 class Nav extends Component {
-  
+
   logoutFcn(event) {
     event.preventDefault();
     localStorage.clear();
@@ -24,9 +24,7 @@ class Nav extends Component {
         } 
         return counter;
       }
-
     }
-
   
     let inOut = "";
     if(localStorage.getItem('token')) {
@@ -35,7 +33,7 @@ class Nav extends Component {
       inOut = <a href='/users/login'>Login</a>
     }
     
-    console.log(localStorage.getItem('merchant_id'));
+    console.log('###TESTING',this.props.name);
     
     let dashBoard = "";
     if(localStorage.getItem('token') && localStorage.getItem('merchant_id')) {
@@ -44,7 +42,12 @@ class Nav extends Component {
       dashBoard = <a href='#'>View Orders</a>
     }
 
-
+    let signUp ="";
+    if(localStorage.getItem('token')) {
+      signUp = <a>Hello</a>
+    } else {
+      signUp = <a href="/signup">Sign Up</a>
+    }
 
     return (
       <nav className="no-shadows green">
@@ -55,14 +58,15 @@ class Nav extends Component {
             <li>{dashBoard}</li>
             <li><a href="/deals">Deals</a></li>
             <li>{inOut}</li>
-            <li><a href="/signup">Sign Up</a></li>
+            <li>{signUp}</li>
             <li><a href="/shoppingcart">Cart({ fix ? cartCounter(items) : 0})</a></li>
           </ul>
         </div>
         <ul className="sidenav" id="mobile-demo">
+          <li>{dashBoard}</li>
           <li><a href="/deals">Deals</a></li>
           <li>{inOut}</li>
-          <li><a href="/signup">Sign Up</a></li>
+          <li>{signUp}</li>
         </ul>
       </nav>
     );

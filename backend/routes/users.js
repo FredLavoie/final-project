@@ -3,7 +3,7 @@ const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
 const router 					= express.Router();
-// const jwt             = require('jsonwebtoken');
+//const jwt             = require('jsonwebtoken');
 // const auth            = require('../auth/auth');
 
 
@@ -54,7 +54,7 @@ router.post('/login', function(req, res) {
       { expiresIn: 60*60*24 }, (err, token) => {
         if(err) {
           console.log(err);
-        }else {
+        } else {
           res.status(200).json({token: token, user_id: user.id})
         }
       }
