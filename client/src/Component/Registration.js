@@ -51,7 +51,7 @@ handleSubmit = (event) =>{
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
             <h2 className="center-align">Sign Up</h2>
-            <p className="center-align"><strong>Sign up for a <a href="/register">Business</a> account here</strong></p>
+            <p className="center-align"><strong>Sign up for a <a href="/register">Merchant</a> account here</strong></p>
             <div className="row">
               <div className="input-field col s6">
                 <p style={{color: 'red'}}>{this.state.message}</p>

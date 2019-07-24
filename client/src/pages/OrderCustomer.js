@@ -19,7 +19,6 @@ render() {
       <main className="main-page">
       <p>Thank you for your order!</p>
       </main>
-      <Footer />
     </div>
   );
 }

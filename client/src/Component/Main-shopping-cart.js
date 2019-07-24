@@ -35,9 +35,7 @@ export class MainShoppingCart extends Component {
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>total</th>
-                <th>{decimalPrice}</th>
-                
+                <th>$ {decimalPrice}</th>                
             </tr>
             </tbody>     
       </table> 

@@ -15,7 +15,7 @@ class Nav extends Component {
     if(localStorage.getItem('token')) {
       inOut = <a onClick={this.logoutFcn}>Logout</a>
     } else {
-      inOut = <a href='/login'>Login</a>
+      inOut = <a href='users/login'>Login</a>
     }
     
     return (
