@@ -28,6 +28,8 @@ class Login extends Component {
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
+          <h2 className="center-align">Merchant login</h2>
+          <p className="center-align"><strong>Login as a <a href="/users/login">User</a></strong></p>          
             <div className="row">
               <div className="input-field col s12">
                 <input name="email" id="email" type="email" className="validate"/>

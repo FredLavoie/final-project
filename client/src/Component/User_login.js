@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import Auth from '../auth';
 import Nav from '../Component/Nav';
-import MerchantComponent from '../Component/Merchant';
 import Footer from '../Component/Footer';
 
 class UserLogin extends Component {
@@ -33,6 +32,8 @@ class UserLogin extends Component {
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
+          <h2 className="center-align">User login</h2>
+          <p className="center-align"><strong>Login as a <a href="/login">Merchant</a></strong></p>          
             <div className="row">
               <div className="input-field col s12">
                 <input name="email" id="email" type="email" className="validate"/>
