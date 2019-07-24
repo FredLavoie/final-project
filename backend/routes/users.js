@@ -9,7 +9,7 @@ const auth            = require('../auth/auth');
 
 
 
-
+//USER REGISTER
 router.post('/new', function(req, res) {
 const {firstName, lastName, email, password, confirm_password  } = req.body;
 
@@ -29,17 +29,41 @@ if(firstName && lastName && email && password && confirm_password && password ==
     
     console.error('hahah here its is an big err',e)
     res.json({
-      message: 'error db insert not good not good'
+      message: 'Email already exist please login.'
     })
   })
 }else{
   res.status(400).json({
-    message:'invalid data please try again'
+    message:'Invalid input fields.'
   })
 }
 });
 
-
-
+//USER LOGIN
+router.post('/login', function(req, res) {
+  const {email, password } = req.body;
+  knex
+  .select('email', 'password', 'id')
+  .into('users')
+  .where('email', email)
+  .where('password', password)
+  .then(([user]) => {
+    jwt.sign(
+      {user_id: user.id},
+      process.env.JWT_SECRET, 
+      { expiresIn: 60*60*24 }, (err, token) => {
+        if(err) {
+          console.log(err);
+        }else {
+          res.status(200).json({token: token, user_id: user.id})
+        }
+      }
+    )
+  })
+  .catch((exception) => {
+    console.error('Invalid input', exception)
+    res.status(400).json({message: 'User does not exist.'})
+  })
+});
 
 module.exports = router;
