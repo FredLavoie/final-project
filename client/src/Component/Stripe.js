@@ -20,7 +20,7 @@ export class TakeMoney extends React.Component {
       // ...
       <StripeCheckout
         token={this.onToken}
-        stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
+        stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
       />
     )
   }
