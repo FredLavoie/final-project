@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+
  
 export class TakeMoney extends React.Component {
   onToken = (token) => {
@@ -20,7 +21,11 @@ export class TakeMoney extends React.Component {
       // ...
       <StripeCheckout
         token={this.onToken}
+<<<<<<< HEAD
         stripeKey = "sk_test_vYHvuOsoCwymKaBDyF8ZfRQs00tQjztnJ4"
+=======
+        stripeKey="pk_test_erkimzsfpiATUMptnrxecI7i00Bpky1ynN"
+>>>>>>> master
       />
     )
   }

@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 
 export class Registration extends Component {
 
-
   state = {
     message: '',
     redirect: false
@@ -19,7 +18,7 @@ handleSubmit = (event) =>{
     password: event.target.firstName.value,
     confirm_password: event.target.firstName.value
   }
-  console.log(newUser)
+  
   const sendUser = async () =>{ 
       const query = await fetch('/api/users/new',{method: "POST",
       headers: {
@@ -44,7 +43,7 @@ handleSubmit = (event) =>{
 
   render() {
     if(this.state.redirect){
-      return <Redirect to="/login" />
+      return <Redirect to="users/login" />
     }
     return (
       <div className="container" style={{marginBottom:50}}>

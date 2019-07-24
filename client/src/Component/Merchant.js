@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 export class Merchant extends Component {
+
   render() {
     return (
       <div>

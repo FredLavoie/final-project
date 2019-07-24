@@ -4,13 +4,10 @@ export class New_deal extends Component {
   handleSubmit = event => {
     
     event.preventDefault();
-    console.log('DATE:', event.target.date.value);
-    console.log('TIME:', event.target.time.value);
-    console.log('Merchant:', localStorage.getItem('merchant_id'));
     fetch('/api/deals/new', {
       method:'POST',
       headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         merchant_id: localStorage.getItem('merchant_id'),
         name: event.target.name.value, 
         description: event.target.description.value,  
@@ -18,10 +15,11 @@ export class New_deal extends Component {
         current_price: event.target.price.value, 
         quantity_available: event.target.quantity.value, 
         date: event.target.date.value,
-        time: event.target.time.value  })
+        time: event.target.time.value
+      })
     })
-      .then(function(response) {
-        return response.json();
+      .then(() => {
+        window.location.assign('/merchants/dashboard');
       });
   }
   render() {
