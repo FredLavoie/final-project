@@ -18,7 +18,7 @@ export class Row extends Component {
           </td>
           <td>{this.props.deal.name}</td>
           <td>{this.props.deal.quantity_available}</td>
-          <td>{this.props.deal.current_price}</td>
+          <td>${this.props.deal.current_price}</td>
           <td>{timeStamp}</td>
           <td>
             <button className="waves-effect waves-light btn" onClick={() => this.props.deleteDeal(this.props.deal.id)}>delete</button>
