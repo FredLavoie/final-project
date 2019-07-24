@@ -47,13 +47,10 @@ class App extends Component {
 addTocart = (data) =>{
   const incomingData = data;
   const itemInCart = this.state.shoppingcart.find(item => item.id ===incomingData.id);
-  console.log('boolean in add', itemInCart); 
   if(itemInCart){
     const updateQuantity = this.state.shoppingcart.map(item => {
       if (item.id === incomingData.id) {
       incomingData.cart_quantity += 1;
-      console.log('this is the item', item); 
-      console.log('where I want to delete', this.state.shoppingcart.item)
     }
   return item;
   })
@@ -67,42 +64,27 @@ addTocart = (data) =>{
 
     // Update the state with the new deal
     this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
-      console.log('state when new',this.state.shoppingcart); 
       this.saveToLocal(); 
     })
   }
 }
 
 deleteCartItem = (id) => {
-console.log('is the function being called?')
-console.log('id receiving', id);
-  // const itemInCart = this.state.shoppingcart.find(item => item.id === id);
-  // console.log('boolean',itemInCart);
   if(true){
     const updateQuantity = this.state.shoppingcart.filter(item => {
       if (item.id !== id) {
-        //delete item
-        //var removed = myFish.splice(3, 1);//option 1
-        //prevState.list.filter(x=> x != item);
         return item;
     }
-  //return item;
   })
-console.log('items after delete', updateQuantity)
   // replacing the deals with updatedDeals in the state
   this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
-    console.log('State after delete', this.state.shoppingcart)
   })}
   
 }
 
 removeOneCartItem = (data) => {
-  console.log('is the function being called?')
-  console.log('id receiving', data);
   const incomingData = data;
-    // const itemInCart = this.state.shoppingcart.find(item => item.id === id);
-    // console.log('boolean',itemInCart);
     if(true){
       const updateQuantity = this.state.shoppingcart.filter(item => {
         if (item === data & incomingData.cart_quantity >= 1) {
@@ -110,14 +92,30 @@ removeOneCartItem = (data) => {
         }
     return item;
     })
-  console.log('items after delete', updateQuantity)
     // replacing the deals with updatedDeals in the state
     this.setState({shoppingcart: updateQuantity}, () => {
       this.saveToLocal(); 
-      console.log('State after delete', this.state.shoppingcart)
     })}
     
   }
+
+  addOneCartItem = (data) => {
+    const incomingData = data;
+    console.log('is the addOnecARTiTEM WOEKING?'); 
+      if(true){
+        const updateQuantity = this.state.shoppingcart.filter(item => {
+          console.log('condit',item.cart_quantity);
+          if (item === incomingData & item.quantity_available >= incomingData.cart_quantity) {
+            incomingData.cart_quantity += 1;
+          }
+      return item;
+      })
+      // replacing the deals with updatedDeals in the state
+      this.setState({shoppingcart: updateQuantity}, () => {
+        this.saveToLocal(); 
+      })}
+      
+    }
 
 
 saveToLocal() {
@@ -168,7 +166,7 @@ this.setState({ shoppingcart: shoppingItems}, () =>{
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem }/>}/> 
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
       </Switch>
       </div>
     );

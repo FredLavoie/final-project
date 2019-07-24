@@ -13,7 +13,7 @@ export class ShoppingCart extends Component {
       return (
         <div>
           <Nav /> 
-        <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} />
+        <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/>
           <Footer />
         </div>
       )

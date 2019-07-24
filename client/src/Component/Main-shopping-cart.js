@@ -5,7 +5,7 @@ export class MainShoppingCart extends Component {
     render() {
         let shoppingCart = this.props.shoppingCart
         const dataShopping = shoppingCart.map( item => 
-        <Row shoppingcart={item}  key={item.id} entireshoppingcart={this.props.shoppingCart} deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem}/> ) 
+    <Row shoppingcart={item}  key={item.id} entireshoppingcart={this.props.shoppingCart} deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/> ) 
         return (
             <main className="main-page"> 
                 <p>Your Shopping Cart</p>
