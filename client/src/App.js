@@ -146,7 +146,7 @@ getFromLocal(){
 
 render() {
   return (
-    <div className="App" style={{minHeight:'100vh', position:'relative', paddingBottom:100}}>
+    <div className="App" >
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
