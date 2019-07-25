@@ -34,8 +34,6 @@ class Nav extends Component {
       inOut = <a href='/users/login'>Login</a>
     }
     
-    console.log('###TESTING',this.props.name);
-    
     let dashBoard = "";
     if(localStorage.getItem('token')) {
       dashBoard = <a href='#'>View Orders</a>
