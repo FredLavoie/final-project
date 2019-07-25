@@ -15,11 +15,12 @@ router.get('/', function(req, res) {
   let currentTime = new Date();
   
   knex
-    .select("*")
+    .select("deals.id as deal_id","deals.name", "deals.description", "deals.quantity_available", "deals.image_path", "deals.current_price", "deals.end_date", "merchants.business_name", "merchants.id as merchant_id")
     .from("deals")
-    .where("quantity_available", ">", 0)
-    .where("end_date", ">", currentTime)
-    .orderBy("end_date")
+    .innerJoin("merchants", "deals.merchant_id", "merchants.id")
+    .where("deals.quantity_available", ">", 0)
+    .where("deals.end_date", ">", currentTime)
+    .orderBy("deals.end_date")
     .then((data) => {
       res.json(data);
     });
