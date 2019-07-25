@@ -18,6 +18,9 @@ export class TakeMoney extends React.Component {
       console.log('res', response); 
       if(response.ok){
         //send to backend 
+
+
+          //delete cart (need to create function that update state and then call local storage)
           const cardDelete = localStorage.removeItem('saveShoppingcart')        }
     });
   }

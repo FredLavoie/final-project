@@ -24,7 +24,7 @@ const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
 const users = require('./routes/users')
 const payments = require('./routes/payments')
-const orders = require('./rou')
+const orders = require('./routes/orders')
 
 const app = express();
 
