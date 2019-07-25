@@ -27,6 +27,7 @@ const indexRouter = require('./routes/index');
 const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
 const users = require('./routes/users')
+const payment = require('./routes/payment')
 
 const app = express();
 
@@ -47,6 +48,12 @@ app.use('/api', indexRouter);
 app.use('/api/merchants', merchantsRouter);
 app.use('/api/deals', dealsRouter);
 app.use('/api/users',users);
+app.use('/api',payment);
+
+//stripe
+const configureRoutes = app => {
+  paymentApi(app);
+};
 
 
 	
