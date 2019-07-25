@@ -39,10 +39,13 @@ export class MainShoppingCart extends Component {
               <th>$ {decimalPrice}</th>
               <th></th>             
             </tr>
-          </tbody>     
-        </table> 
-        <TakeMoney /> 
-      </main>      
+            </tbody>     
+      </table> 
+
+        <TakeMoney  price={decimalPrice*100}/> 
+            </main>
+
+            
     );
   }
 }
