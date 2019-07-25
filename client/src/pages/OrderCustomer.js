@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-import Footer from '../Component/Footer';
 
 
 export class MerchantDashboard extends Component {

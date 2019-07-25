@@ -9,13 +9,13 @@ class Deals extends Component {
   render() {
 
 
-  let whatever = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
+  let merchantDeal = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
     return {
       business_name: key, deals: value
     }
   }).value()
 
-console.log("Value of WHATEVER:",whatever)
+  console.log("Value of WHATEVER:",merchantDeal)
 
     const deals = this.props.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add}/> );
     return (
