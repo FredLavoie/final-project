@@ -3,14 +3,11 @@ import StripeCheckout from 'react-stripe-checkout';
  
 export class TakeMoney extends React.Component {
   onToken = (token) => {
-    fetch('/api/save-stripe-token', {
+    fetch('/api/payments/save-stripe-token', {
       method: 'POST',
+      headers:{ "Content-Type" : "application/json" },
       body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
-    });
+    }).then(response => console.log(response));
   }
  
   // handleToken(token, addresses){
@@ -26,7 +23,7 @@ export class TakeMoney extends React.Component {
       <StripeCheckout
         token={this.onToken}
         stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
-        amount={20.00 * 100}
+    
       />
     )
   }
