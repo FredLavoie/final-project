@@ -25,7 +25,6 @@ componentDidMount() {
   M.AutoInit();
   //for merchant to view their own deals
   const id = localStorage.getItem('merchant_id');
-  console.log('Token? ',localStorage.getItem('token'));
   fetch(`/api/merchants/${id}/dashboard`, {
     headers: {"authorization": localStorage.getItem('token')}})
     .then(res => res.json())
