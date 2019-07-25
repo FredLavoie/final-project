@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
  
 export class TakeMoney extends React.Component {
+  state = {
+    redirect:false
+  }
   onToken = (token) => {
     token["amount"] = parseInt(this.props.price.toString().split('.').join(''));
+    console.log('token',localStorage.getItem('token'))
     fetch('/api/payments/save-stripe-token', {
       method: 'POST',
-      headers:{ "Content-Type" : "application/json" },
+      headers:{ "Content-Type" : "application/json" ,
+      Authorization: localStorage.getItem('token')
+    },
       body: JSON.stringify(token),
-    }).then(response => console.log(response));
+    }).then(response => {
+      console.log('res', response); 
+      if(response.ok){
+        //send to backend 
+          const cardDelete = localStorage.removeItem('saveShoppingcart')        }
+    });
   }
  
  
