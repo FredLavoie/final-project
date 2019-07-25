@@ -4,7 +4,7 @@ import Auth from '../auth';
 
 class Login extends Component {
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     fetch('/api/merchants/login', {
       method:'POST',
@@ -31,7 +31,6 @@ class Login extends Component {
           <h2 className="center-align">Merchant login</h2>
           <p className="center-align"><strong>Login as a <a href="/users/login">User</a></strong></p>          
             <div className="row">
-            <h4 style={{color: "green"}}>{this.props.message}</h4>
               <div className="input-field col s12">
                 <input name="email" id="email" type="email" className="validate"/>
                 <label htmlFor="email">Email</label>

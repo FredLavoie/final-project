@@ -3,26 +3,39 @@ import { withRouter } from 'react-router-dom';
 import Auth from '../auth';
 
 class UserLogin extends Component {
-
-  handleSubmit = event => {
-    event.preventDefault();
-    fetch('/api/users/login', {
-      method:'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then( user_info => {
-        localStorage.setItem("token", user_info.token);
-        localStorage.setItem("user_id", user_info.user_id);
-        localStorage.setItem("username", user_info.username);
-        Auth.login(() => {
-          this.props.history.push('/deals'); 
-        });
-      });
+  state = {
+    message: ''
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const loginUser = async () =>{
+        const request =  await fetch('/api/users/login', {
+          method:'POST',
+          headers:{ "Content-Type" : "application/json" },
+          body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
+        })
+        if(request.ok){
+            let response = await request.json();
+            if(response.good){
+                  localStorage.setItem("token", response.token);
+                  localStorage.setItem("user_id", response.user_id);
+                  localStorage.setItem("username", response.username);
+                  Auth.login(() => {
+                    this.props.history.push('/deals'); 
+                  });
+        }
+       
+    }
+    if(request.status === 400){
+      let response = await request.json();
+      this.setState({message: response.message})
+  }
+  }
+  loginUser();
+}
+
   render() {
     return (
     <div>
@@ -30,9 +43,11 @@ class UserLogin extends Component {
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
+          <h6 style={{color: "green"}}>{this.props.message}</h6>
           <h2 className="center-align">User login</h2>
           <p className="center-align"><strong>Login as a <a href="/login">Merchant</a></strong></p>          
             <div className="row">
+            <h6 style={{color: "red"}}>{this.state.message}</h6>
               <div className="input-field col s12">
                 <input name="email" id="email" type="email" className="validate"/>
                 <label htmlFor="email">Email</label>

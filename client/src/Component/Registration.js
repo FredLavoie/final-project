@@ -16,10 +16,10 @@ handleSubmit = (event) =>{
   event.preventDefault();
     const newUser ={
     firstName: event.target.firstName.value,
-    lastName: event.target.firstName.value,
-    email: event.target.firstName.value,
-    password: event.target.firstName.value,
-    confirm_password: event.target.firstName.value
+    lastName: event.target.lastName.value,
+    email: event.target.email.value,
+    password: event.target.password.value,
+    confirm_password: event.target.confirm_password.value
   }
   const sendUser = async () =>{ 
       const query = await fetch('/api/users/new',{method: "POST",
@@ -47,9 +47,6 @@ handleSubmit = (event) =>{
   }
   sendUser()
 }
-   // if(this.state.redirect){
-    //   return <Redirect to="users/login" />
-    // }
 
   render() {
     if(this.state.userCreated){
