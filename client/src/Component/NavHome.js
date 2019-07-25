@@ -19,15 +19,16 @@ class Nav extends Component {
     }
 
     let dashBoard = "";
-    if(localStorage.getItem('token') && localStorage.getItem('merchant_id')) {
-      dashBoard = <a href='/merchants/dashboard'>Dashboard</a>
-    } else {
+    if(localStorage.getItem('token')) {
       dashBoard = <a href='#'>View Orders</a>
     }
+    if(localStorage.getItem('token') && localStorage.getItem('merchant_id')) {
+      dashBoard = <a href='/merchants/dashboard'>Dashboard</a>
+    }     
 
     let signUp ="";
     if(localStorage.getItem('token')) {
-      signUp = <a>Hello</a>
+      signUp = "";
     } else {
       signUp = <a href="/signup">Sign Up</a>
     }

@@ -19,6 +19,7 @@ class UserLogin extends Component {
       .then( user_info => {
         localStorage.setItem("token", user_info.token);
         localStorage.setItem("user_id", user_info.user_id);
+        localStorage.setItem("username", user_info.username);
         Auth.login(() => {
           this.props.history.push('/deals'); 
           console.log('isAuthenticated from login  ->',Auth.isAuthenticated);
