@@ -8,7 +8,7 @@ export class Merchant extends Component {
     return (
       <div>
         <Nav/>
-        <MerchantComponent/>
+        <MerchantComponent />
       </div>
     );
   }
