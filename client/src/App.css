@@ -1,11 +1,6 @@
 /*@import 'Merchant_dashboard'; 
 /* header and nav styles */
 
-.App {
-  min-height:100vh;
-  position:relative;
-  padding-bottom:70;
-}
 
 .home-page {
   height: 100vh;
