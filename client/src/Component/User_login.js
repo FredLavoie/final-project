@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Auth from '../auth';
-import Nav from '../Component/Nav';
-import Footer from '../Component/Footer';
 
 class UserLogin extends Component {
 
@@ -22,14 +20,13 @@ class UserLogin extends Component {
         localStorage.setItem("username", user_info.username);
         Auth.login(() => {
           this.props.history.push('/deals'); 
-          console.log('isAuthenticated from login  ->',Auth.isAuthenticated);
         });
       });
   }
   render() {
     return (
     <div>
-    <Nav/>
+
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
@@ -57,7 +54,6 @@ class UserLogin extends Component {
           </form>
         </div>
       </main>
-    <Footer/>
     </div>
     );
   }

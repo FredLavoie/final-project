@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import Login from "./User_login";
+import Loading from  "./Loading";
 
 export class Registration extends Component {
 
   state = {
     message: '',
     redirect: false,
-    userCreated: false
+    userCreated: false,
+    isReady: false
   }
 
 handleSubmit = (event) =>{
@@ -18,8 +21,6 @@ handleSubmit = (event) =>{
     password: event.target.firstName.value,
     confirm_password: event.target.firstName.value
   }
-
-  
   const sendUser = async () =>{ 
       const query = await fetch('/api/users/new',{method: "POST",
       headers: {
@@ -28,16 +29,20 @@ handleSubmit = (event) =>{
       },
       body: JSON.stringify(newUser)
     })
-    if(query.status === 400){
-      let response = await query.json();
-      this.setState({message: response.message})
-    }
+
     if(query.ok){
       let  response  = await query.json()
       this.setState({message: response.message})
       if(response.good){
-        this.setState({redirect: true, userCreated: true})
+        this.setState({redirect: true, userCreated: true, message: response.message})
+        setTimeout(() => {
+          this.setState({isReady: true})
+        }, 1000)
       }
+    }
+    if(query.status === 400){
+      let response = await query.json();
+      this.setState({message: response.message})
     }
   }
   sendUser()
@@ -48,9 +53,7 @@ handleSubmit = (event) =>{
 
   render() {
     if(this.state.userCreated){
-      
-
-
+      return   this.state.isReady ? <Login message={this.state.message} /> : <Loading /> ;
     }else{ 
     return (
       <div className="container" style={{marginBottom:50}}>

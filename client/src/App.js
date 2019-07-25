@@ -16,8 +16,8 @@ import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
 import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
-import UserLogin from './Component/User_login';
 import Footer from './Component/Footer';
+import UserLogin from './pages/User_Login';
 
 class App extends Component {
   state = {
