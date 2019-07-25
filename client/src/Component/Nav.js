@@ -46,10 +46,10 @@ class Nav extends Component {
     const businessName = localStorage.getItem('business_name');
     let signUp ="";
     if(localStorage.getItem('business_name') !== null) {
-      signUp = <span style={{color: '#242322'}}> { (businessName !== null) && (businessName !== undefined) ? 'Hello ' + businessName : '' }</span>
+      signUp = <span style={{color: "#4caf50", backgroundColor: "white", padding: "2px 5px"}}> { (businessName !== null) && (businessName !== undefined) ? 'Hello ' + businessName : '' }</span>
     } 
     else if(localStorage.getItem('token')) {
-      signUp = <span style={{color: '#242322'}}> { (username !== null) && (username !== undefined) ? 'Hello ' + username : '' }</span>
+      signUp = <span style={{color: "#4caf50", backgroundColor: "white", padding: "2px 5px"}}> { (username !== null) && (username !== undefined) ? 'Hello ' + username : '' }</span>
     }
     else {
       signUp = <a href="/signup">Sign Up</a>
@@ -68,7 +68,7 @@ class Nav extends Component {
           <a href="/" className="brand-logo">Food<span className="green">Cycle</span></a>
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down menu-item">
-            <li>{signUp}</li>          
+            <li>{signUp}</li>
             <li>{dashBoard}</li>
             <li><a href="/deals">Deals</a></li>
             <li>{inOut}</li>
@@ -76,7 +76,7 @@ class Nav extends Component {
           </ul>
         </div>
         <ul className="sidenav" id="mobile-demo">
-          <li>{signUp}</li>          
+          <li>{signUp}</li>
           <li>{dashBoard}</li>
           <li><a href="/deals">Deals</a></li>
           <li>{inOut}</li>
