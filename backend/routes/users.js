@@ -41,7 +41,7 @@ router.post('/new', function(req, res) {
 router.post('/login', function(req, res) {
   const {email, password } = req.body;
   knex
-    .select('email', 'password', 'id')
+    .select('email', 'password', 'id', 'first_name')
     .into('users')
     .where('email', email)
     .where('password', password)
@@ -53,7 +53,7 @@ router.post('/login', function(req, res) {
           if(err) {
             console.log(err);
           }else {
-            res.status(200).json({token: token, user_id: user.id});
+            res.status(200).json({token: token, user_id: user.id, username: user.first_name});
           }
         }
       );

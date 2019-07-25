@@ -17,6 +17,22 @@ class Nav extends Component {
     } else {
       inOut = <a href='users/login'>Login</a>
     }
+
+    let dashBoard = "";
+    if(localStorage.getItem('token')) {
+      dashBoard = <a href='#'>View Orders</a>
+    }
+    if(localStorage.getItem('token') && localStorage.getItem('merchant_id')) {
+      dashBoard = <a href='/merchants/dashboard'>Dashboard</a>
+    }     
+
+    let signUp ="";
+    if(localStorage.getItem('token')) {
+      signUp = "";
+    } else {
+      signUp = <a href="/signup">Sign Up</a>
+    }
+
     
     return (
       <nav className="transparent no-shadows">
@@ -24,15 +40,17 @@ class Nav extends Component {
           <a href="/" className="brand-logo">Food<span className="green">Cycle</span></a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down menu-item">
+            <li>{dashBoard}</li>
             <li><a href="/deals">Deals</a></li>
             <li>{inOut}</li>
-            <li><a href="/signup">Sign Up</a></li>
+            <li>{signUp}</li>
           </ul>
         </div>
         <ul className="sidenav" id="mobile-demo">
+          <li>{dashBoard}</li>
           <li><a href="/deals">Deals</a></li>
           <li>{inOut}</li>
-          <li><a href="/signup">Sign Up</a></li>
+          <li>{signUp}</li>
         </ul>
       </nav>
     );

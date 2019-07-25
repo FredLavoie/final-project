@@ -67,7 +67,7 @@ router.post('/login', function(req, res) {
             if (err) {
               console.log(err);
             } else {
-              res.json({ token: token, merchant_id: merchant.id });
+              res.json({ token: token, merchant_id: merchant.id, business_name: merchant.business_name });
             }
           });
       }
