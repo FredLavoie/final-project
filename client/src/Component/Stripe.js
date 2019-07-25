@@ -33,7 +33,7 @@ export class TakeMoney extends React.Component {
         token={this.onToken}
         stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
         label="Checkout"
-        style={{margin: "16px"}}
+        style={{margin: "20px 20px 20px 100px"}}
       />
     )
   }
