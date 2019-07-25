@@ -14,11 +14,10 @@ export class MainShoppingCart extends Component {
     price += element
   });
   const decimalPrice = parseFloat(Math.round(price * 100) / 100).toFixed(2);
-  console.log('price',totalPrice);
   
     return (
-      <main className="main-page"> 
-        <p>Your Shopping Cart</p>
+      <main className="main-page" style={{margin: "auto", width: "85%"}}> 
+        <h5>Your Shopping Cart</h5>
         <table>
           <thead>
             <tr>
@@ -26,7 +25,7 @@ export class MainShoppingCart extends Component {
               <th>Product</th>
               <th>Quantity </th>
               <th>Price</th>
-              <th>Price*Quantity</th> 
+              <th>Subtotal</th> 
               <th></th> 
             </tr>
           </thead>
@@ -37,11 +36,12 @@ export class MainShoppingCart extends Component {
               <th></th>
               <th></th>
               <th></th>
-              <th>$ {decimalPrice}</th>                
+              <th>$ {decimalPrice}</th>
+              <th></th>             
             </tr>
           </tbody>     
         </table> 
-        <TakeMoney style={{display: "none"}} /> 
+        <TakeMoney /> 
       </main>      
     );
   }
