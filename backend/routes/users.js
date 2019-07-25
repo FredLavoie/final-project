@@ -45,21 +45,6 @@ router.post('/new', function(req, res) {
 router.post('/login', function(req, res) {
   const {email, password } = req.body;
   knex
-<<<<<<< HEAD
-  .select('email', 'password', 'id')
-  .into('users')
-  .where('email', email)
-  .where('password', password)
-  .then(([user]) => {
-    jwt.sign(
-      {user_id: user.id},
-      process.env.JWT_SECRET, 
-      { expiresIn: 60*60*24 }, (err, token) => {
-        if(err) {
-          console.log(err);
-        } else {
-          res.status(200).json({token: token, user_id: user.id})
-=======
     .select('email', 'password', 'id')
     .into('users')
     .where('email', email)
@@ -74,7 +59,6 @@ router.post('/login', function(req, res) {
           }else {
             res.status(200).json({token: token, user_id: user.id});
           }
->>>>>>> master
         }
       );
     })
