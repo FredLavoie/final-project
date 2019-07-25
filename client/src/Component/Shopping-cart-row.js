@@ -17,7 +17,7 @@ export class Row extends Component {
           <td>{this.props.shoppingcart.name}</td>
           <td><i className="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i className="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
           <td>{this.props.shoppingcart.current_price}</td>
-          <td>{decimalPrice}</td>
+          <td>$ {decimalPrice}</td>
           <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
       </tr>
       </tbody>     
