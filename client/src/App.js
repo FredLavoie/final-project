@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
