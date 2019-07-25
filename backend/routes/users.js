@@ -3,11 +3,7 @@ const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
 const router 					= express.Router();
-<<<<<<< HEAD
-//const jwt             = require('jsonwebtoken');
-=======
 const jwt             = require('jsonwebtoken');
->>>>>>> master
 // const auth            = require('../auth/auth');
 
 
