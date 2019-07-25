@@ -19,10 +19,10 @@ app.use(require("body-parser").text())
 
 // Make payment with stripe (Step 1)
 router.post('/save-stripe-token', async function(req, res) {
-  console.log('req.body.id', req.body.id); 
+  console.log('req.body', req.body); 
   try {
     let {status} = await stripe.charges.create({
-      amount: 2000,
+      amount: req.body.amount,
       currency: "cad",
       description: "An example charge",
       source: req.body.id
