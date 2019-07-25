@@ -10,15 +10,15 @@ export class Row extends Component {
       <tbody> 
       <tr>
           <td>
-          <p classsName="image-container">
-          <img className="responsive" src={this.props.shoppingcart.image_path}/> 
+          <p className="image-container">
+            <img className="responsive" src={this.props.shoppingcart.image_path}/> 
           </p>    
           </td>
           <td>{this.props.shoppingcart.name}</td>
-          <td><i class="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i class="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
+          <td><i className="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i className="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
           <td>{this.props.shoppingcart.current_price}</td>
-          <td>{decimalPrice}</td>
-          <td><button class="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
+          <td>$ {decimalPrice}</td>
+          <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
       </tr>
       </tbody>     
       )

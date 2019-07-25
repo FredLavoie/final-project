@@ -12,13 +12,13 @@ export class Edit_deal extends Component {
               <div className="row">
                 <div className="input-field col s6 m4">
                   <input value={this.props.deal.name} id="deal_name" type="text" className="validate"/>
-                  <label htmlFor="deal_name">Name</label>
+                  <label className="active" htmlFor="deal_name">Name</label>
                 </div>
               </div>
               <div className="row">
-                <div className="input-field col s6 m6">
+                <div className="input-field col s6 m8">
                   <input value={this.props.deal.description} id="description" type="text" className="validate"/>
-                  <label htmlFor="description">Description</label>
+                  <label className="active" htmlFor="description">Description</label>
                 </div>
               </div>
               <div className="file-field input-field m6">
@@ -27,19 +27,19 @@ export class Edit_deal extends Component {
                   <input type="file"/>
                 </div>
                 <div className="file-path-wrapper">
-                  <input value={this.props.deal.image_path} className="file-path validate" type="text"/>
+                  <input className="active" value={this.props.deal.image_path} className="file-path validate" type="text"/>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6 m1">
                   <label>Price $ <br/>
-                    <input  value={this.props.deal.current_price} id="price" type="price" className="validate"/></label>
+                    <input  className="active" value={this.props.deal.current_price} id="price" type="price" className="validate"/></label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6 m1">
                   <label htmlFor="quantity">Quantity left <br/>                    
-                    <input value={this.props.deal.quantity_available} id="quantity" type="integer" className="validate"/></label>
+                    <input className="active"  value={this.props.deal.quantity_available} id="quantity" type="integer" className="validate"/></label>
                 </div>
               </div>
               <br/>
@@ -47,12 +47,12 @@ export class Edit_deal extends Component {
                 <div className="row">
                   <div className="input-field col s12 m4">
                     <div>
-                      <label>Expiry Date<br/>
+                      <label className="active" >Expiry Date<br/>
                         <input type="date"/></label>
                     </div>
                   </div>
                   <div className="input-field col s12 m2">
-                    <label>Expiry Time<br/>
+                    <label className="active" >Expiry Time<br/>
                       <input type="time"/></label>
                   </div>
                 </div>

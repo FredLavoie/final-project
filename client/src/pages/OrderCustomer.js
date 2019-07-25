@@ -9,19 +9,17 @@ export class MerchantDashboard extends Component {
     
   }
   
-
-
-render() {
-
-  return (
-    <div>
-      <Nav /> 
-      <main className="main-page">
-      <p>Thank you for your order!</p>
-      </main>
-    </div>
-  );
-}
+  render() {
+  
+    return (
+      <div>
+        <Nav /> 
+        <main className="main-page">
+        <p>Thank you for your order!</p>
+        </main>
+      </div>
+    );
+  }
 }
   
 export default MerchantDashboard;

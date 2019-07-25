@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import localStorage from 'local-storage';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
@@ -158,7 +157,7 @@ render() {
         <Route exact path="/register" component={Merchant} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem ={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
         <Route exact path="/order" render={() => <OrderCustomer/>}/> 
       </Switch>
       <Footer />
