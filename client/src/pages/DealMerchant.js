@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 class DealMerchant extends Component {
 
   render() {
-    console.log('The PROPS:', this.props)
+    console.log('The PROPS:', this.props.deals)
   let merchantDealArr = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
     return {
       business_name: key, deals: value
