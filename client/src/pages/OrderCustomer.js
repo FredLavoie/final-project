@@ -15,7 +15,7 @@ componentDidMount(){
 }
 
 
-export class MerchantDashboard extends Component 
+
   render() {
     return (
       <div>

@@ -16,6 +16,7 @@ import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
 import Footer from './Component/Footer';
 import UserLogin from './pages/User_Login';
+import Map from './Component/Map';
 
 class App extends Component {
   state = {
