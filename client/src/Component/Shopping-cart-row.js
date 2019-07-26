@@ -10,15 +10,19 @@ export class Row extends Component {
       <tbody> 
       <tr>
           <td>
-          <p className="image-container">
-            <img className="responsive" alt="" src={this.props.shoppingcart.image_path}/> 
-          </p>    
+            <span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>
+              <img className="responsive" src={this.props.shoppingcart.image_path}/> 
+            </span> 
           </td>
-          <td>{this.props.shoppingcart.name}</td>
-          <td><i className="tiny material-icons" onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove</i>  {this.props.shoppingcart.cart_quantity}  <i className="tiny material-icons" onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add</i></td>
-          <td>{this.props.shoppingcart.current_price}</td>
-          <td>$ {decimalPrice}</td>
-          <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>{this.props.shoppingcart.name}</span></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>
+            <i className="material-icons" style={{cursor:"pointer"}} onClick={() => this.props.removeOneCartItem(this.props.shoppingcart)}>remove_circle_outline</i>
+            { this.props.shoppingcart.cart_quantity }
+            <i className="material-icons" style={{cursor:"pointer"}} onClick={() => this.props.addOneCartItem(this.props.shoppingcart)}>add_circle_outline</i>
+          </span></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>${this.props.shoppingcart.current_price}</span></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>$ {decimalPrice}</span></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></span></td>
       </tr>
       </tbody>     
       )

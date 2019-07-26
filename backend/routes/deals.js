@@ -107,14 +107,3 @@ router.post('/:deal_id/delete', function(req, res) {
 module.exports = router;
 
 
-//************************************** ROUTES ***************************************/
-//*************************************************************************************/
-
-function dateToMilliseconds(date) {
-  let year = date; 
-  let month = date;
-  let day = date;
-
-  return 
-}
-

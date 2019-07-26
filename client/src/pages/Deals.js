@@ -14,7 +14,9 @@ class Deals extends Component {
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
       <div> 
-        <Nav/>
+      <div className="navbar-fixed">
+      <Nav/>
+    </div>
         <p>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:false})} />

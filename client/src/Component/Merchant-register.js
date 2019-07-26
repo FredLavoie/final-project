@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Merchant extends Component {
+export class MerchantRegister extends Component {
 
   render() {
     return (
@@ -103,4 +103,4 @@ export class Merchant extends Component {
   }
 }
 
-export default Merchant;
+export default MerchantRegister;

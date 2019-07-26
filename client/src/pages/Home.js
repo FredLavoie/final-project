@@ -5,9 +5,8 @@ import Main from '../Component/Main';
 export class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="home-page">
         <Header />
-        <Main />
       </div>
     );
   }

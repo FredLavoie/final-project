@@ -10,14 +10,14 @@ import MerchantDashboard from './pages/MerchantDashboard';
 import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-import Merchant from './pages/Merchant';
+import MerchantRegister from './pages/Merchant-register';
 import NewDeal from './pages/New_deal';
 import Edit_deal from './pages/Edit_deal';
 import ShoppingCart from './pages/Shopping_cart';
 import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
-import UserLogin from './Component/User_login';
 import Footer from './Component/Footer';
+import UserLogin from './pages/User_Login';
 
 class App extends Component {
   state = {
@@ -94,7 +94,6 @@ removeOneCartItem = (data) => {
 
   addOneCartItem = (data) => {
     const incomingData = data;
-    console.log('is the addOnecARTiTEM WOEKING?'); 
       if(true){
         const updateQuantity = this.state.shoppingcart.filter(item => {
           console.log('merchant quanity',item.cart_quantity);
@@ -137,7 +136,7 @@ getFromLocal(){
 
   setTimeout(() =>{
     this.setState({readydom: true});
-  },2000);
+  },1000);
   // Get location of user
   fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
     .then(res => res.json())
@@ -146,7 +145,7 @@ getFromLocal(){
 
 render() {
   return (
-    <div className="App" style={{minHeight:'100vh', position:'relative', paddingBottom:100}}>
+    <div className="App" style={{minHeight: "100vh", position: "relative", paddingBottom: "70px"}}>
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
@@ -155,7 +154,7 @@ render() {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/users/login" component={UserLogin}/>
         <Route exact path="/signup" component={Registration} />
-        <Route exact path="/register" component={Merchant} />
+        <Route exact path="/register" component={MerchantRegister} />
         <PrivateRoute exact path="/update" component={Edit_deal} />
         <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
         <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
