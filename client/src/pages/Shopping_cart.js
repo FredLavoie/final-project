@@ -14,9 +14,11 @@ export class ShoppingCart extends Component {
   render() {
     window.addEventListener("DOMContentLoaded", (event) => {
       const button =  document.querySelector('.StripeCheckout span');
-      const 
+      const theFuckingButton = document.querySelector('.StripeCheckout');
       button.removeAttribute("style")
-      button.setAttribute('class',"waves-effect  waves-light btn")
+      theFuckingButton.removeAttribute('style')
+      theFuckingButton.setAttribute('id', 'btn-checkout')
+      button.setAttribute('class',"waves-effect waves-light btn")
       console.log(button)
     });
  
