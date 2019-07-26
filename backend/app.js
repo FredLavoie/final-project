@@ -22,9 +22,9 @@ const jwt             = require('jsonwebtoken');
 const indexRouter = require('./routes/index');
 const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
-const users = require('./routes/users')
-const payments = require('./routes/payments')
-const orders = require('./routes/orders')
+const users = require('./routes/users');
+const payments = require('./routes/payments');
+const orders = require('./routes/orders');
 
 const app = express();
 
@@ -48,10 +48,6 @@ app.use('/api/users',users);
 app.use('/api/payments',payments);
 app.use('/api/orders',orders);
 
-//stripe
-const configureRoutes = app => {
-  paymentApi(app);
-};
 
 
 	
