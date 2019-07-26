@@ -10,7 +10,10 @@ class Deals extends Component {
     const deals = this.props.deals.map(deal => <DealsComponent key={deal.id} deal={deal} add={this.props.add}/> );
     return (
       <div style={{minHeight: "100%", position: "relative"}}>
-        <Nav/>
+        <div className="navbar-fixed">
+          <Nav/>
+        </div>
+        
         <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
           <div className="row">
             {this.props.isready ? deals : <Loading /> }
