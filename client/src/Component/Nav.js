@@ -68,18 +68,18 @@ class Nav extends Component {
           <a href="/" className="brand-logo">Food<span className="green">Cycle</span></a>
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down menu-item">
-            <li>{signUp}</li>
             <li>{dashBoard}</li>
             <li><a href="/deals">Deals</a></li>
             <li>{inOut}</li>
             <li>{cartDisplay}</li>
+            <li>{signUp}</li>
           </ul>
         </div>
         <ul className="sidenav" id="mobile-demo">
-          <li>{signUp}</li>
           <li>{dashBoard}</li>
           <li><a href="/deals">Deals</a></li>
           <li>{inOut}</li>
+          <li>{signUp}</li>
         </ul>
       </nav>
     );
