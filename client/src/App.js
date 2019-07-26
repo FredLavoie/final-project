@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { withRouter } from "react-router"
-// import Component
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './pages/Home';
 import MerchantDashboard from './pages/MerchantDashboard';
 import Deals from './pages/Deals';

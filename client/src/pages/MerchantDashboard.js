@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-import Main_merchant from '../Component/Main-merchant';
+import MainMerchant from '../Component/Main-merchant';
 import M from "materialize-css";
 import { Redirect } from 'react-router-dom';
 
@@ -59,7 +59,7 @@ render() {
   return (
     <div>
       <Nav /> 
-      <Main_merchant updateDeal={this.updateDeal} deleteDeal={this.deleteDeal} deals={this.state.merchant_deals} /> 
+      <MainMerchant updateDeal={this.updateDeal} deleteDeal={this.deleteDeal} deals={this.state.merchant_deals} /> 
     </div>
   );
 }

@@ -66,7 +66,6 @@ router.post('/login', function(req, res) {
       res.status(400).json({message: 'Invalid input'});
     });
   }else{
-
     res.status(400).json({message: 'All fields  are required'})
   }
 

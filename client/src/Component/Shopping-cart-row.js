@@ -11,7 +11,7 @@ export class Row extends Component {
       <tr>
           <td>
             <span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>
-              <img className="responsive" src={this.props.shoppingcart.image_path}/> 
+              <img className="responsive" alt="" src={this.props.shoppingcart.image_path}/> 
             </span> 
           </td>
           <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>{this.props.shoppingcart.name}</span></td>
