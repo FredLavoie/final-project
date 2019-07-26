@@ -14,7 +14,7 @@ export class ShoppingCart extends Component {
   render() {
     return (
       <div>
-        <Nav /> 
+        <Nav shoppingCart={this.props.shoppingcart}/> 
         <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/>
       </div>
     )

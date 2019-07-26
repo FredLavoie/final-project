@@ -24,7 +24,8 @@ class App extends Component {
     deals: [],
     readydom: false,
     location:null,
-    shoppingcart: []
+    shoppingcart: [],
+    counter: 0
   }
   
   loginUser = (merchant_id) => {
@@ -34,6 +35,7 @@ class App extends Component {
   addTocart = (data) =>{
     this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
       this.saveToLocal(); 
+      this.updateCounter(this.state.shoppingcart); 
     });
   }
 
@@ -51,6 +53,7 @@ addTocart = (data) =>{
   // replacing the deals with updatedDeals in the state
   this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
+    this.updateCounter(this.state.shoppingcart); 
   })}else{
     // deal does not exist. Create a cart_quantity property
     incomingData.cart_quantity = +1;
@@ -58,6 +61,7 @@ addTocart = (data) =>{
     // Update the state with the new deal
     this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
       this.saveToLocal(); 
+      this.updateCounter(this.state.shoppingcart); 
     })
   }
 }
@@ -72,6 +76,7 @@ deleteCartItem = (id) => {
   // replacing the deals with updatedDeals in the state
   this.setState({shoppingcart: updateQuantity}, () => {
     this.saveToLocal(); 
+    this.updateCounter(this.state.shoppingcart); 
   })
   }
 }
@@ -88,6 +93,7 @@ removeOneCartItem = (data) => {
     // replacing the deals with updatedDeals in the state
     this.setState({shoppingcart: updateQuantity}, () => {
       this.saveToLocal(); 
+      this.updateCounter(this.state.shoppingcart); 
     })}
     
   }
@@ -106,10 +112,22 @@ removeOneCartItem = (data) => {
       // replacing the deals with updatedDeals in the state
       this.setState({shoppingcart: updateQuantity}, () => {
         this.saveToLocal(); 
+        this.updateCounter(this.state.shoppingcart); 
       })}
       
     }
 
+//update counter
+updateCounter = (items) => {
+  let counter = 0;
+  for(let item of items) {
+    counter += item.cart_quantity
+    console.log('counter', counter); 
+  } 
+  this.setState({counter: counter}, () => {
+      console.log('this is counter in app.js', counter)
+  })
+}
 
 saveToLocal() {
   const local = this.state.shoppingcart;
@@ -150,7 +168,7 @@ render() {
         <Route exact path="/" component={Home} />
         {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
         <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
-        <Route  path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} />}  />
+        <Route  path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart}  counter={this.state.counter}/>}  />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/users/login" component={UserLogin}/>
         <Route exact path="/signup" component={Registration} />
