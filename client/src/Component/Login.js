@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Auth from '../auth';
 
 class Login extends Component {
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     fetch('/api/merchants/login', {
       method:'POST',

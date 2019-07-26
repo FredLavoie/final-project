@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import Login from "./User_login";
+import Loading from  "./Loading";
 
 export class Registration extends Component {
 
   state = {
     message: '',
-    redirect: false
+    redirect: false,
+    userCreated: false,
+    isReady: false
   }
 
 handleSubmit = (event) =>{
   event.preventDefault();
-  // const {firstName, lastName, email, password, confirm_password  } = req.body;
-  const newUser ={
+    const newUser ={
     firstName: event.target.firstName.value,
-    lastName: event.target.firstName.value,
-    email: event.target.firstName.value,
-    password: event.target.firstName.value,
-    confirm_password: event.target.firstName.value
+    lastName: event.target.lastName.value,
+    email: event.target.email.value,
+    password: event.target.password.value,
+    confirm_password: event.target.confirm_password.value
   }
-  
   const sendUser = async () =>{ 
       const query = await fetch('/api/users/new',{method: "POST",
       headers: {
@@ -27,24 +29,29 @@ handleSubmit = (event) =>{
       },
       body: JSON.stringify(newUser)
     })
+
     if(query.ok){
-      const response  = await query.json()
+      let  response  = await query.json()
       this.setState({message: response.message})
       if(response.good){
-        this.setState({redirect: true})
+        this.setState({redirect: true, userCreated: true, message: response.message})
+        setTimeout(() => {
+          this.setState({isReady: true})
+        }, 1000)
       }
+    }
+    if(query.status === 400){
+      let response = await query.json();
+      this.setState({message: response.message})
     }
   }
   sendUser()
-
-
 }
 
-
   render() {
-    if(this.state.redirect){
-      return <Redirect to="users/login" />
-    }
+    if(this.state.userCreated){
+      return   this.state.isReady ? <Login message={this.state.message} /> : <Loading /> ;
+    }else{ 
     return (
       <div className="container" style={{marginBottom:50}}>
         <div className="row">
@@ -52,8 +59,8 @@ handleSubmit = (event) =>{
             <h2 className="center-align">Sign Up</h2>
             <p className="center-align"><strong>Sign up for a <a href="/register">Merchant</a> account here</strong></p>
             <div className="row">
+            <p style={{color: 'red'}}>{this.state.message}</p>
               <div className="input-field col s6">
-                <p style={{color: 'red'}}>{this.state.message}</p>
                 <input id="first_name" type="text" name="firstName" className="validate"/>
                 <label htmlFor="first_name">First Name</label>
               </div>
@@ -93,6 +100,7 @@ handleSubmit = (event) =>{
         </div>        
       </div>
     );
+    }
   }
 }
 
