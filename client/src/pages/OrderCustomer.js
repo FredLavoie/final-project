@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-//import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
 
 
@@ -15,8 +14,9 @@ componentDidMount(){
   },5000)
 }
 
+
+export class MerchantDashboard extends Component 
   render() {
-    //const { width, height } = useWindowSize()
     return (
       <div>
         <Nav /> 
