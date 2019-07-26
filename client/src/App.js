@@ -21,164 +21,171 @@ class App extends Component {
   state = {
     deals: [],
     readydom: false,
-    location:null,
+    location: null,
     shoppingcart: [],
     counter: 0
   }
-  
+
   loginUser = (merchant_id) => {
-    this.setState({merchant_id: merchant_id});
+    this.setState({ merchant_id: merchant_id });
   }
 
-  addTocart = (data) =>{
-    this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
-      this.saveToLocal(); 
-      this.updateCounter(this.state.shoppingcart); 
-    });
-  }
+  // addTocart = (data) =>{
+  //   console.log("Are you called?");
+  //   this.setState({ shoppingcart: [...this.state.shoppingcart,data]}, () => {
+  //     this.saveToLocal(); 
+  //     console.log('Hello shopping cart!',this.state.shoppingcart)
+  //     this.updateCounter(this.state.shoppingcart); 
+  //   });
+  // }
 
-addTocart = (data) =>{
-  const incomingData = data;
-  const itemInCart = this.state.shoppingcart.find(item => item.id ===incomingData.id);
-  if(itemInCart){
-    const updateQuantity = this.state.shoppingcart.map(item => {
-      if (item.id === incomingData.id) {
-      incomingData.cart_quantity += 1;
-    }
-  return item;
-  })
-
-  // replacing the deals with updatedDeals in the state
-  this.setState({shoppingcart: updateQuantity}, () => {
-    this.saveToLocal(); 
-    this.updateCounter(this.state.shoppingcart); 
-  })}else{
-    // deal does not exist. Create a cart_quantity property
-    incomingData.cart_quantity = +1;
-
-    // Update the state with the new deal
-    this.setState({shoppingcart: [...this.state.shoppingcart, incomingData]}, () => {
-      this.saveToLocal(); 
-      this.updateCounter(this.state.shoppingcart); 
-    })
-  }
-}
-
-deleteCartItem = (id) => {
-  if(true){
-    const updateQuantity = this.state.shoppingcart.filter(item => {
-      if (item.id !== id) {
+  addTocart = (data) => {
+    const incomingData = data;
+    const itemInCart = this.state.shoppingcart.find(item => item.deal_id === incomingData.deal_id);
+    console.log(`Test add2cart`, incomingData, itemInCart)
+    if (itemInCart) {
+      const updateQuantity = this.state.shoppingcart.map(item => {
+        if (item.deal_id === incomingData.deal_id) {
+          if (item.quantity_available > incomingData.cart_quantity) {
+            incomingData.cart_quantity += 1;
+          }
+        }
         return item;
-    }
-  })
-  // replacing the deals with updatedDeals in the state
-  this.setState({shoppingcart: updateQuantity}, () => {
-    this.saveToLocal(); 
-    this.updateCounter(this.state.shoppingcart); 
-  })
-  }
-}
+      })
 
-removeOneCartItem = (data) => {
-  const incomingData = data;
-    if(true){
+      // replacing the deals with updatedDeals in the state
+      this.setState({ shoppingcart: updateQuantity }, () => {
+        this.saveToLocal();
+        this.updateCounter(this.state.shoppingcart);
+      })
+    } else {
+      // deal does not exist. Create a cart_quantity property
+      incomingData.cart_quantity = +1;
+
+      // Update the state with the new deal
+      this.setState({ shoppingcart: [...this.state.shoppingcart, incomingData] }, () => {
+        this.saveToLocal();
+        this.updateCounter(this.state.shoppingcart);
+      })
+    }
+  }
+
+  deleteCartItem = (id) => {
+    if (true) {
+      const updateQuantity = this.state.shoppingcart.filter(item => {
+        if (item.deal_id !== id) {
+          return item;
+        }
+      })
+      // replacing the deals with updatedDeals in the state
+      this.setState({ shoppingcart: updateQuantity }, () => {
+        this.saveToLocal();
+        this.updateCounter(this.state.shoppingcart);
+      })
+    }
+  }
+
+  removeOneCartItem = (data) => {
+    const incomingData = data;
+    if (true) {
       const updateQuantity = this.state.shoppingcart.filter(item => {
         if (item === data & incomingData.cart_quantity >= 1) {
-          incomingData.cart_quantity --;
+          incomingData.cart_quantity--;
         }
-    return item;
-    })
-    // replacing the deals with updatedDeals in the state
-    this.setState({shoppingcart: updateQuantity}, () => {
-      this.saveToLocal(); 
-      this.updateCounter(this.state.shoppingcart); 
-    })}
-    
+        return item;
+      })
+      // replacing the deals with updatedDeals in the state
+      this.setState({ shoppingcart: updateQuantity }, () => {
+        this.saveToLocal();
+        this.updateCounter(this.state.shoppingcart);
+      })
+    }
+
   }
 
   addOneCartItem = (data) => {
     const incomingData = data;
-      if(true){
-        const updateQuantity = this.state.shoppingcart.filter(item => {
-          console.log('merchant quanity',item.cart_quantity);
-          console.log('customer quantity', incomingData.cart_quantity)
-          if (item === incomingData & item.quantity_available > incomingData.cart_quantity) {
-            incomingData.cart_quantity += 1;
-          }
-      return item;
+    if (true) {
+      const updateQuantity = this.state.shoppingcart.filter(item => {
+        console.log('merchant quanity', item.cart_quantity);
+        console.log('customer quantity', incomingData.cart_quantity)
+        if (item === incomingData & item.quantity_available > incomingData.cart_quantity) {
+          incomingData.cart_quantity += 1;
+        }
+        return item;
       })
       // replacing the deals with updatedDeals in the state
-      this.setState({shoppingcart: updateQuantity}, () => {
-        this.saveToLocal(); 
-        this.updateCounter(this.state.shoppingcart); 
-      })}
-      
+      this.setState({ shoppingcart: updateQuantity }, () => {
+        this.saveToLocal();
+        this.updateCounter(this.state.shoppingcart);
+      })
     }
 
-//update counter
-updateCounter = (items) => {
-  let counter = 0;
-  for(let item of items) {
-    counter += item.cart_quantity
-    console.log('counter', counter); 
-  } 
-  this.setState({counter: counter}, () => {
-      console.log('this is counter in app.js', counter)
-  })
-}
+  }
 
-saveToLocal() {
-  const local = this.state.shoppingcart;
-  localStorage.setItem('saveShoppingcart', JSON.stringify(local));
+  //update counter
+  updateCounter = (items) => {
+    let counter = 0;
+    for (let item of items) {
+      counter += item.cart_quantity
+    }
+    this.setState({ counter: counter }, () => {
+    })
+  }
 
-  // localStorage.setItem('saveShoppingcart',local);
-}
+  saveToLocal() {
+    const local = this.state.shoppingcart;
+    localStorage.setItem('saveShoppingcart', JSON.stringify(local));
 
-getFromLocal(){  
-  if(JSON.parse(localStorage.getItem('saveShoppingcart')) !== null){
-    const shoppingItems = JSON.parse(localStorage.getItem('saveShoppingcart'));
-    this.setState({ shoppingcart: shoppingItems}, () =>{ 
-  })}
-}
+    // localStorage.setItem('saveShoppingcart',local);
+  }
+
+  getFromLocal() {
+    if (JSON.parse(localStorage.getItem('saveShoppingcart')) !== null) {
+      const shoppingItems = JSON.parse(localStorage.getItem('saveShoppingcart'));
+      this.setState({ shoppingcart: shoppingItems }, () => {
+      })
+    }
+  }
 
   componentDidMount() {
     this.getFromLocal();
     M.AutoInit();
     fetch('/api/deals')
-      .then( res => res.json() )
-      .then( data => {
-        this.setState( { deals: data } );
-    });
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ deals: data });
+      });
 
-  setTimeout(() =>{
-    this.setState({readydom: true});
-  },1000);
-  // Get location of user
-  fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
-    .then(res => res.json())
-    .then(data => console.log(data));
-}
+    setTimeout(() => {
+      this.setState({ readydom: true });
+    }, 1000);
+    // Get location of user
+    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
 
-render() {
-  return (
-    <div className="App" style={{minHeight: "100vh", position: "relative", paddingBottom: "70px"}}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
-        <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} /> 
-        <Route  path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart}  counter={this.state.counter}/>}  />
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/users/login" component={UserLogin}/>
-        <Route exact path="/signup" component={Registration} />
-        <Route exact path="/register" component={MerchantRegister} />
-        <PrivateRoute exact path="/update" component={Edit_deal} />
-        <PrivateRoute exact path="/newdeal" component={NewDeal}  createNew={this.createNew}/> />
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem } addOneCartItem={this.addOneCartItem}/>}/> 
-        <Route exact path="/order" render={() => <OrderCustomer/>}/> 
-      </Switch>
-      <Footer />
-    </div>
-  );
-}
+  render() {
+    return (
+      <div className="App" style={{ minHeight: "100vh", position: "relative", paddingBottom: "70px" }}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
+          <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />
+          <Route path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart} counter={this.state.counter} />} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/users/login" component={UserLogin} />
+          <Route exact path="/signup" component={Registration} />
+          <Route exact path="/register" component={MerchantRegister} />
+          <PrivateRoute exact path="/update" component={Edit_deal} />
+          <PrivateRoute exact path="/newdeal" component={NewDeal} createNew={this.createNew} /> />
+        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem} addOneCartItem={this.addOneCartItem} />} />
+          <Route exact path="/order" render={() => <OrderCustomer />} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 export default App;
