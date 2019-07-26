@@ -20,7 +20,7 @@ app.use(require("body-parser").text())
 
 
 // Make payment with stripe (Step 1)
-router.post('/save-stripe-token',auth, async function(req, res) {
+router.post('/save-stripe-token', auth, async function(req, res) {
   console.log('req.body', req.body); 
   try {
     let {status} = await stripe.charges.create({
@@ -34,6 +34,6 @@ router.post('/save-stripe-token',auth, async function(req, res) {
     console.log(err)
     res.status(500).end();
   }
-  });
+});
 
-  module.exports = router;
+module.exports = router;

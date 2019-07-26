@@ -44,7 +44,9 @@ export class MainShoppingCart extends Component {
             </tr>
           </tbody>     
         </table> 
-        <TakeMoney  price={decimalPrice*100}/> 
+        
+        <TakeMoney  price={decimalPrice*100} priceDecimal={decimalPrice}/> 
+
       </main>            
     );
   }
