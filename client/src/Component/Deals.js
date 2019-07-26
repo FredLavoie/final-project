@@ -15,7 +15,7 @@ export class Deals extends Component {
     let timeLeft = moment(this.props.deal.end_date).fromNow();
 
     return (
-      <div className="col s12 m4"style={{position:'relative'}}>
+      <div className={"col s12 " + this.props.customClass} style={{position:'relative'}}>
         <div className="card">
           <div style={{height:"220px"}} className="card-image">
             <img alt="just an img for now" style={{objectFit:"cover",height:"inherit"}} src={this.props.deal.image_path} />
@@ -34,5 +34,6 @@ export class Deals extends Component {
     );
   }
 }
+
 
 export default Deals;

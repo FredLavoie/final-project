@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Nav from '../Component/Nav';
-import DealMerchantComponent from '../Component/DealMerchant';
+import DealsComponent from '../Component/Deals';
 import Loading from '../Component/Loading';
 import _ from 'lodash';
 import Carousel from "react-multi-carousel";
@@ -9,6 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 class DealMerchant extends Component {
 
   render() {
+    console.log('The PROPS:', this.props)
   let merchantDealArr = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
     return {
       business_name: key, deals: value
@@ -16,7 +16,7 @@ class DealMerchant extends Component {
   }).value()
 
   const merchantDeal = merchantDealArr.map(merchant => {
-    const deals = merchant.deals.map((deal, index) => <DealMerchantComponent key={index} deal={deal} add={this.props.add}/> );
+    const deals = merchant.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add} customClass="m12"/> );
       return (
         <div key={merchant.business_name}>
           <h2 className="merchantname">{merchant.business_name}</h2>
@@ -61,10 +61,10 @@ class DealMerchant extends Component {
     
     return (
       <div style={{minHeight: "100%", position: "relative"}}>
-        <Nav/>
         <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
           <div className="row">
-            {this.props.isready ? merchantDeal : <Loading /> }
+            {merchantDeal}
+            {/* {this.props.isready ? merchantDeal : <Loading /> } */}
           </div>
         </main>
       </div>
