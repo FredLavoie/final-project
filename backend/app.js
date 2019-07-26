@@ -13,11 +13,7 @@ const knexConfig      = require('./knexfile');
 const ENV         		= "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const jwt             = require('jsonwebtoken');
-const configureStripe = require('stripe');
-const STRIPE_SECRET_KEY = process.env.NODE_ENV === 'production'
-    ? 'sk_live_MY_SECRET_KEY'
-    : 'sk_test_MY_SECRET_KEY';
-const stripe = configureStripe(STRIPE_SECRET_KEY);
+
 
 
 //********************************* EXTERNAL ROUTES ***********************************/
@@ -28,6 +24,7 @@ const merchantsRouter = require('./routes/merchants');
 const dealsRouter = require('./routes/deals');
 const users = require('./routes/users')
 const payments = require('./routes/payments')
+const orders = require('./routes/orders')
 
 const app = express();
 
@@ -49,6 +46,7 @@ app.use('/api/merchants', merchantsRouter);
 app.use('/api/deals', dealsRouter);
 app.use('/api/users',users);
 app.use('/api/payments',payments);
+app.use('/api/orders',orders);
 
 //stripe
 const configureRoutes = app => {
