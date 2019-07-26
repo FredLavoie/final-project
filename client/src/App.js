@@ -24,7 +24,10 @@ class App extends Component {
     readydom: false,
     location: null,
     shoppingcart: [],
-    counter: 0
+    counter: 0,
+    userCity: '',
+    userLat: 45.5546832,
+    userLong: -73.6929376
   }
 
   loginUser = (merchant_id) => {
@@ -164,7 +167,7 @@ class App extends Component {
     // Get location of user
     fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => this.setState({userCity: data.city, userLat: data.latitude, userLong: data.longitude}));
   }
 
   render() {
@@ -174,14 +177,14 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           {/* <Route exact path="/merchants/dashboard" render={(props) => <MerchantDashboard {...props} isready={this.state.readydom} deals={this.state.merchant_deals}/>}/>  */}
           <PrivateRoute exact path="/merchants/dashboard" component={MerchantDashboard} isready={this.state.readydom} deals={this.state.merchant_deals} />
-          <Route path="/deals" render={() => <Deals isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart} counter={this.state.counter} />} />
+          <Route path="/deals" render={() => <Deals stateForMap={this.state} isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart} counter={this.state.counter} />} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/users/login" component={UserLogin} />
           <Route exact path="/signup" component={Registration} />
           <Route exact path="/register" component={MerchantRegister} />
           <PrivateRoute exact path="/update" component={Edit_deal} />
           <PrivateRoute exact path="/newdeal" component={NewDeal} createNew={this.createNew} /> />
-        <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem} addOneCartItem={this.addOneCartItem} />} />
+          <Route exact path="/shoppingcart" render={(props) => <ShoppingCart {...props} shoppingcart={this.state.shoppingcart} deleteCartItem={this.deleteCartItem} removeOneCartItem={this.removeOneCartItem} addOneCartItem={this.addOneCartItem} />} />
           <Route exact path="/order" render={() => <OrderCustomer />} />
         </Switch>
         <Footer />

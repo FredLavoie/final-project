@@ -7,8 +7,9 @@ import Map from '../Component/Map';
 
 
 
+
 class Deals extends Component {
-  state = {toggle : 1}
+  state = {toggle : 3}
 
   changeState = (num) => {
     console.log('changeState function being called: ', num)
@@ -75,7 +76,12 @@ class Deals extends Component {
       </div>
     );
   } else if(this.state.toggle == 3) {
-    return ( <Map changeState={this.changeState} /> );
+    return ( 
+      <div>
+    <Nav />
+    <Map stateForMap={this.props.stateForMap} isready={this.props.readydom} changeState={this.changeState} />
+    </div>
+     );
   }
 }
 }
