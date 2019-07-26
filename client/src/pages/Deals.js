@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import DealsComponent from '../Component/Deals';
-import Footer from '../Component/Footer';
 import Loading from '../Component/Loading';
 
 class Deals extends Component {
