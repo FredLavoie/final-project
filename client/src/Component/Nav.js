@@ -56,10 +56,10 @@ class Nav extends Component {
     }
 
     let cartDisplay = "";
-    if(localStorage.getItem('user_idmerchant_id')) {
-      cartDisplay = "";
-    } else {
+    if(localStorage.getItem('user_id')) {
       cartDisplay =  <a href="/shoppingcart">Cart( { fix ? cartCounter(items) : 0} )</a>
+    } else {
+      cartDisplay = "";
     }
   
     return (
