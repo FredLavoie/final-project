@@ -1,6 +1,35 @@
 import React, { Component } from 'react';
+import * as firebase from "firebase";
+import FileUploader from "react-firebase-file-uploader";
 
 export class New_deal extends Component {
+
+  state = {
+    username: '',
+    avatar: '',
+    isUploading: false,
+    progress: 0,
+    avatarURL: ''
+    };
+
+
+  handleChangeUsername = (event) => this.setState({username: event.target.value});
+
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+
+  handleProgress = (progress) => this.setState({progress});
+
+    handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+    }
+
+
+
+    handleUploadSuccess = (filename) => {
+      this.setState({avatar: filename, progress: 100, isUploading: false});
+      firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+      };
   handleSubmit = event => {
     
     event.preventDefault();
@@ -11,7 +40,7 @@ export class New_deal extends Component {
         merchant_id: localStorage.getItem('merchant_id'),
         name: event.target.name.value, 
         description: event.target.description.value,  
-        image_path: `http://localhost:8080/images/${event.target.photo_path.value}`, 
+        image_path: this.state.avatarURL, 
         current_price: event.target.price.value, 
         quantity_available: event.target.quantity.value, 
         date: event.target.date.value,
@@ -23,6 +52,7 @@ export class New_deal extends Component {
       });
   }
   render() {
+
     return (
       <div className="container">
         <div className="row">
@@ -36,17 +66,24 @@ export class New_deal extends Component {
             </div>
             <div className="row">
               <div className="input-field col s6 m6">
-                <input name="description" Placeholder="(Optional)"id="description" type="text" className="validate"/>
+                <input name="description" placeholder="(Optional)"id="description" type="text" className="validate"/>
                 <label htmlFor="description">Description</label>
               </div>
             </div>
             <div className="file-field input-field m6" >
-              <div className="btn" >
+              <div className="btn">
                 <span>Photo</span>
                 <input type="file"/>
               </div>
               <div className="file-path-wrapper">
                 <input className="file-path validate" type="text" name="photo_path"/>
+                <FileUploader style={{
+                  backgroundColor: 'steelblue', 
+                  color: 'white', 
+                  padding: 10, 
+                  borderRadius: 4
+                  }} 
+                  accept="image/*" name="avatar" randomizeFilename storageRef={firebase.storage().ref('images')} onUploadStart={this.handleUploadStart} onUploadError={this.handleUploadError} onUploadSuccess={this.handleUploadSuccess} onProgress={this.handleProgress} />
               </div>
             </div>
             <div className="row">
