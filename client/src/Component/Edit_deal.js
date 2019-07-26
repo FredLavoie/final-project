@@ -27,19 +27,19 @@ export class Edit_deal extends Component {
                   <input type="file"/>
                 </div>
                 <div className="file-path-wrapper">
-                  <input className="active" value={this.props.deal.image_path} className="file-path validate" type="text"/>
+                  <input className="active file-path validate" value={this.props.deal.image_path} type="text"/>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6 m1">
                   <label>Price $ <br/>
-                    <input  className="active" value={this.props.deal.current_price} id="price" type="price" className="validate"/></label>
+                    <input  className="active validate" value={this.props.deal.current_price} id="price" type="price"/></label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s6 m1">
                   <label htmlFor="quantity">Quantity left <br/>                    
-                    <input className="active"  value={this.props.deal.quantity_available} id="quantity" type="integer" className="validate"/></label>
+                    <input className="active validate"  value={this.props.deal.quantity_available} id="quantity" type="integer"/></label>
                 </div>
               </div>
               <br/>

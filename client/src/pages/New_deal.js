@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-import Footer from '../Component/Footer';
 import NewDealComponent from '../Component/New_deal';
 
 
