@@ -11,7 +11,7 @@ export class Row extends Component {
       <tr>
           <td>
           <p className="image-container">
-            <img className="responsive" src={this.props.shoppingcart.image_path}/> 
+            <img className="responsive" alt="" src={this.props.shoppingcart.image_path}/> 
           </p>    
           </td>
           <td>{this.props.shoppingcart.name}</td>
