@@ -26,13 +26,11 @@ export class TakeMoney extends React.Component {
          
         }).then(function(response) {
           return response.json();
-        }).then( 
-
-
-        )
+          
+        });        
         
-
-          //delete cart (need to create function that update state and then call local storage)
+        //delete cart (need to create function that update state and then call local storage)
+          window.location.assign('/order');
           localStorage.removeItem('saveShoppingcart')        
         }
     });
@@ -45,9 +43,8 @@ export class TakeMoney extends React.Component {
       amount={this.props.price}
         token={this.onToken}
         stripeKey="pk_test_erkimzsfpiATUMptnrxecI7i00Bpky1ynN"
-
         label="Checkout"
-        style={{margin: "20px 20px 20px 100px"}}
+        style={{margin: "20px 20px 20px 100px", "& span":{ background: "red"}}}
       />
     )
   }

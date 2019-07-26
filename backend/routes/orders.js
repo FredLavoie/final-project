@@ -61,7 +61,7 @@ router.post('/create', function(req, res) {
     knex
       .insert(entryObj)
       .into('orders_deals')
-			.then();
+      .then();
   }
 
 
