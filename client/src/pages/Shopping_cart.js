@@ -11,6 +11,17 @@ export class ShoppingCart extends Component {
   }
 
   render() {
+    window.addEventListener("DOMContentLoaded", (event) => {
+      const button =  document.querySelector('.StripeCheckout span');
+      const theFuckingButton = document.querySelector('.StripeCheckout');
+      button.removeAttribute("style")
+      theFuckingButton.removeAttribute('style')
+      theFuckingButton.setAttribute('id', 'btn-checkout')
+      button.setAttribute('class',"waves-effect waves-light btn")
+      console.log(button)
+    });
+ 
+    //button.setAttribute('class',"caca") // waves-effect  waves-light btn 
     return (
       <div>
         <Nav shoppingCart={this.props.shoppingcart}/> 

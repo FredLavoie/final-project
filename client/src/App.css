@@ -47,7 +47,11 @@ main{
   position: relative;
 }
 
-
+#btn-checkout{
+  border: none;
+  padding: 20px;
+  background: none !important;
+}
 /* main styles */
 
 @media  screen and (max-width: 700px){
