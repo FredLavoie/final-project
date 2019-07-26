@@ -44,15 +44,16 @@ router.post('/create', function(req, res) {
     knex
       .select('*')
       .from('deals')
-      .where({id: item.id})
+      .where({id: item.deal_id})
       .update(quantObj)
-      .then();
+      .then()
+      .error(err => console.log(err));
   }
 
   function middleTableEntry(item, data) {
     console.log('Inside middleTableEntry function');		
     let entryObj = {};
-    entryObj.deal_id = item.id;
+    entryObj.deal_id = item.deal_id;
     entryObj.order_id = data;
     entryObj.deal_price_purchased = item.current_price;
     entryObj.total_price_purchased = (item.current_price * item.cart_quantity).toFixed(2);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Component/Header';
 
-
 export class Home extends Component {
   render() {
     return (

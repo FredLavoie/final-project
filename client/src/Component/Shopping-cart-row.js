@@ -22,7 +22,7 @@ export class Row extends Component {
           </span></td>
           <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>${this.props.shoppingcart.current_price}</span></td>
           <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}>$ {decimalPrice}</span></td>
-          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.id)}>delete</button></span></td>
+          <td><span style={{display: "flex", alignContent: "center", justifyContent: "space-evenly"}}><button className="waves-effect waves-light btn" onClick={() => this.props.deleteCartItem(this.props.shoppingcart.deal_id)}>delete</button></span></td>
       </tr>
       </tbody>     
       )
