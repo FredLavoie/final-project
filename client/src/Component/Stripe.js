@@ -42,7 +42,7 @@ export class TakeMoney extends React.Component {
       <StripeCheckout
       amount={this.props.price}
         token={this.onToken}
-        stripeKey="pk_test_erkimzsfpiATUMptnrxecI7i00Bpky1ynN"
+        stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
         label="Checkout"
         style={{margin: "20px 20px 20px 100px", "& span":{ background: "red"}}}
       />
