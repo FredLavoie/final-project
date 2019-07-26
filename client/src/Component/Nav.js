@@ -10,10 +10,13 @@ class Nav extends Component {
   }
 
   render() {
+    console.log('STATE',this.props.shoppingcart)
+    console.log('counter', this.props.counter )
 
     let fix = false;
     const localItem = localStorage.getItem('saveShoppingcart')
     const items = JSON.parse(localItem);
+    console.log('items from local storage',items);
     let cartCounter;
     if(localItem !== null){
       fix = true
@@ -21,6 +24,7 @@ class Nav extends Component {
         let counter = 0;
         for(let item of items) {
            counter += item.cart_quantity
+           console.log('counter', counter); 
         } 
         return counter;
       }
