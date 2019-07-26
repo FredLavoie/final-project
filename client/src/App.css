@@ -47,7 +47,19 @@ main{
   position: relative;
 }
 
-
+#btn-checkout{
+  text-decoration: none !important;
+  background: #26a69a !important;
+  text-align: center !important;
+  letter-spacing: .5px !important;
+  border: none !important;
+  font-weight: none !important;
+  border: 0px solid transparent !important;
+  font-family: sans-serif !important;
+  box-shadow: none !important;
+  border-radius: 2px !important;
+text-transform: uppercase !important;
+}
 /* main styles */
 
 @media  screen and (max-width: 700px){
