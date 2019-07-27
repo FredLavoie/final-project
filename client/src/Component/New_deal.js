@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
+import { Redirect } from 'react-router-dom'
 
 export class New_deal extends Component {
 
@@ -9,7 +10,9 @@ export class New_deal extends Component {
     avatar: '',
     isUploading: false,
     progress: 0,
-    avatarURL: ''
+    avatarURL: '',
+    message: '',
+    isCreated: false
     };
 
 
@@ -24,41 +27,51 @@ export class New_deal extends Component {
     console.error(error);
     }
 
-
-
     handleUploadSuccess = (filename) => {
       this.setState({avatar: filename, progress: 100, isUploading: false});
       firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
       };
   handleSubmit = event => {
-    
     event.preventDefault();
-    fetch('/api/deals/new', {
-      method:'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({
-        merchant_id: localStorage.getItem('merchant_id'),
-        name: event.target.name.value, 
-        description: event.target.description.value,  
-        image_path: this.state.avatarURL, 
-        current_price: event.target.price.value, 
-        quantity_available: event.target.quantity.value, 
-        date: event.target.date.value,
-        time: event.target.time.value
-      })
-    })
-      .then(() => {
-        window.location.assign('/merchants/dashboard');
-      });
+    const createDeal = async () =>{
+      const request = await fetch('/api/deals/new', { method:'POST',
+        headers:{ "Content-Type" : "application/json" },
+        body: JSON.stringify({
+          merchant_id: localStorage.getItem('merchant_id'),
+          name: event.target.name.value, 
+          description: event.target.description.value,  
+          image_path: this.state.avatarURL, 
+          current_price: event.target.price.value, 
+          quantity_available: event.target.quantity.value, 
+          date: event.target.date.value,
+          time: event.target.time.value
+        })
+        });
+        if(request.status === 400){
+          let response = await request.json();
+          this.setState({message: response.message})
+        }
+        if(request.ok){
+          let response = await request.json();
+            this.setState({isCreated: true, message: response.message})
+        }else{
+          this.setState({message: 'Empty field'})
+        }
+
+    }
+    createDeal()
   }
   render() {
-
+    if(this.state.isCreated){
+      return <Redirect to='/merchants/dashboard' />
+    }
     return (
       <div className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
             <h2 className="center-align">Create new Deal</h2>
             <div className="row">
+            <h6 style={{color:'red'}} >{this.state.message}</h6>
               <div className="input-field col s6 m4">
                 <input name="name" id="deal_name" type="text" className="validate"/>
                 <label htmlFor="deal_name">Name</label>
