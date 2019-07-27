@@ -17,14 +17,26 @@ export class MapContainer extends React.Component {
 	}
 
 	state = { merchantInfo: [],
-	userPoint: {lat: 45, lgn: -72} }
+	userPoint: {lat: this.props.stateForMap.lat, lng: this.props.stateForMap.lng},
+	loading: true
+ }
 
+ thing = (data) => 	{
 
+	 console.log('data', data)
+	const allPoints = data.map((merchant, index) => {
+		console.log('This is merchant inside map function: ', merchant)
+		return <Marker title={merchant.name} name={merchant.name} position={{lat: merchant.lat, lng: merchant.lng}} key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	/>
+	});
+
+	return allPoints
+}
 	
+
 	componentDidMount() {
 		const merchantPoints = [];
 		fetch('/api/merchants')
-			.then(res => res.json())
+			.then(res => res.json(), console.log('fetch is happening'))
 			.then(data => {
 				for(let ea of data) {
 					let obj = {}
@@ -33,30 +45,29 @@ export class MapContainer extends React.Component {
 					obj.lng = ea.longitude
 					merchantPoints.push(obj)
 				}
+
 			});
 			console.log("I was here", merchantPoints)
-			this.setState({merchantInfo: merchantPoints});
-			navigator.geolocation.getCurrentPosition(position => {
-				const {latitude, longitude} = position.coords
-				this.setState({userPoint: {lat: latitude, lng: longitude } })
-			})
+			this.setState({merchantInfo: merchantPoints, userPoint: {lat: this.props.stateForMap.userLat, lgn: this.props.stateForMap.userLong}});
+		
+			// navigator.geolocation.getCurrentPosition(position => {
+			// 	const {latitude, longitude} = position.coords
+			// 	this.setState({userPoint: {lat: latitude, lng: longitude } })
+			// })
+
+			
 			
 
 		}
 		
-		render() {			
-				const allPoints = this.state.merchantInfo.map((merchant, index) => {
-					console.log('This is merchant inside map function: ', merchant)
-					return <Marker title={merchant.name} name={merchant.name} position={{lat: merchant.lat, lng: merchant.lng}} key={index}/>
-				});
-		
-			
-
-		//let userPoint = { lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong };
-
-		
-		
+		render() {	
+console.log('merchant')
+console.log('this.state.loading + other', this.props.stateForMap.loading || this.state.loading)
+if (this.props.stateForMap.loading){
+	return null;
+}		
     return (
+
 			<div style={{position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
 
 				<div style={{minHeight: "100%", position: "relative"}}>
@@ -89,15 +100,14 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={15}
 						style={mapStyles}
-						initialCenter={{lat: 32, lgn: -75}}>
+						initialCenter={{lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong}}>
 
-							{allPoints}
-
-						<Marker
-								title={'You are here'}
-								name={'SOMA'}	
-								position={{lat: this.state.userPoint.lat, lgn: this.state.userPoint.lgn}}
-								icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}							
+							{this.thing(this.state.merchantInfo)}
+					<Marker
+							title={'You are here'}						
+							name={'SOMA'}	
+							position={{lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong}}								
+												
 								/>
 					
 

@@ -9,6 +9,9 @@ import Map from '../Component/Map';
 
 
 class Deals extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {toggle : 3}
 
   changeState = (num) => {
