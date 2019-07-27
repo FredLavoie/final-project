@@ -63,19 +63,18 @@ router.post('/new', function(req, res) {
     .into('deals')
     .then((data) => {
       res.status(200).json({
-        message: 'Deal created !',
+        message: 'Deal created.',
         data: data
       });
     })
     .catch(() => {
-      res.status(400).json({message: 'invalid data'})
+      res.status(400).json({message: 'Invalid data.'})
     })
   }else{
     res.status(401).json({
-      message: 'login please !'
+      message: 'You need to login.'
     })
   }
-
 
 });
 

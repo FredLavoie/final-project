@@ -3,25 +3,35 @@ import { withRouter } from 'react-router-dom';
 import Auth from '../auth';
 
 class Login extends Component {
+  state = {
+    message:"",
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('/api/merchants/login', {
-      method:'POST',
-      headers:{ "Content-Type" : "application/json" },
-      body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
-    })
-      .then(function(response) {
-        return response.json();
+    const login = async () => {
+      const query = await fetch('/api/merchants/login', {
+        method:'POST',
+        headers:{ "Content-Type" : "application/json" },
+        body: JSON.stringify({ email: event.target.email.value,  password: event.target.password.value })
       })
-      .then( merchant_info => {
-        localStorage.setItem("token", merchant_info.token);
-        localStorage.setItem("merchant_id", merchant_info.merchant_id);
-        localStorage.setItem("business_name", merchant_info.business_name);
+      if(query.ok){
+        let response = await query.json()
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("merchant_id", response.merchant_id);
+        localStorage.setItem("business_name", response.business_name);
         Auth.login(() => {
           this.props.history.push('/merchants/dashboard');
-        } );
-      });
+        });
+        this.setState({message:response.message})
+      }
+
+      if(query.status === 400){
+        let response = await query.json();
+        this.setState({message:response.message})
+      }
+    }
+    login()
   }
   render() {
     return (
@@ -42,6 +52,7 @@ class Login extends Component {
                 <label htmlFor="pass">Password</label>
               </div>
             </div>
+            <p style={{color: 'red'}}>{this.state.message}</p>
             <div className="row">
               <div className="col m12">
                 <p className="right-align">

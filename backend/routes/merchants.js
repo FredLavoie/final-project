@@ -74,14 +74,18 @@ router.post('/login', function(req, res) {
         jwt.sign(
           { merchant_id: merchant.id },
           process.env.JWT_SECRET,
-          { expiresIn: 60*60*24 }, (err, token) => {
+          {expiresIn: 60*60*24}, (err, token) => {
             if (err) {
               console.log(err);
             } else {
-              res.json({ token: token, merchant_id: merchant.id, business_name: merchant.business_name });
+              res.status(200).json({token: token, merchant_id: merchant.id, business_name: merchant.business_name });
             }
           });
       }
+    })
+    .catch((exeption) => {
+      console.error('Merchant does not exist.', exeption);
+      res.status(400).json({message: 'Invalid input'});
     });
 });
 
