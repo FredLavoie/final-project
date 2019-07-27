@@ -12,6 +12,17 @@ const auth            = require('../auth/auth');
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
+// [GET] all merchant information for map points
+router.get('/', function(req, res) { 
+  knex
+    .select("*")
+    .from("merchants")
+    .then((data) => {
+      res.json(data);
+    });
+});
+
+
 // [GET] merchant information
 router.get('/current_merchant', auth, function(req, res) { 
   knex
