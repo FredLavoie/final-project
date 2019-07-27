@@ -8,7 +8,7 @@ export class MainShoppingCart extends Component {
   render() {
     let shoppingCart = this.props.shoppingCart
     const dataShopping = shoppingCart.map( item => 
-  <Row shoppingcart={item}  key={item.id} entireshoppingcart={this.props.shoppingCart} deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/> ) 
+  <Row shoppingcart={item}  key={item.deal_id} entireshoppingcart={this.props.shoppingCart} deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/> ) 
   
   const totalPrice = shoppingCart.map(cart => (cart.current_price) * (cart.cart_quantity) );
   let price = 0; 

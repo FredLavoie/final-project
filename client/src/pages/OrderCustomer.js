@@ -13,9 +13,6 @@ componentDidMount(){
     this.setState({confetti: false})
   },5000)
 }
-
-
-
   render() {
     return (
       <div>
