@@ -104,7 +104,8 @@ export class MapContainer extends React.Component {
 							title={'You are here'}
 							name={'SOMA'}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-							onClick={this.onMarkerClick}			
+							onClick={this.onMarkerClick}
+          					name={'This is you :)'}					
 						/>
 
 						<InfoWindow
