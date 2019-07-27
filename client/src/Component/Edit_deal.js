@@ -2,18 +2,48 @@ import React, { Component } from 'react';
 
 export class Edit_deal extends Component {
   state = {
+    message: '',
     name: this.props.deal.name,
     description: this.props.deal.description,
     quantityAvailable: this.props.deal.quantity_available,
-    currentPrice: this.props.deal.current_price,
+    currentPrice: this.props.deal.current_price,  
+    dealId: this.props.deal.id,
+    isUpdated: false
   }
 
 
 
   // here is the fetch saad was here : ) 
 
-  handleSubmit =  () =>{
-    
+  handleSubmit = async (event) =>{
+    // lol i dont need the event target sorry it allready in the state  xd
+    event.preventDefault()
+    const bodyOfRequest = {
+      merchant_id: this.state.dealId,
+      name:this.state.name,
+      description: this.state.description,
+      quantity_available: this.state.quantityAvailable,
+      current_price: this.state.currentPrice,
+      image_path:  this.props.deal.image_path
+    }
+
+    const request = await fetch(`/api/deals/${this.state.dealId}/update`,{
+      method: 'POST',
+      headers:{
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(bodyOfRequest)
+    })
+
+
+    console.log(request)
+    if(request.ok){
+      this.setState({isUpdated: true })
+    }
+    if(request.status === 400){
+      let response = request.json();
+      this.setState({message: response.message })
+    }
   } 
 
   nameChange = (event) =>{
@@ -42,6 +72,7 @@ export class Edit_deal extends Component {
         <div className="container">
           <div className="row">
             <form className="col s12" onSubmit={this.handleSubmit}>
+            <p style={{color: 'red'}}>{this.state.message}</p>
               <h2 className="center-align">Update Deal</h2>
               <div className="row">
                 <div className="input-field col s6 m4">
@@ -94,7 +125,7 @@ export class Edit_deal extends Component {
               <div className="row">
                 <div className="col m12">
                   <p className="right-align">
-                    <button className="btn btn-large waves-effect waves-light" type="button" name="action">Update Deal</button>
+                    <button className="btn btn-large waves-effect waves-light" type="submit" name="action">Update Deal</button>
                   </p>
                 </div>
               </div>

@@ -4,6 +4,7 @@ var moment = require('moment');
 
 export class Row extends Component {
   state = {edit: false}
+
   render() {
 
     let timeStamp = moment(this.props.deal.end_date).format('MMM Do, h:mm a');
