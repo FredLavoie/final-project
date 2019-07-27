@@ -61,9 +61,10 @@ router.post('/new', function(req, res) {
     .insert(dealObject)
     .into('deals')
     .then((data) => {
+      let value = JSON.stringify(data)
       res.status(200).json({
         message: 'Deal created !',
-        data: data
+        data: value
       });
     })
     .catch(() => {
@@ -83,7 +84,6 @@ router.post('/:deal_id/update', function(req, res) {
 
    const {name, description, quantity_available, current_price, image_path } = req.body;
 
-
   //  .where({ id: 2 })
   //  .update({ name: 'Homer' })
 
@@ -93,7 +93,7 @@ router.post('/:deal_id/update', function(req, res) {
     .where({id: req.params.deal_id})
     .update({ name, description, quantity_available, current_price, image_path } )
     .then( function() {
-      res.redirect('/');
+      res.status(200).json()
     }).catch(() => {
       res.status(400).json({
         message: 'opps try again'

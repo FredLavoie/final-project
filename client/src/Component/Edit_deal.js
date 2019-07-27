@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 export class Edit_deal extends Component {
   state = {
     message: '',
@@ -8,10 +7,7 @@ export class Edit_deal extends Component {
     quantityAvailable: this.props.deal.quantity_available,
     currentPrice: this.props.deal.current_price,  
     dealId: this.props.deal.id,
-    isUpdated: false
   }
-
-
 
   // here is the fetch saad was here : ) 
 
@@ -35,10 +31,8 @@ export class Edit_deal extends Component {
       body: JSON.stringify(bodyOfRequest)
     })
 
-
-    console.log(request)
     if(request.ok){
-      this.setState({isUpdated: true })
+      location.reload();
     }
     if(request.status === 400){
       let response = request.json();
