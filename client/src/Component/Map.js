@@ -16,7 +16,8 @@ export class MapContainer extends React.Component {
 		super(props)
 	}
 
-	state = { merchantInfo: [] }
+	state = { merchantInfo: [],
+	userPoint: {lat: 45, lgn: -72} }
 
 
 	
@@ -35,6 +36,11 @@ export class MapContainer extends React.Component {
 			});
 			console.log("I was here", merchantPoints)
 			this.setState({merchantInfo: merchantPoints});
+			navigator.geolocation.getCurrentPosition(position => {
+				const {latitude, longitude} = position.coords
+				this.setState({userPoint: {lat: latitude, lng: longitude } })
+			})
+			
 
 		}
 		
@@ -46,7 +52,7 @@ export class MapContainer extends React.Component {
 		
 			
 
-		let userPoint = { lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong };
+		//let userPoint = { lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong };
 
 		
 		
@@ -83,17 +89,14 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={15}
 						style={mapStyles}
-						initialCenter={{
-						lat: this.props.stateForMap.userLat,
-						lng: this.props.stateForMap.userLong
-						}}>
+						initialCenter={{lat: 32, lgn: -75}}>
 
 							{allPoints}
 
 						<Marker
 								title={'You are here'}
 								name={'SOMA'}	
-								position={userPoint}
+								position={{lat: this.state.userPoint.lat, lgn: this.state.userPoint.lgn}}
 								icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}							
 								/>
 					
