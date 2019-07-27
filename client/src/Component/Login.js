@@ -25,7 +25,6 @@ class Login extends Component {
         });
         this.setState({message:response.message})
       }
-
       if(query.status === 400){
         let response = await query.json();
         this.setState({message:response.message})
@@ -33,6 +32,7 @@ class Login extends Component {
     }
     login()
   }
+
   render() {
     return (
       <main className="container">
