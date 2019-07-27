@@ -27,7 +27,11 @@ export class Row extends Component {
             <a className="waves-effect waves-light btn" onClick={() =>  this.state.edit ? this.setState({edit: false }) : this.setState({edit: true})}>edit</a>
           </td>
         </tr>
-        {this.state.edit && <EditDeal updateDeal={this.props.updateDeal} deal={this.props.deal} />}  
+        <tr>
+          <td colSpan="100" className="animate pulse" style={{transition: 'all 1s'}}>
+        { this.state.edit && <EditDeal updateDeal={this.props.updateDeal} deal={this.props.deal} /> }
+      </td>
+        </tr>
       </tbody>
     );
   }
