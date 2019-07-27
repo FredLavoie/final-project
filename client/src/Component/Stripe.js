@@ -23,7 +23,7 @@ export class TakeMoney extends React.Component {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
           body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('saveShoppingcart')),  userId: JSON.parse(localStorage.getItem('user_id')), total: JSON.parse(this.props.priceDecimal) })
-         
+        
         }).then(function(response) {
           return response.json();
           

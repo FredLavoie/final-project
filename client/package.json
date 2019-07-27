@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
+    "google-maps-react": "^2.0.2",
     "firebase": "^6.3.3",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0",
