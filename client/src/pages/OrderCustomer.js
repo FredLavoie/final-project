@@ -13,9 +13,6 @@ componentDidMount(){
     this.setState({confetti: false})
   },5000)
 }
-
-
-export class MerchantDashboard extends Component 
   render() {
     return (
       <div>

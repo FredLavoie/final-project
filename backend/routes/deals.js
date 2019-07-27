@@ -41,6 +41,7 @@ router.get('/:id', function(req, res) {
 
 // [CREATE] a new deal
 router.post('/new', function(req, res) {
+  console.log(req.body)
   let dateArr = (req.body.date).split('-');
   let timeArr = (req.body.time).split(':');
   let year= Number(dateArr[0]);
@@ -48,7 +49,6 @@ router.post('/new', function(req, res) {
   let day= Number(dateArr[2]);
   let hour= Number(timeArr[0]);
   let min= Number(timeArr[1]);
-  
   let dealObject = {};
   dealObject.merchant_id = req.body.merchant_id;
   dealObject.name = req.body.name;
