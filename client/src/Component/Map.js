@@ -29,11 +29,7 @@ export class MapContainer extends React.Component {
 
 
 	componentDidMount() {
-		
-			// navigator.geolocation.getCurrentPosition(position => {
-			// 	const {latitude, longitude} = position.coords
-			// 	this.setState({userPoint: {lat: latitude, lng: longitude } })
-			// })
+
 
 		}
 		
@@ -73,6 +69,7 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={15}
 						style={mapStyles}
+						streetViewControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}>
 
 						{this.thing(this.props.dealsState.merchantInfo)}
