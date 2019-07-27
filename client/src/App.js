@@ -26,8 +26,6 @@ class App extends Component {
     shoppingcart: [],
     counter: 0,
     userCity: '',
-    userLat: 45,
-    userLong: -73,
     loading: true
   }
 
@@ -165,18 +163,6 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ readydom: true });
     }, 1000);
-    // Get location of user
-    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
-      .then(res => res.json())
-      .then(data => this.setState({userCity: data.city}));
-
-      //set current point
-      navigator.geolocation.getCurrentPosition(position => {
-				const {latitude, longitude} = position.coords
-				this.setState({userLat: latitude, userLong: longitude, loading: false})
-			}, () => {
-        this.setState({loadding: false})
-      })
   }
 
   render() {
