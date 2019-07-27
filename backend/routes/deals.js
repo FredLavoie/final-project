@@ -57,13 +57,25 @@ router.post('/new', function(req, res) {
   dealObject.image_path = req.body.image_path;
   dealObject.current_price = req.body.current_price;
   dealObject.end_date = new Date(year,month,day,hour,min);
-
-  knex
+  if(dealObject.merchant_id){
+    knex
     .insert(dealObject)
     .into('deals')
     .then((data) => {
-      res.json(data);
-    });
+      res.status(200).json({
+        message: 'Deal created !',
+        data: data
+      });
+    })
+    .catch(() => {
+      res.status(400).json({message: 'invalid data'})
+    })
+  }else{
+    res.status(401).json({
+      message: 'login please !'
+    })
+  }
+
 
 });
 
@@ -71,7 +83,6 @@ router.post('/new', function(req, res) {
 router.post('/:deal_id/update', function(req, res) {
   let dealToUpdate = req.body[0];
   let dealObject = {};
-
   dealObject.merchant_id = dealToUpdate.merchant_id;
   dealObject.name = dealToUpdate.name;
   dealObject.description = dealToUpdate.description;
