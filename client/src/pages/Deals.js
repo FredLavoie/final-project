@@ -23,7 +23,7 @@ class Deals extends Component {
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
         <div className="navbar-fixed">
-        <Nav/>
+          <Nav/>
         </div>
           <p>
             <label>
@@ -53,7 +53,9 @@ class Deals extends Component {
     } else if(this.state.toggle == 1) {
     return (
       <div style={{minHeight: "100%", position: "relative"}}>
-        <Nav/>
+        <div className="navbar-fixed">
+          <Nav/>
+        </div>
         <p>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} defaultChecked/>
