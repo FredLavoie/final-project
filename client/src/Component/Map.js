@@ -14,13 +14,39 @@ export class MapContainer extends React.Component {
 		super(props)
 	}
 
+	state = {
+		showingInfoWindow: false,  //Hides or the shows the infoWindow
+		activeMarker: {},          //Shows the active marker upon click
+		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+	  };
+
+	  onMarkerClick = (props, marker, e) =>
+	  this.setState({
+		selectedPlace: props,
+		activeMarker: marker,
+		showingInfoWindow: true
+	  });
+  
+	onClose = props => {
+	  if (this.state.showingInfoWindow) {
+		this.setState({
+		  showingInfoWindow: false,
+		  activeMarker: null
+		});
+	  }
+	};
+
 
 
  thing = (data) => 	{
 
 	const allPoints = data.map((merchant, index) => {
-		return <Marker title={merchant.name} name={merchant.name} position={{lat: merchant.lat, lng: merchant.lng}} key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	/>
-	
+		return <Marker title={merchant.name} name={merchant.name} 
+		position={{lat: merchant.lat, lng: merchant.lng}}
+		 key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	
+		 onClick={this.onMarkerClick}
+        name={merchant.name}	
+		 />
 	});
 	return allPoints
 }
@@ -29,11 +55,7 @@ export class MapContainer extends React.Component {
 
 
 	componentDidMount() {
-		
-			// navigator.geolocation.getCurrentPosition(position => {
-			// 	const {latitude, longitude} = position.coords
-			// 	this.setState({userPoint: {lat: latitude, lng: longitude } })
-			// })
+
 
 		}
 		
@@ -73,6 +95,7 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={15}
 						style={mapStyles}
+						streetViewControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}>
 
 						{this.thing(this.props.dealsState.merchantInfo)}
@@ -80,10 +103,20 @@ export class MapContainer extends React.Component {
 						<Marker
 							title={'You are here'}
 							name={'SOMA'}
-							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}						
+							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
+							onClick={this.onMarkerClick}
+          					name={'This is you :)'}					
 						/>
-					
 
+						<InfoWindow
+						marker={this.state.activeMarker}
+						visible={this.state.showingInfoWindow}
+						onClose={this.onClose}
+						>
+						<div>
+						<h4>{this.state.selectedPlace.name}</h4>
+						</div>
+						</InfoWindow>
 
 						</Map>
 
