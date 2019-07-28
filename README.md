@@ -27,10 +27,13 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 <img src="./docs/map_deals.png" width="800">
 
 ### Shopping cart
-<img src="./docs/shopping_cart.png" width="800">
+<img src="./docs/shopping_cart2.png" width="800">
 
 ### Checkout
 <img src="./docs/checkout.png" width="800">
+
+### Merchant dashboard
+<img src="./docs/merchant_dashboard.png" width="800">
 
 
 ## Getting started
