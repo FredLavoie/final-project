@@ -63,13 +63,8 @@ router.post('/new', function(req, res) {
     .then((data) => {
       let value = JSON.stringify(data)
       res.status(200).json({
-<<<<<<< HEAD
         message: 'Deal created.',
         data: data
-=======
-        message: 'Deal created !',
-        data: value
->>>>>>> 408b337696407165fc6cf41388e2e57e5cca99ca
       });
     })
     .catch(() => {
