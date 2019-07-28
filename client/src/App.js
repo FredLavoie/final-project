@@ -26,8 +26,7 @@ class App extends Component {
     shoppingcart: [],
     counter: 0,
     userCity: '',
-    userLat: 45.5546832,
-    userLong: -73.6929376
+    loading: true
   }
 
   loginUser = (merchant_id) => {
@@ -164,10 +163,6 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ readydom: true });
     }, 1000);
-    // Get location of user
-    fetch('http://api.ipstack.com/check?access_key=25bd796cc69e12d0fcf745a091c60b86')
-      .then(res => res.json())
-      .then(data => this.setState({userCity: data.city, userLat: data.latitude, userLong: data.longitude}));
   }
 
   render() {

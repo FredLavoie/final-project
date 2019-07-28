@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
-import Nav from '../Component/Nav';
-import Loading from '../Component/Loading';
+// import Nav from '../Component/Nav';
+// import Loading from '../Component/Loading';
 
 
 const mapStyles = {
@@ -9,48 +9,60 @@ const mapStyles = {
 	height: '83.5vh'
 };
 
-
-
 export class MapContainer extends React.Component {
 	constructor(props){
 		super(props)
 	}
 
-	state = { merchantInfo: [] }
+	state = {
+		showingInfoWindow: false,  //Hides or the shows the infoWindow
+		activeMarker: {},          //Shows the active marker upon click
+		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+	  };
+
+	  onMarkerClick = (props, marker, e) =>
+	  this.setState({
+		selectedPlace: props,
+		activeMarker: marker,
+		showingInfoWindow: true
+	  });
+  
+	onClose = props => {
+	  if (this.state.showingInfoWindow) {
+		this.setState({
+		  showingInfoWindow: false,
+		  activeMarker: null
+		});
+	  }
+	};
 
 
+
+ thing = (data) => 	{
+
+	const allPoints = data.map((merchant, index) => {
+		return <Marker title={merchant.name} name={merchant.name} 
+		position={{lat: merchant.lat, lng: merchant.lng}}
+		 key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	
+		 onClick={this.onMarkerClick}
+        name={merchant.name}	
+		 />
+	});
+	return allPoints
+}
 	
+
+
+
 	componentDidMount() {
-		const merchantPoints = [];
-		fetch('/api/merchants')
-			.then(res => res.json())
-			.then(data => {
-				for(let ea of data) {
-					let obj = {}
-					obj.name = ea.business_name,
-					obj.lat = ea.latitude,
-					obj.lng = ea.longitude
-					merchantPoints.push(obj)
-				}
-			});
-			console.log("I was here", merchantPoints)
-			this.setState({merchantInfo: merchantPoints});
+
 
 		}
 		
-		render() {			
-				const allPoints = this.state.merchantInfo.map((merchant, index) => {
-					console.log('This is merchant inside map function: ', merchant)
-					return <Marker title={merchant.name} name={merchant.name} position={{lat: merchant.lat, lng: merchant.lng}} key={index}/>
-				});
-		
-			
+		render() {	
 
-		let userPoint = { lat: this.props.stateForMap.userLat, lng: this.props.stateForMap.userLong };
-
-		
-		
     return (
+
 			<div style={{position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
 
 				<div style={{minHeight: "100%", position: "relative"}}>
@@ -83,21 +95,28 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={15}
 						style={mapStyles}
-						initialCenter={{
-						lat: this.props.stateForMap.userLat,
-						lng: this.props.stateForMap.userLong
-						}}>
+						streetViewControl= {false}
+						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}>
 
-							{allPoints}
+						{this.thing(this.props.dealsState.merchantInfo)}
 
 						<Marker
-								title={'You are here'}
-								name={'SOMA'}	
-								position={userPoint}
-								icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}							
-								/>
-					
+							title={'You are here'}
+							name={'SOMA'}
+							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
+							onClick={this.onMarkerClick}
+          					name={'This is you :)'}					
+						/>
 
+						<InfoWindow
+						marker={this.state.activeMarker}
+						visible={this.state.showingInfoWindow}
+						onClose={this.onClose}
+						>
+						<div>
+						<h4>{this.state.selectedPlace.name}</h4>
+						</div>
+						</InfoWindow>
 
 						</Map>
 
