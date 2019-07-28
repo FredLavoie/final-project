@@ -23,7 +23,7 @@ class DealMerchant extends Component {
     const deals = merchant.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add} customClass="m12"/> );
     console.log('merchant', merchant.business_name)
       return (
-        <div ref={(input) => { this.textInput = input; }}  key={merchant.business_name}>
+        <div ref={merchant.business_name}  key={merchant.business_name}>
           <h2 className="merchantname">{merchant.business_name}</h2>
           <Carousel 
             additionalTransfrom={0}

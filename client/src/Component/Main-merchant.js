@@ -8,7 +8,7 @@ export class Main extends Component {
     return (
       <main className="main-page" style={{margin: "auto", width: "85%"}}> 
         <a className="waves-effect waves-light btn" href="/newdeal">Create New Deal</a>
-        <p>Your Deals</p>
+        <h3 style={{textAlign:'center',transform:'translateY(-40px)'}}>Your Deals</h3>
         <table>
           <thead>
             <tr>

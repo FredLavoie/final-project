@@ -24,7 +24,7 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 <img src="./docs/deals_page.png" width="800">
 
 ### Map view showing merchants
-<img src="./docs/map_view.png" width="800">
+<img src="./docs/map_deals.png" width="800">
 
 ### Shopping cart
 <img src="./docs/shopping_cart.png" width="800">
@@ -46,17 +46,17 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 
 - [express](https://www.npmjs.com/package/express)
 - [PostgreSQL 9.x](https://www.postgresql.org/)
-- [moment](https://www.npmjs.com/package/moment)
 - [react](https://www.npmjs.com/package/react)
 - [react-dom](https://www.npmjs.com/package/react-dom)
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [materialize-css](https://www.npmjs.com/package/materialize-css)
 - [firebase](https://www.npmjs.com/package/firebase)
 - [react-firebase-file-uploader](https://www.npmjs.com/package/react-firebase-file-uploader)
-- [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout)
-- [react-confetti](https://www.npmjs.com/package/react-confetti)
-- [lodash](https://www.npmjs.com/package/lodash)
 - [google-maps-react](https://www.npmjs.com/package/google-maps-react)
-- [materialize-css](https://www.npmjs.com/package/materialize-css)
+- [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout)
 - [react-multi-carousel](https://www.npmjs.com/package/react-multi-carousel)
+- [moment](https://www.npmjs.com/package/moment)
+- [lodash](https://www.npmjs.com/package/lodash)
+- [react-confetti](https://www.npmjs.com/package/react-confetti)
 
 

@@ -13,17 +13,18 @@ class Deals extends Component {
     super(props)
   }
   state = {
-    toggle : 1,
+    toggle : 3,
     merchantInfo: [],
     userLat: 0,
     userLng: 0,
     loading: true
   }
+  
 
   focus() {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
-    this.textInput.current.focus();
+    this.textInput.current.focus;
   }
 
   changeState = (num,name) => {
@@ -31,9 +32,12 @@ class Deals extends Component {
     console.log('The change state function is being called');   
     this.setState({toggle: num});
 
-    if (num == 1){
-      this.focus(); 
-    }
+ 
+      //this.focus(); 
+      //window.scrollTo(0, name.current.offsetTop) 
+      console.log('y position', {name}.current.offsetTop)
+      window.scrollTo(0,50000 )
+    
   }
 
   componentDidMount() {
@@ -63,8 +67,6 @@ class Deals extends Component {
   
   
   render() {
-    console.log('This is the state after outside of componentDidMount', this.state);
-
     const dealsD = this.props.deals.map(deal => <DealsComponent key={deal.deal_id} deal={deal} add={this.props.add} customClass="m4"/> );
     if(this.state.toggle == 2){
       return( 
@@ -72,19 +74,19 @@ class Deals extends Component {
         <div className="navbar-fixed">
           <Nav/>
         </div>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} />
               <span>Sort By Merchant</span>
             </label>
           </p>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:2})} defaultChecked/>
               <span>Sort By Date</span>
             </label>
           </p>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:3})} />
               <span>Map</span>
@@ -103,19 +105,19 @@ class Deals extends Component {
         <div className="navbar-fixed">
           <Nav/>
         </div>
-        <p>
+        <p style={{paddingLeft: "1.2em"}}>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} defaultChecked/>
           <span>Sort By Merchant</span>
         </label>
       </p>
-      <p>
+      <p style={{paddingLeft: "1.2em"}}>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
           <span>Sort By Date</span>
         </label>
       </p>
-      <p>
+      <p style={{paddingLeft: "1.2em"}}>
       <label>
         <input name="group1" type="radio" onClick={() => this.setState({toggle:3})}/>
         <span>Map</span>
