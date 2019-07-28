@@ -13,7 +13,7 @@ class Deals extends Component {
     super(props)
   }
   state = {
-    toggle : 1,
+    toggle : 3,
     merchantInfo: [],
     userLat: 0,
     userLng: 0,
