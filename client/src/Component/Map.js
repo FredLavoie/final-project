@@ -45,7 +45,7 @@ export class MapContainer extends React.Component {
 
 	showDetails = place => {
 		console.log(place);
-		this.props.changeState(1)
+		this.props.changeState(1,place.title)
 	  };
 
 
@@ -116,19 +116,17 @@ export class MapContainer extends React.Component {
 							title={'You are here'}			
 							/>
 							<InfoWindowEx
-				marker={this.state.activeMarker}
-				visible={this.state.showingInfoWindow}
-			>
-				<div>
-				<h3>{this.state.selectedPlace.name}</h3>
-				<button
-					type="button"
-					onClick={this.showDetails.bind(this, this.state.selectedPlace)}
-				>
-					Show details
-				</button>
-				</div>
-			</InfoWindowEx>
+							marker={this.state.activeMarker}
+							visible={this.state.showingInfoWindow}
+							>
+							<div>
+								<h3>{this.state.selectedPlace.name}</h3>
+								<button
+								type="button"
+								onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
+								</button>
+							</div>
+							</InfoWindowEx>
 
 						</Map>
 

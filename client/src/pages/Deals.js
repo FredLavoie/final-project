@@ -20,11 +20,20 @@ class Deals extends Component {
     loading: true
   }
 
+  focus() {
+    // Explicitly focus the text input using the raw DOM API
+    // Note: we're accessing "current" to get the DOM node
+    this.textInput.current.focus();
+  }
 
-
-  changeState = (num) => {
+  changeState = (num,name) => {
+    console.log('name', name)
     console.log('The change state function is being called');   
     this.setState({toggle: num});
+
+    if (num == 1){
+      this.focus(); 
+    }
   }
 
   componentDidMount() {
