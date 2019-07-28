@@ -62,7 +62,7 @@ export class Edit_deal extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{height: 'auto'}}>
         <div className="container">
           <div className="row">
             <form className="col s12" onSubmit={this.handleSubmit}>
