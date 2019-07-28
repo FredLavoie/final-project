@@ -10,9 +10,21 @@ const titleCardStyle = {
 };
 
 export class Deals extends Component {
+
+  constructor(props) {
+    super(props)
+  }
   
   render() {
     let timeLeft = moment(this.props.deal.end_date).fromNow();
+
+    const addToCart = () => {
+      if(localStorage.getItem('user_id')) {
+        return (<a style={{cursor:"pointer"}}  onClick={() => this.props.add(this.props.deal)}>add to cart</a>)
+      }
+
+
+    }
 
     return (
       <div className={"col s12 " + this.props.customClass} style={{position:'relative'}}>
@@ -27,7 +39,7 @@ export class Deals extends Component {
             <p style={{ textAlign:'right' }}>{this.props.deal.quantity_available} left</p>
           </div>
           <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-            <a style={{cursor:"pointer"}}  onClick={() => this.props.add(this.props.deal)}>add to cart</a>
+            {addToCart()}
           </div>
         </div>
       </div>
