@@ -23,6 +23,7 @@ class Deals extends Component {
 
 
   changeState = (num) => {
+    console.log('The change state function is being called');   
     this.setState({toggle: num});
   }
 

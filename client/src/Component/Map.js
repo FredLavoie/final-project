@@ -45,7 +45,7 @@ export class MapContainer extends React.Component {
 		position={{lat: merchant.lat, lng: merchant.lng}}
 		 key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	
 		 onClick={this.onMarkerClick}
-        name={merchant.name}	
+        name={  <a style={{cursor:"pointer"}}  onClick={() => this.props.changeState(1)}>{merchant.name}</a>}	
 		 />
 	});
 	return allPoints
@@ -97,7 +97,6 @@ export class MapContainer extends React.Component {
 						style={mapStyles}
 						streetViewControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}>
-
 						{this.thing(this.props.dealsState.merchantInfo)}
 
 						<Marker
@@ -105,15 +104,22 @@ export class MapContainer extends React.Component {
 							name={'SOMA'}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}
-          					name={'This is you :)'}					
+							
+							name={  
+							  <a href="#" onClick={()=> this.props.changeState(1)}>Play</a>
+							}	
+							  title={'You are here'}			
 						/>
 
 						<InfoWindow
 						marker={this.state.activeMarker}
 						visible={this.state.showingInfoWindow}
 						onClose={this.onClose}
+						
 						>
 						<div>
+						content:"<button onClick={()=> this.props.changeState(1)}>See Deals</button>"
+						<a href="#" onClick={()=> this.props.changeState(1)}>Play</a>
 						<h4>{this.state.selectedPlace.name}</h4>
 						</div>
 						</InfoWindow>
