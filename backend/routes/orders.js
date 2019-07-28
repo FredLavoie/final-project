@@ -67,7 +67,6 @@ router.post('/create', function(req, res) {
 
 //[GET] user deals
 router.get('/:id/view', function(req, res) {
-  console.log('REQ USER ID:', req.params.id )
   knex
     .select("*")
     .from("orders") 
@@ -76,6 +75,11 @@ router.get('/:id/view', function(req, res) {
       res.json(data);
     });
 });
+
+router.get('/business/:id', function(req, res) {
+  console.log('REQ USER ID:', req.params.id )
+  res.json({merchant_id: req.params.id})
+})
   
 
 module.exports = router;
