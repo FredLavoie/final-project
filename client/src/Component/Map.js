@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
+import InfoWindowEx from './Info_window'; 
 // import Nav from '../Component/Nav';
 // import Loading from '../Component/Loading';
 
@@ -20,12 +21,13 @@ export class MapContainer extends React.Component {
 		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
 	  };
 
-	  onMarkerClick = (props, marker, e) =>
+	  onMarkerClick = (props, marker, e) => {
 	  this.setState({
 		selectedPlace: props,
 		activeMarker: marker,
 		showingInfoWindow: true
 	  });
+	};
   
 	onClose = props => {
 	  if (this.state.showingInfoWindow) {
@@ -36,6 +38,15 @@ export class MapContainer extends React.Component {
 	  }
 	};
 
+	//FUNCTION to change state of toggle
+	// onInfoWindowClick =() => {
+	// 	console.log('this is the function for the onclick event')
+	// }
+
+	showDetails = place => {
+		console.log(place);
+		this.props.changeState(1)
+	  };
 
 
  thing = (data) => 	{
@@ -100,29 +111,24 @@ export class MapContainer extends React.Component {
 						{this.thing(this.props.dealsState.merchantInfo)}
 
 						<Marker
-							title={'You are here'}
-							name={'SOMA'}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}
-							
-							name={  
-							  <a href="#" onClick={()=> this.props.changeState(1)}>Play</a>
-							}	
-							  title={'You are here'}			
-						/>
-
-						<InfoWindow
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}
-						onClose={this.onClose}
-						
-						>
-						<div>
-						content:"<button onClick={()=> this.props.changeState(1)}>See Deals</button>"
-						<a href="#" onClick={()=> this.props.changeState(1)}>Play</a>
-						<h4>{this.state.selectedPlace.name}</h4>
-						</div>
-						</InfoWindow>
+							title={'You are here'}			
+							/>
+							<InfoWindowEx
+				marker={this.state.activeMarker}
+				visible={this.state.showingInfoWindow}
+			>
+				<div>
+				<h3>{this.state.selectedPlace.name}</h3>
+				<button
+					type="button"
+					onClick={this.showDetails.bind(this, this.state.selectedPlace)}
+				>
+					Show details
+				</button>
+				</div>
+			</InfoWindowEx>
 
 						</Map>
 
