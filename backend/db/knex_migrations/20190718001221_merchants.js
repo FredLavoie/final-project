@@ -11,8 +11,8 @@ exports.up = function(knex) {
   table.string('postal_code');
   table.biginteger('phone_number');
   table.string('type_of_merchant');
-  table.float('latitude').notNullable();
-  table.float('longitude').notNullable();
+  table.float('latitude');
+  table.float('longitude');
   table.timestamps(true, true);
   });
 }

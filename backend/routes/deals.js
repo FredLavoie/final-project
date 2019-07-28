@@ -41,7 +41,6 @@ router.get('/:id', function(req, res) {
 
 // [CREATE] a new deal
 router.post('/new', function(req, res) {
-  console.log(req.body)
   let dateArr = (req.body.date).split('-');
   let timeArr = (req.body.time).split(':');
   let year= Number(dateArr[0]);
@@ -62,42 +61,43 @@ router.post('/new', function(req, res) {
     .insert(dealObject)
     .into('deals')
     .then((data) => {
+      let value = JSON.stringify(data)
       res.status(200).json({
-        message: 'Deal created !',
+        message: 'Deal created.',
         data: data
       });
     })
     .catch(() => {
-      res.status(400).json({message: 'invalid data'})
+      res.status(400).json({message: 'Invalid data.'})
     })
   }else{
     res.status(401).json({
-      message: 'login please !'
+      message: 'You need to login.'
     })
   }
-
 
 });
 
 // [UPDATE] a deal
 router.post('/:deal_id/update', function(req, res) {
-  let dealToUpdate = req.body[0];
-  let dealObject = {};
-  dealObject.merchant_id = dealToUpdate.merchant_id;
-  dealObject.name = dealToUpdate.name;
-  dealObject.description = dealToUpdate.description;
-  dealObject.quantity_available = dealToUpdate.quantity_available;
-  dealObject.image_path = dealToUpdate.image_path;
-  dealObject.current_price = dealToUpdate.current_price;
-  
+
+   const {name, description, quantity_available, current_price, image_path } = req.body;
+
+  //  .where({ id: 2 })
+  //  .update({ name: 'Homer' })
+
   knex
     .select('*')
     .from('deals')
     .where({id: req.params.deal_id})
-    .update(dealObject)
+    .update({ name, description, quantity_available, current_price, image_path } )
     .then( function() {
-      res.redirect('/');
-    });
+      res.status(200).json()
+    }).catch(() => {
+      res.status(400).json({
+        message: 'opps try again'
+      })
+    })
 
 });
 

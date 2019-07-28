@@ -39,7 +39,6 @@ class UserLogin extends Component {
   render() {
     return (
     <div>
-
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
@@ -75,4 +74,3 @@ class UserLogin extends Component {
 }
 
 export default withRouter(UserLogin); 
-
