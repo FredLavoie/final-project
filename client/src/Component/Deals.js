@@ -20,7 +20,11 @@ export class Deals extends Component {
 
     const addToCart = () => {
       if(localStorage.getItem('user_id')) {
-        return (<a style={{cursor:"pointer"}}  onClick={() => this.props.add(this.props.deal)}>add to cart</a>)
+        return (
+        <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
+          <a style={{cursor:"pointer"}}  onClick={() => this.props.add(this.props.deal)}>add to cart</a>
+        </div>
+        )
       }
 
 
@@ -38,9 +42,9 @@ export class Deals extends Component {
             <p>$ {this.props.deal.current_price}</p>
             <p style={{ textAlign:'right' }}>{this.props.deal.quantity_available} left</p>
           </div>
-          <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-            {addToCart()}
-          </div>
+          
+          {addToCart()}
+          
         </div>
       </div>
     );
