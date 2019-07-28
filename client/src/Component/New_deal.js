@@ -57,13 +57,12 @@ export class New_deal extends Component {
         }else{
           this.setState({message: 'Empty field'})
         }
-
     }
     createDeal()
   }
   render() {
     if(this.state.isCreated){
-      return <Redirect to='/merchants/dashboard' />
+      return <Redirect to='/merchants/dashboard'/>
     }
     return (
       <div className="container">
@@ -93,6 +92,7 @@ export class New_deal extends Component {
                 <FileUploader style={{
                   backgroundColor: 'steelblue', 
                   color: 'white', 
+                  auth: process.env.TOKEN ,
                   padding: 10, 
                   borderRadius: 4
                   }} 
