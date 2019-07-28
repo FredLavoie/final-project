@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
 import stylesArray from './mapStyles';
+import marker1 from '../../public/img/person_pin_circle.svg';
+import marker2 from '../../public/img/baseline-location_on.svg';
 
 
 
 const mapStyle = {
-	width: '55vw',
-	height: '65vh'
+	width: '87vw',
+	height: '83.5vh'
 };
 
 export class MapContainer extends React.Component {
@@ -41,11 +43,14 @@ export class MapContainer extends React.Component {
  thing = (data) => 	{
 
 	const allPoints = data.map((merchant, index) => {
-		return <Marker title={merchant.name} name={merchant.name} 
-		position={{lat: merchant.lat, lng: merchant.lng}}
-		key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	
-		onClick={this.onMarkerClick}	
-		/>
+		return (<Marker
+			title={merchant.name} 
+			name={merchant.name} 
+			position={{lat: merchant.lat, lng: merchant.lng}}
+			key={index}
+			icon= {marker2}	
+			onClick={this.onMarkerClick}	
+			/>)
 	});
 	return allPoints
 }
@@ -103,6 +108,7 @@ export class MapContainer extends React.Component {
 						<Marker
 							title={'You are here'}
 							name={'This is you :)'}
+							icon= {marker1}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}								
 						/>
