@@ -91,9 +91,6 @@ router.post('/login', function(req, res) {
 
 // [REGISTER]
 router.post('/register', function(req, res) {
-  console.log('REQ BODY:', req.body)
-  console.log('REQ CONFIRM PASS:', req.body.confirm_password)
-  console.log('REQ PASS:', req.body.password)
   let newUserObj = {};
   newUserObj.business_name = req.body.business_name;
   newUserObj.email = req.body.email;

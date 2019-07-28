@@ -14,11 +14,12 @@ const router 					= express.Router();
 router.post('/create', function(req, res) {
   console.log('This is the cart stuff inside backend: ', req.body);
   let orderObj = {};
-  const { cart, userId, total } = req.body;
+  const { cart, userId, total, merchant_id} = req.body;
 
   orderObj.user_id = userId;
   orderObj.total = total;
-	
+  orderObj.merchant_id = merchant_id;
+  
   knex
     .insert(orderObj)
     .into('orders')
@@ -33,8 +34,6 @@ router.post('/create', function(req, res) {
       }
     });
 	
-	
-
 
   function updateQuantity(item) {
     console.log('Inside updateQuantity function');
@@ -65,8 +64,18 @@ router.post('/create', function(req, res) {
       .then();
   }
 
+  //[GET] user deals
+router.get('/:id/orders', function(req, res) {
+  knex
+    .select("*")
+    .from("orders")
+    .where("orders.user_id", req.user_id)
+    .then((data) => {
+      res.json(data);
+    });
+});
+
 
 });
 
 module.exports = router;
-

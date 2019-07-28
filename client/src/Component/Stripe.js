@@ -22,7 +22,9 @@ export class TakeMoney extends React.Component {
         fetch('/api/orders/create', {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
-          body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('saveShoppingcart')),  userId: JSON.parse(localStorage.getItem('user_id')), total: JSON.parse(this.props.priceDecimal) })
+          body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('saveShoppingcart')),  
+          userId: JSON.parse(localStorage.getItem('user_id')), 
+          total: JSON.parse(this.props.priceDecimal) })
         
         }).then(function(response) {
           return response.json();

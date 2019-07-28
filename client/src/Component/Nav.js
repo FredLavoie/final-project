@@ -36,8 +36,8 @@ class Nav extends Component {
     }
     
     let dashBoard = "";
-    if(localStorage.getItem('token')) {
-      dashBoard = <a href='#'>View Orders</a>
+    if(localStorage.getItem('token') && localStorage.getItem('user_id')) {
+      dashBoard = <a href='/orders'>View Orders</a>
     }
     if(localStorage.getItem('token') && localStorage.getItem('merchant_id')) {
       dashBoard = <a href='/merchants/dashboard'>Dashboard</a>

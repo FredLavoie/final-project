@@ -27,7 +27,8 @@ router.post('/save-stripe-token', auth, async function(req, res) {
       amount: req.body.amount,
       currency: "cad",
       description: "An example charge",
-      source: req.body.id
+      source: req.body.id,
+      // stripe_charge_id: req.body.card.id
     });
     res.json({status});
   } catch (err) {

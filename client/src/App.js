@@ -16,6 +16,7 @@ import OrderCustomer from './pages/OrderCustomer';
 import PrivateRoute from './PrivateRoute';
 import Footer from './Component/Footer';
 import UserLogin from './pages/User_Login';
+import ViewOrders from './pages/Order_view';
 import Map from './Component/Map';
 
 class App extends Component {
@@ -175,6 +176,7 @@ class App extends Component {
           <Route path="/deals" render={() => <Deals stateForMap={this.state} isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart} counter={this.state.counter} />} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/users/login" component={UserLogin} />
+          <Route exact path="/orders" component={ViewOrders} />
           <Route exact path="/signup" component={Registration} />
           <Route exact path="/register" component={MerchantRegister} />
           <PrivateRoute exact path="/update" component={Edit_deal} />
