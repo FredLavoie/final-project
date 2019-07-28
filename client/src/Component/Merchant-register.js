@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
 
 export class MerchantRegister extends Component {
   state = {
     message: '',
-    redirect: false,
-    userCreated: false,
-    isReady: false
+    merchantCreated: false,
+    isReady:false,
+    error: false
   }
 
 handleSubmit = (event) =>{
+  event.preventDefault();
+
   let merchant = event.target.type_of_merchant;
   let type = merchant[merchant.selectedIndex]
   let province = event.target.province.value;
-  event.preventDefault();
-    const newMerchant ={
+  const newMerchant ={
     business_name: event.target.business_name.value,
     email: event.target.email.value,
     retype_email: event.target.retype_email.value,
@@ -26,8 +29,7 @@ handleSubmit = (event) =>{
     phone_number: event.target.phone_number.value,
     type_of_merchant: type.value
   }
-
-  const sendUser = async () =>{ 
+  const sendMerchant = async () =>{ 
       const query = await fetch('/api/merchants/register',{method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -35,26 +37,34 @@ handleSubmit = (event) =>{
       },
       body: JSON.stringify(newMerchant)
     })
-console.log('QUERY FETCH:', query)
-    if(query.ok){
+    console.log('QUERY FETCH:', query)
+    if(query.status === 200){
       let  response  = await query.json()
-      this.setState({message: response.message})
-      if(response.good){
-        this.setState({redirect: true, userCreated: true, message: response.message})
-        setTimeout(() => {
-          this.setState({isReady: true})
-        }, 1000)
-      }
+      this.setState({message: response.message, error: false})
+      setTimeout(() => {
+        this.setState({merchantCreated: true, isReady: true})
+      }, 8000)
     }
     if(query.status === 400){
       let response = await query.json();
-      console.log('RESPONSE MESSAGE:', response.message);
-      this.setState({message: response.message})
+      this.setState({message: response.message, error: true})
+    }
+    if(query.status === 401){
+      let response = await query.json();
+      this.setState({message: response.message, error: true})
+    }
+    if(query.status === 402){
+      let response = await query.json();
+      this.setState({message: response.message, error: true})
     }
   }
-  sendUser()
+  sendMerchant()
 }
+
   render() {
+    if(this.state.isReady){
+      return <Redirect to='/login' />
+    }
     return (
       <div>
         <div className="container">
@@ -131,7 +141,7 @@ console.log('QUERY FETCH:', query)
                   <input id="icon_telephone" name="phone_number" type="tel" className="validate"/>
                   <label htmlFor="icon_telephone">Telephone</label>
                 </div>
-                <div className="input-field col s12 m2">
+                <div className="input-field col s12 m4">
                   <select name="type_of_merchant">
                     <option value="" disabled selected >Type of Business</option>
                     <option value="Café">Café</option>
@@ -140,6 +150,7 @@ console.log('QUERY FETCH:', query)
                   </select>
                 </div>
               </div>
+              <p>{this.state.error ? <p style={{color: 'red'}}> {this.state.message}</p> : <h5 style={{color: 'green'}}>{this.state.message}</h5> }</p>
               <div className="row">
                 <div className="col m12">
                   <p className="right-align">
