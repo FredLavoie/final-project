@@ -25,12 +25,12 @@ export class ViewOrder extends Component {
       headers: {"authorization": localStorage.getItem('token')}})
       .then(res => res.json())
       .then(data => {   
-        console.log('Data', data)
+      this.setState({ user_deals: data });
       }); 
   }
 
   render() {
-    console.log('PROPS STATE:', this.state.props )
+    console.log('PROPS STATE DEALS:', this.state.user_deals )
     if (this.state.viewOrder === false) {
       return <Redirect to='/login'/>;
     }

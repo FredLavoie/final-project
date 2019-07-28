@@ -19,7 +19,6 @@ export class TakeMoney extends React.Component {
 
       console.log('res', response);
       if(response.ok){
-        console.log('PROPS IN STRIPE.js:',this.props)        
         fetch('/api/orders/create', {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
@@ -33,7 +32,7 @@ export class TakeMoney extends React.Component {
         });        
         
         //delete cart (need to create function that update state and then call local storage)
-          // window.location.assign('/order');
+          window.location.assign('/order');
           localStorage.removeItem('saveShoppingcart')        
         }
     });
@@ -48,7 +47,6 @@ export class TakeMoney extends React.Component {
       let response = await query.json();
       this.setState({userEmail: response.email})
     }
-    console.log(' QUERY  ', query)
   }
  
   componentDidMount() {
