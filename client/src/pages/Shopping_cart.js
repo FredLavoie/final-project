@@ -15,12 +15,20 @@ export class ShoppingCart extends Component {
       button.setAttribute('class',"waves-effect waves-light btn")
     });
  
-    return (
-      <div>
-        <Nav shoppingCart={this.props.shoppingcart}/> 
-        <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/>
-      </div>
-    )
+    if(!localStorage.getItem('user_id')) {
+      return (
+        window.location.assign('/login')
+      )
+    } else {
+
+      return (
+        <div>
+          <Nav shoppingCart={this.props.shoppingcart}/> 
+          <MainShoppingCart shoppingCart={this.props.shoppingcart}  deleteCartItem={this.props.deleteCartItem} removeOneCartItem={this.props.removeOneCartItem} addOneCartItem={this.props.addOneCartItem}/>
+        </div>
+      )
+    }
+
   }
 }
   
