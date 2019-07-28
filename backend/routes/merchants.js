@@ -91,7 +91,9 @@ router.post('/login', function(req, res) {
 
 // [REGISTER]
 router.post('/register', function(req, res) {
-  console.log('REQ BODY', req.body)
+  console.log('REQ BODY:', req.body)
+  console.log('REQ CONFIRM PASS:', req.body.confirm_password)
+  console.log('REQ PASS:', req.body.password)
   let newUserObj = {};
   newUserObj.business_name = req.body.business_name;
   newUserObj.email = req.body.email;
@@ -104,53 +106,39 @@ router.post('/register', function(req, res) {
   newUserObj.type_of_merchant = req.body.type_of_merchant;
   // newUserObj.latitude = req.body.latitude;
   // newUserObj.longitude = req.body.longitude;
-
-
-  knex
-    .insert(newUserObj)
-    .into('merchants')
-    .returning('id')
-    .then( function([merchant_id]) {
-      jwt.sign(
-        { merchant_id: merchant_id },
-        process.env.JWT_SECRET,
-        { expiresIn: 60*60*24 }, (err, token) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.status(201).json({ token: token, merchant_id: merchant_id, business_name: business_name });
-          }
+  console.log("USER OBJECT:", newUserObj)
+  if(newUserObj.business_name 
+    && newUserObj.email 
+    && newUserObj.password 
+    && newUserObj.street_address 
+    && newUserObj.city
+    && newUserObj.province
+    && newUserObj.postal_code
+    && newUserObj.phone_number
+    && newUserObj.type_of_merchant
+    !== ""){
+    if( req.body.password === req.body.confirm_password){
+      if(req.body.email === req.body.retype_email){
+        knex
+        .insert(newUserObj)
+        .into('merchants')
+        .returning('id')
+        .then( result => { 
+          console.log(result) 
+          res.status(200).json({
+            message:'Registration has been submitted succefully. Admission will contact shortly.',
+          });
         });
-    });
-  
+      } else {
+        res.status(400).json({message:'Email should match.'})
+      } 
+    } else {
+      res.status(400).json({message:'Password should match.'})
+    }
+  }else {
+    res.status(400).json({message:'Required field are empty.'})
+  };
 });
 
 
-
 module.exports = router;
-
-
-//     knex
-//     .insert([{first_name: firstName, last_name: lastName, email: email , password: password, phone_number: null, is_admin: false}])
-//     .into('users')
-//     .then(result => {
-//       console.log(result);
-//       res.status(200).json({
-//         message:'User created.',
-//         good: true
-//       });
-//     }).catch((e) => {
-//       console.error('Error',e);
-//       res.json({
-//         message: 'Email already exist.'
-//       });
-//     });
-//   }else{
-//     res.status(400).json({message:'Password should match.'})
-//   }
-// }else{
-//   res.status(400).json({
-//     message:'Invalid input in field(s).'
-//   });
-// }
-// });
