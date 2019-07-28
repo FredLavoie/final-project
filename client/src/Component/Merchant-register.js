@@ -49,14 +49,6 @@ handleSubmit = (event) =>{
       let response = await query.json();
       this.setState({message: response.message, error: true})
     }
-    if(query.status === 400){
-      let response = await query.json();
-      this.setState({message: response.message, error: true})
-    }
-    if(query.status === 400){
-      let response = await query.json();
-      this.setState({message: response.message, error: true})
-    }
   }
   sendMerchant()
 }

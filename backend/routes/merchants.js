@@ -136,7 +136,7 @@ router.post('/register', function(req, res) {
       res.status(400).json({message:'Password should match.'})
     }
   }else {
-    res.status(400).json({message:'Empty field(s).'})
+    res.status(400).json({message:'Required field are empty.'})
   };
 });
 
