@@ -74,19 +74,24 @@ router.post('/login', function(req, res) {
         jwt.sign(
           { merchant_id: merchant.id },
           process.env.JWT_SECRET,
-          { expiresIn: 60*60*24 }, (err, token) => {
+          {expiresIn: 60*60*24}, (err, token) => {
             if (err) {
               console.log(err);
             } else {
-              res.json({ token: token, merchant_id: merchant.id, business_name: merchant.business_name });
+              res.status(200).json({token: token, merchant_id: merchant.id, business_name: merchant.business_name });
             }
           });
       }
+    })
+    .catch((exeption) => {
+      console.error('Merchant does not exist.', exeption);
+      res.status(400).json({message: 'Invalid input'});
     });
 });
 
 // [REGISTER]
 router.post('/register', function(req, res) {
+  console.log('REQ BODY', req.body)
   let newUserObj = {};
   newUserObj.business_name = req.body.business_name;
   newUserObj.email = req.body.email;
@@ -97,8 +102,9 @@ router.post('/register', function(req, res) {
   newUserObj.postal_code = req.body.postal_code;
   newUserObj.phone_number = req.body.phone_number;
   newUserObj.type_of_merchant = req.body.type_of_merchant;
-  newUserObj.latitude = req.body.latitude;
-  newUserObj.longitude = req.body.longitude;
+  // newUserObj.latitude = req.body.latitude;
+  // newUserObj.longitude = req.body.longitude;
+
 
   knex
     .insert(newUserObj)
@@ -112,7 +118,7 @@ router.post('/register', function(req, res) {
           if (err) {
             console.log(err);
           } else {
-            res.status(201).json({ token: token, merchant_id: merchant_id });
+            res.status(201).json({ token: token, merchant_id: merchant_id, business_name: business_name });
           }
         });
     });
@@ -123,3 +129,28 @@ router.post('/register', function(req, res) {
 
 module.exports = router;
 
+
+//     knex
+//     .insert([{first_name: firstName, last_name: lastName, email: email , password: password, phone_number: null, is_admin: false}])
+//     .into('users')
+//     .then(result => {
+//       console.log(result);
+//       res.status(200).json({
+//         message:'User created.',
+//         good: true
+//       });
+//     }).catch((e) => {
+//       console.error('Error',e);
+//       res.json({
+//         message: 'Email already exist.'
+//       });
+//     });
+//   }else{
+//     res.status(400).json({message:'Password should match.'})
+//   }
+// }else{
+//   res.status(400).json({
+//     message:'Invalid input in field(s).'
+//   });
+// }
+// });
