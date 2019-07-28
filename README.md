@@ -10,23 +10,53 @@ The html content is rendered on the client side using the [ReactJS](https://reac
 Using a front-end framework called [Materialize](https://materializecss.com/), the application has a modern and responsive look that users expect. The application also makes use of [Sass](https://sass-lang.com/) to give additional style customization to the content. 
 
 ### Back-end:
-The back-end server is built using [node.js](https://nodejs.org) and [Express.js](https://expressjs.com/) - a node.js framework. 
+The back-end server is built using [node.js](https://nodejs.org) and [Express.js](https://expressjs.com/) - a node.js framework. The back-ened serves as an API to the front end while the front-end does the navigation by rendering the various components.
 
 ## Screenshot
+
+### Home page
+<img src="./docs/home_page.png" width="800">
+
+### Signup page
+<img src="./docs/signup_page.png" width="800">
+
+### Deals page sorted by merchant
+<img src="./docs/deals_page.png" width="800">
+
+### Map view showing merchants
+<img src="./docs/map_view.png" width="800">
+
+### Shopping cart
+<img src="./docs/shopping_cart.png" width="800">
+
+### Checkout
+<img src="./docs/checkout.png" width="800">
 
 
 ## Getting started
 - clone repository to your local machine
-- create a ```.env``` file as per ```.env.example``` and fill out the information
-- in terminal, run ```knex migrate:latest```
-- in terminal, run ```knex seed:run```
-
+- create a ```.env``` file as per ```.env.example``` and fill out the information required
+- in terminal, run ```knex migrate:latest``` in the porject directory
+- in terminal, run ```knex seed:run``` in the porject directory
+- in terminal, run ```npm install``` and then ```npm start``` in the 'client' directory
+- in terminal, run ```npm install``` and then ```npm run dev``` in the 'backend' directory
 - navigate to ```localhost:3000``` in your browser
 
 ## Dependencies
 
 - [express](https://www.npmjs.com/package/express)
 - [PostgreSQL 9.x](https://www.postgresql.org/)
-- [Stripe]()
+- [moment](https://www.npmjs.com/package/moment)
 - [react](https://www.npmjs.com/package/react)
 - [react-dom](https://www.npmjs.com/package/react-dom)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [firebase](https://www.npmjs.com/package/firebase)
+- [react-firebase-file-uploader](https://www.npmjs.com/package/react-firebase-file-uploader)
+- [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout)
+- [react-confetti](https://www.npmjs.com/package/react-confetti)
+- [lodash](https://www.npmjs.com/package/lodash)
+- [google-maps-react](https://www.npmjs.com/package/google-maps-react)
+- [materialize-css](https://www.npmjs.com/package/materialize-css)
+- [react-multi-carousel](https://www.npmjs.com/package/react-multi-carousel)
+
+
