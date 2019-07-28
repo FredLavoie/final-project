@@ -21,13 +21,11 @@ export class ViewOrder extends Component {
     M.AutoInit();
     //for users to view their orders
     const id = localStorage.getItem('user_id');
-    fetch(`/api/${id}/orders`, {
+    fetch(`/api/orders/${id}/view`, {
       headers: {"authorization": localStorage.getItem('token')}})
       .then(res => res.json())
       .then(data => {   
-        this.setState({ users_deals: data });
-        this.setState({ viewOrder: true });
-        this.setState({ user_id: id });
+        console.log('Data', data)
       }); 
   }
 

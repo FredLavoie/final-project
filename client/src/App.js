@@ -176,7 +176,7 @@ class App extends Component {
           <Route path="/deals" render={() => <Deals stateForMap={this.state} isready={this.state.readydom} deals={this.state.deals} add={this.addTocart} shoppingcart={this.state.shoppingcart} counter={this.state.counter} />} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/users/login" component={UserLogin} />
-          <Route exact path="/orders" component={ViewOrders} />
+          <Route exact path="/view" render={() => <ViewOrders/>} />
           <Route exact path="/signup" component={Registration} />
           <Route exact path="/register" component={MerchantRegister} />
           <PrivateRoute exact path="/update" component={Edit_deal} />

@@ -3,7 +3,8 @@ import StripeCheckout from 'react-stripe-checkout';
  
 export class TakeMoney extends React.Component {
   state = {
-    redirect:false
+    redirect:false,
+    userEmail: "",
   }
   onToken = (token) => {
     token["amount"] = parseInt(this.props.price.toString().split('.').join(''));
@@ -18,7 +19,7 @@ export class TakeMoney extends React.Component {
 
       console.log('res', response);
       if(response.ok){
-        
+        console.log('PROPS IN STRIPE.js:',this.props)        
         fetch('/api/orders/create', {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
@@ -32,20 +33,37 @@ export class TakeMoney extends React.Component {
         });        
         
         //delete cart (need to create function that update state and then call local storage)
-          window.location.assign('/order');
+          // window.location.assign('/order');
           localStorage.removeItem('saveShoppingcart')        
         }
     });
   }
+
+  userEmail = async (id) => {
+    const query = await fetch(`/api/users/${id}`, {
+      method: 'GET',
+      headers: {"Content-Type" : "application/json", 'Authorization' : localStorage.getItem('token') },
+    })
+    if(query.ok) {
+      let response = await query.json();
+      this.setState({userEmail: response.email})
+    }
+    console.log(' QUERY  ', query)
+  }
  
- 
+  componentDidMount() {
+    this.userEmail(localStorage.getItem('user_id'));
+  }
+
+
   render() {
     return (
       <StripeCheckout
-      amount={this.props.price}
+        amount={this.props.price}
         token={this.onToken}
         stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
         label="Checkout"
+        email={this.state.userEmail}
         style={{margin: "20px 20px 20px 100px", "& span":{ background: "red"}}}
       />
     )

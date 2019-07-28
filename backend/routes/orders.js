@@ -15,10 +15,9 @@ router.post('/create', function(req, res) {
   console.log('This is the cart stuff inside backend: ', req.body);
   let orderObj = {};
   const { cart, userId, total, merchant_id} = req.body;
-
   orderObj.user_id = userId;
   orderObj.total = total;
-  orderObj.merchant_id = merchant_id;
+  orderObj.merchant_id = cart[0].merchant_id;
   
   knex
     .insert(orderObj)
@@ -34,7 +33,7 @@ router.post('/create', function(req, res) {
       }
     });
 	
-
+  
   function updateQuantity(item) {
     console.log('Inside updateQuantity function');
     let newQuant = item.quantity_available - item.cart_quantity;
@@ -64,18 +63,19 @@ router.post('/create', function(req, res) {
       .then();
   }
 
-  //[GET] user deals
-router.get('/:id/orders', function(req, res) {
+});
+
+//[GET] user deals
+router.get('/:id/view', function(req, res) {
+  console.log('REQ USER ID:', req.params.id )
   knex
     .select("*")
-    .from("orders")
-    .where("orders.user_id", req.user_id)
+    .from("orders") 
+    .where("orders.user_id", req.params.id)
     .then((data) => {
       res.json(data);
     });
 });
-
-
-});
+  
 
 module.exports = router;
