@@ -67,7 +67,7 @@ export class Edit_deal extends Component {
           <div className="row">
             <form className="col s12" onSubmit={this.handleSubmit}>
             <p style={{color: 'red'}}>{this.state.message}</p>
-              <h2 className="center-align">Update Deal</h2>
+              <h5  className="center-align">Update Deal</h5>
               <div className="row">
                 <div className="input-field col s6 m4">
                   <input value={this.state.name} onChange={this.nameChange} id="deal_name" type="text" className="validate"/>
