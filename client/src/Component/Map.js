@@ -67,19 +67,19 @@ export class MapContainer extends React.Component {
 
 				<div style={{minHeight: "100%", position: "relative"}}>
 					
-					<p>
+					<p style={{paddingLeft: "1.2em"}}>
 					<label>
 						<input name="group1" type="radio" onClick={() => this.props.changeState(1)}/>
 						<span>Sort By Merchant</span>
 					</label>
 					</p>
-					<p>
+					<p style={{paddingLeft: "1.2em"}}>
 						<label>
 							<input name="group1" type="radio" onClick={() => this.props.changeState(2)}/>
 							<span>Sort By Date</span>
 						</label>
 						</p>
-					<p>
+					<p style={{paddingLeft: "1.2em"}}>
 						<label>
 							<input name="group1" type="radio" onClick={() => this.props.changeState(3)} defaultChecked/>
 							<span>Map</span>
