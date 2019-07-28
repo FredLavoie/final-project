@@ -130,10 +130,10 @@ router.post('/register', function(req, res) {
           });
         });
       } else {
-        res.status(402).json({message:'Email should match.'})
+        res.status(400).json({message:'Email should match.'})
       } 
     } else {
-      res.status(401).json({message:'Password should match.'})
+      res.status(400).json({message:'Password should match.'})
     }
   }else {
     res.status(400).json({message:'Empty field(s).'})
@@ -142,29 +142,3 @@ router.post('/register', function(req, res) {
 
 
 module.exports = router;
-
-
-//     knex
-//     .insert([{first_name: firstName, last_name: lastName, email: email , password: password, phone_number: null, is_admin: false}])
-//     .into('users')
-//     .then(result => {
-//       console.log(result);
-//       res.status(200).json({
-//         message:'User created.',
-//         good: true
-//       });
-//     }).catch((e) => {
-//       console.error('Error',e);
-//       res.json({
-//         message: 'Email already exist.'
-//       });
-//     });
-//   }else{
-//     res.status(400).json({message:'Password should match.'})
-//   }
-// }else{
-//   res.status(400).json({
-//     message:'Invalid input in field(s).'
-//   });
-// }
-// });
