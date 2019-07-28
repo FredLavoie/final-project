@@ -95,7 +95,7 @@ handleSubmit = (event) =>{
                   <input id="street-addresse" name="street_address" type="text" className="validate"/>
                   <label htmlFor="street-addresse">Street Address</label>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                   <div className="input-field col s6 m3">
                     <input id="lat" name="latitude" type="text" className="validate"/>
                     <label htmlFor="latutide">Latitude</label>
@@ -104,7 +104,7 @@ handleSubmit = (event) =>{
                     <input id="lng" name="longitude"type="text" className="validate"/>
                     <label htmlFor="longitude">Longitude</label>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="row">
                 <div className="input-field col s6 m4">
