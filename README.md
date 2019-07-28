@@ -24,7 +24,7 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 <img src="./docs/deals_page.png" width="800">
 
 ### Map view showing merchants
-<img src="./docs/map_view.png" width="800">
+<img src="./docs/map_deals.png" width="800">
 
 ### Shopping cart
 <img src="./docs/shopping_cart.png" width="800">

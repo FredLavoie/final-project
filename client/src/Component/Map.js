@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
-// import Nav from '../Component/Nav';
-// import Loading from '../Component/Loading';
+import stylesArray from './mapStyles';
+import marker1 from '../../public/img/person_pin_circle.svg';
+import marker2 from '../../public/img/baseline-location_on.svg';
 
 
-const mapStyles = {
+
+const mapStyle = {
 	width: '87vw',
 	height: '83.5vh'
 };
@@ -18,22 +20,22 @@ export class MapContainer extends React.Component {
 		showingInfoWindow: false,  //Hides or the shows the infoWindow
 		activeMarker: {},          //Shows the active marker upon click
 		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-	  };
+		};
 
-	  onMarkerClick = (props, marker, e) =>
-	  this.setState({
+		onMarkerClick = (props, marker, e) =>
+		this.setState({
 		selectedPlace: props,
 		activeMarker: marker,
 		showingInfoWindow: true
-	  });
+		});
   
 	onClose = props => {
-	  if (this.state.showingInfoWindow) {
-		this.setState({
-		  showingInfoWindow: false,
-		  activeMarker: null
-		});
-	  }
+		if (this.state.showingInfoWindow) {
+			this.setState({
+				showingInfoWindow: false,
+				activeMarker: null
+			});
+		}
 	};
 
 
@@ -41,12 +43,14 @@ export class MapContainer extends React.Component {
  thing = (data) => 	{
 
 	const allPoints = data.map((merchant, index) => {
-		return <Marker title={merchant.name} name={merchant.name} 
-		position={{lat: merchant.lat, lng: merchant.lng}}
-		 key={index} 	icon= {{url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}}	
-		 onClick={this.onMarkerClick}
-        name={merchant.name}	
-		 />
+		return (<Marker
+			title={merchant.name} 
+			name={merchant.name} 
+			position={{lat: merchant.lat, lng: merchant.lng}}
+			key={index}
+			icon= {marker2}	
+			onClick={this.onMarkerClick}	
+			/>)
 	});
 	return allPoints
 }
@@ -56,10 +60,9 @@ export class MapContainer extends React.Component {
 
 	componentDidMount() {
 
-
-		}
+	}
 		
-		render() {	
+	render() {	
 
     return (
 
@@ -93,44 +96,37 @@ export class MapContainer extends React.Component {
 
 					<Map
 						google={this.props.google}
-						zoom={15}
-						style={mapStyles}
+						zoom={16}
+						style={mapStyle}
 						streetViewControl= {false}
-						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}>
+						mapTypeControl= {false}
+						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
+						styles= {stylesArray}>
 
 						{this.thing(this.props.dealsState.merchantInfo)}
 
 						<Marker
 							title={'You are here'}
-							name={'SOMA'}
+							name={'This is you :)'}
+							icon= {marker1}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-							onClick={this.onMarkerClick}
-          					name={'This is you :)'}					
+							onClick={this.onMarkerClick}								
 						/>
 
 						<InfoWindow
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}
-						onClose={this.onClose}
+							marker={this.state.activeMarker}
+							visible={this.state.showingInfoWindow}
+							onClose={this.onClose}
 						>
 						<div>
-						<h4>{this.state.selectedPlace.name}</h4>
+							<h4>{this.state.selectedPlace.name}</h4>
 						</div>
+
 						</InfoWindow>
 
-						</Map>
-
-
-
-					
-
-				
-
-
-
+					</Map>
 
 				</div>
-
       </div>
     );
   }
