@@ -81,6 +81,7 @@ router.get('/:id/view', function(req, res) {
 
 
 router.get('/user/:id', Auth, function(req, res) {
+  
   knex
   .select('orders.id as order_id', 
   'orders.user_id as user_id', 

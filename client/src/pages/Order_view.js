@@ -3,7 +3,6 @@ import Nav from '../Component/Nav';
 import MainOrderView from '../Component/Order_view';
 import M from "materialize-css";
 import { Redirect } from 'react-router-dom';
-import ViewRow from '../Component/Order_view_row';
 
 export class ViewOrder extends Component {
   constructor(props){
@@ -30,17 +29,10 @@ export class ViewOrder extends Component {
   }
 
   render() {
-    console.log('PROPS STATE DEALS:', this.state.user_deals )
     if (this.state.viewOrder === false) {
       return <Redirect to='/login'/>;
     }
-
-    let userDeals = this.state.user_deals;
-    console.log('USER DEALS:',userDeals);
-    userDeals.map((deals, index) => {
-      return(<ViewRow key={index} deals={deals}/>);
-    }
-    );
+    
     return (
       <div>
         <Nav /> 

@@ -1,51 +1,58 @@
 import React, { Component } from 'react';
 var moment = require('moment');
 import ViewButton from './View_button';
+import _ from 'lodash';
+
 
 export class ViewRow extends Component {
   state = {
     toggle: false,
-    
+    message:"",
+    data: [],
   }
 
   getOrders = async (userId) => {
     const request = await fetch(`/api/orders/user/${userId}`, {
       headers: {"authorization": localStorage.getItem('token')}})
       if(request.ok){
+        let response = await request.json()
+        this.setState({data: response})
+        console.log('RESPONSE:', response)
+      } else {
+        let response = await request.json()
+        this.setState({message: response.message})
       }
-
   }
 
   componentDidMount() {
-
-    fetch(`/api/orders/`, {
-      headers: {"authorization": localStorage.getItem('token')}})
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      });
+    this.getOrders(localStorage.getItem('user_id'))
   }
 
   render() {
-    console.log('PROPS IN ROW',this.props)
 
-    let timeStamp = moment(this.props.deal.created_at).format('MMM Do, h:mm a');
+    let viewDeal = _(this.state.data).groupBy(dealview => dealview.order_number).map( (value, key)=> {
+      return {
+        order_number: key, deals: value
+      }
+    }).value()
 
-    return (
-      <tbody>
-        <tr>
-          <td>XY652</td>
-          <td>${this.props.deal.total}</td>
-          <td>{timeStamp}</td>
-            <a className="waves-effect waves-light btn" onClick={() =>  this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle: true})}>View Order</a>
-        </tr>
-        <tr>
-          <td className="animate pulse" style={{transition: 'all 1s'}}>
-            { this.state.toggle ? <ViewButton/> : "" }
-          </td>
-      </tr>
-      </tbody>
-    );
+    const orderDeal = viewDeal.map((order, index) => {
+      let timeStamp = moment(order.deals[0].created_at).format('MMM Do, h:mm a');
+      return (
+        <tbody key={order.order_number}>
+          <tr>
+            <td>{order.order_number}</td>
+            <td>${order.deals[0].total}</td>
+            <td>{timeStamp}</td>
+            <td>
+              <a className="waves-effect waves-light btn" name={`button${index}`} onClick={() =>  this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle:`button${index}`})}>View Order</a>
+            </td>
+          </tr>
+          { this.state.toggle === `button${index}` ? <ViewButton deals={order.deals}/> : "" }
+        </tbody>
+      );
+    });
+    return orderDeal
   }
 }
 export default ViewRow;
