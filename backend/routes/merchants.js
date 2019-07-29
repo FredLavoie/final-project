@@ -76,7 +76,7 @@ router.post('/login', function(req, res) {
           process.env.JWT_SECRET,
           {expiresIn: 60*60*24}, (err, token) => {
             if (err) {
-              console.log(err);
+              res.status(401).json({messagee: 'invalid token '})
             } else {
               res.status(200).json({token: token, merchant_id: merchant.id, business_name: merchant.business_name });
             }
@@ -84,16 +84,13 @@ router.post('/login', function(req, res) {
       }
     })
     .catch((exeption) => {
-      console.error('Merchant does not exist.', exeption);
       res.status(400).json({message: 'Invalid input'});
     });
 });
 
 // [REGISTER]
 router.post('/register', function(req, res) {
-  console.log('REQ BODY:', req.body)
-  console.log('REQ CONFIRM PASS:', req.body.confirm_password)
-  console.log('REQ PASS:', req.body.password)
+
   let newUserObj = {};
   newUserObj.business_name = req.body.business_name;
   newUserObj.email = req.body.email;
@@ -106,7 +103,6 @@ router.post('/register', function(req, res) {
   newUserObj.type_of_merchant = req.body.type_of_merchant;
   // newUserObj.latitude = req.body.latitude;
   // newUserObj.longitude = req.body.longitude;
-  console.log("USER OBJECT:", newUserObj)
   if(newUserObj.business_name 
     && newUserObj.email 
     && newUserObj.password 
@@ -124,7 +120,6 @@ router.post('/register', function(req, res) {
         .into('merchants')
         .returning('id')
         .then( result => { 
-          console.log(result) 
           res.status(200).json({
             message:'Registration has been submitted succefully. Admission will contact shortly.',
           });

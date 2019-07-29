@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EditDeal from "./Edit_deal";
-var moment = require('moment');
+import moment from 'moment';
 
 export class Row extends Component {
   state = {edit: false}
@@ -8,7 +8,7 @@ export class Row extends Component {
   render() {
 
     let timeStamp = moment(this.props.deal.end_date).format('MMM Do, h:mm a');
-    
+  
     return (
       <tbody>
         <tr>
