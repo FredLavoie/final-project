@@ -119,7 +119,8 @@ export class MapContainer extends React.Component {
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}
 							icon= {marker1}
-							title={'You are here'}			
+							title={'You are here'}	
+							name={<div>You are here</div>}		
 							/>
 							<InfoWindowEx
 							marker={this.state.activeMarker}
