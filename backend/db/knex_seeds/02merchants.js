@@ -113,8 +113,8 @@ exports.seed = function(knex) {
           longitude:-73.5988173
         },
         {
-          business_name: 'Guillaume', email: faker.internet.email(),
-          password: faker.internet.password(),
+          business_name: 'Guillaume', email: 'g@live.ca',
+          password: 123456,
           street_address: '5134 St Laurent Blvd',
           city: 'Montreal',
           province: 'QC',
