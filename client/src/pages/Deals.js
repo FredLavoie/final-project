@@ -4,10 +4,7 @@ import DealsComponent from '../Component/Deals';
 import Loading from '../Component/Loading';
 import DealMerchant from '../pages/DealMerchant';
 import Map from '../Component/Map';
-import * as Scroll from 'react-scroll';
-import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-import { ScrollTo, ScrollArea } from "react-scroll-to";
-const scrollToElement = require('scroll-to-element');
+
 
 
 
@@ -25,37 +22,10 @@ class Deals extends Component {
   }
   
 
-  focus() {
-    // Explicitly focus the text input using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
-    this.textInput.current.focus;
-  }
-
-  changeState = (num,name) => {
-    
-    //console.log('The change state function is being called');   
+  changeState = (num,name) => {  
     this.setState({toggle: num}, () => {
-
-        console.log('toggle state', this.state.toggle)
-        console.log('name we have in the state', name)
-      //this.focus(); 
-      //window.scrollTo(0, name.current.offsetTop) 
-      //window.scrollTo(0,50000 )
-     // scrollTo({ id:name})
-
-     scrollToElement('#Guillaume');
-
-
-  //    scrollToElement('.Guillaume', {
-  //     offset: 0,
-  //     ease: 'linear',
-  //     duration: 150
-  // });
-
-
-  // var element = document.getElementById(name);
-  // console.log('element', element)
-  // element.scrollIntoView();
+      var element = document.getElementById(name);
+      element.scrollIntoView();
     })
     
   }
