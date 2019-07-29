@@ -4,7 +4,7 @@ const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
 const router 					= express.Router();
 const jwt             = require('jsonwebtoken');
-// const auth            = require('../auth/auth');
+const auth            = require('../auth/auth');
 
 
 
@@ -69,6 +69,15 @@ router.post('/login', function(req, res) {
     res.status(400).json({message: 'All fields  are required'})
   }
 
+});
+
+router.get('/:id', auth, function(req, res) {
+  const userId = req.params.id;
+  knex 
+  .select("email")
+  .into("users")
+  .where("id", userId)
+  .then(([email]) => res.status(200).json(email));
 });
 
 module.exports = router;

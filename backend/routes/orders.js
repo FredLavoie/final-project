@@ -5,7 +5,9 @@ const knexConfig      = require('../knexfile');
 const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
+const uuid 			    	= require('uuid/v4');
 const router 					= express.Router();
+const Auth 					  = require('../auth/auth');
 
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
@@ -13,11 +15,11 @@ const router 					= express.Router();
 
 router.post('/create', function(req, res) {
   let orderObj = {};
-  const { cart, userId, total } = req.body;
-
+  const { cart, userId, total, order_number} = req.body;
   orderObj.user_id = userId;
   orderObj.total = total;
-	
+  orderObj.order_number = uuid().substring(0,7);
+  
   knex
     .insert(orderObj)
     .into('orders')
@@ -32,9 +34,7 @@ router.post('/create', function(req, res) {
       }
     });
 	
-	
-
-
+  
   function updateQuantity(item) {
     let newQuant = item.quantity_available - item.cart_quantity;
     let quantObj = {quantity_available: newQuant};
@@ -62,8 +62,45 @@ router.post('/create', function(req, res) {
       .then();
   }
 
-
 });
 
-module.exports = router;
+//[GET] user deals
+router.get('/:id/view', function(req, res) {
+  knex
+    .select("*")
+    .from("orders") 
+    .where("orders.user_id", req.params.id)
+    .then((data) => {
+      res.json(data);
+    });
+});
 
+
+
+router.get('/user/:id', Auth, function(req, res) {
+
+  knex
+  .select('orders.id as order_id', 
+  'orders.user_id as user_id', 
+  'orders.order_number as order_number', 
+  'orders.total as total',
+  'orders_deals.deal_id as deal_id',
+  'orders.created_at as created_at',
+  'orders_deals.quantity_purchased as quantity',
+  'orders_deals.deal_price_purchased as deal_price',
+  'deals.merchant_id as merchant_id',
+  'merchants.business_name as merchant_name',
+  'deals.name as product_name',
+  'deals.image_path as image' )
+  .from('orders')
+  .innerJoin('orders_deals', 'orders.id', 'order_id')
+  .innerJoin('deals', 'orders_deals.deal_id', 'deals.id')
+  .innerJoin('merchants', 'merchants.id', 'deals.merchant_id')
+  .where('user_id', req.params.id)
+  .then( result => res.json(result))
+  .catch(error => res.json({message: error}))
+
+})
+  
+
+module.exports = router;

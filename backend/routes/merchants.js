@@ -90,7 +90,6 @@ router.post('/login', function(req, res) {
 
 // [REGISTER]
 router.post('/register', function(req, res) {
-
   let newUserObj = {};
   newUserObj.business_name = req.body.business_name;
   newUserObj.email = req.body.email;

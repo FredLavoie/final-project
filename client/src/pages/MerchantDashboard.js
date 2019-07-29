@@ -28,11 +28,11 @@ componentDidMount() {
   fetch(`/api/merchants/${id}/dashboard`, {
     headers: {"authorization": localStorage.getItem('token')}})
     .then(res => res.json())
-    .then(data => {   
+    .then(data => {
       this.setState({ merchant_deals: data });
       this.setState({ toDashboard: true });
       this.setState({ merchant_id: id });
-    }); 
+    });
 }
 
 deleteDeal = (id) => {
