@@ -7,7 +7,6 @@ export class TakeMoney extends React.Component {
   }
   onToken = (token) => {
     token["amount"] = parseInt(this.props.price.toString().split('.').join(''));
-    console.log('token is this: ',localStorage.getItem('token'))
     fetch('/api/payments/save-stripe-token', {
       method: 'POST',
       headers:{ "Content-Type" : "application/json" ,
@@ -16,13 +15,15 @@ export class TakeMoney extends React.Component {
       body: JSON.stringify(token),
     }).then(response => {
 
-      console.log('res', response);
       if(response.ok){
-        
         fetch('/api/orders/create', {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
-          body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('saveShoppingcart')),  userId: JSON.parse(localStorage.getItem('user_id')), total: JSON.parse(this.props.priceDecimal) })
+          body: JSON.stringify({ 
+            cart: JSON.parse(localStorage.getItem('saveShoppingcart')),
+            userId: JSON.parse(localStorage.getItem('user_id')),
+            total: JSON.parse(this.props.priceDecimal)
+          })
         
         }).then(function(response) {
           return response.json();

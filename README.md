@@ -39,8 +39,8 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 ## Getting started
 - clone repository to your local machine
 - create a ```.env``` file as per ```.env.example``` and fill out the information required
-- in terminal, run ```knex migrate:latest``` in the porject directory
-- in terminal, run ```knex seed:run``` in the porject directory
+- in terminal, run ```knex migrate:latest``` in the 'backend' directory
+- in terminal, run ```knex seed:run``` in the 'backend' directory
 - in terminal, run ```npm install``` and then ```npm start``` in the 'client' directory
 - in terminal, run ```npm install``` and then ```npm run dev``` in the 'backend' directory
 - navigate to ```localhost:3000``` in your browser

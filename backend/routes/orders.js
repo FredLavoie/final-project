@@ -12,7 +12,6 @@ const router 					= express.Router();
 
 
 router.post('/create', function(req, res) {
-  console.log('This is the cart stuff inside backend: ', req.body);
   let orderObj = {};
   const { cart, userId, total } = req.body;
 
@@ -37,7 +36,6 @@ router.post('/create', function(req, res) {
 
 
   function updateQuantity(item) {
-    console.log('Inside updateQuantity function');
     let newQuant = item.quantity_available - item.cart_quantity;
     let quantObj = {quantity_available: newQuant};
 		
@@ -50,8 +48,7 @@ router.post('/create', function(req, res) {
       .error(err => console.log(err));
   }
 
-  function middleTableEntry(item, data) {
-    console.log('Inside middleTableEntry function');		
+  function middleTableEntry(item, data) {		
     let entryObj = {};
     entryObj.deal_id = item.deal_id;
     entryObj.order_id = data;

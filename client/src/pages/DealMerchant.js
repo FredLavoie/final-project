@@ -66,7 +66,7 @@ class DealMerchant extends Component {
     
     return (
       <div style={{minHeight: "100%", position: "relative"}}>
-        <main className="container"  style={{marginTop:'20px', bottom: "20px", zIndex: "-100"}}>
+        <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
           <div className="row">
             {merchantDeal}
             {/* {this.props.isready ? merchantDeal : <Loading /> } */}
