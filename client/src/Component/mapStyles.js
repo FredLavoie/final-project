@@ -8,11 +8,6 @@ export default [
 		stylers: [{ visibility: 'off' }]
 	},
 	{
-		featureType: 'landscape',
-		elementType: 'landscape.man_made',
-		stylers: [{ visibility: 'on' }]
-	},
-	{
 		featureType: 'poi',
 		stylers: [{ visibility: 'off' }]
 	},

@@ -47,7 +47,7 @@ deleteDeal = (id) => {
 
 render() {
 
-  if (this.state.toDashboard === false) {
+  if (!localStorage.getItem('merchant_id')) {
     return <Redirect to='/login'/>;
   }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
+import InfoWindowEx from './Info_window'; 
 import stylesArray from './mapStyles';
 import marker1 from '../../public/img/person_pin_circle.svg';
 import marker2 from '../../public/img/baseline-location_on.svg';
@@ -22,12 +23,13 @@ export class MapContainer extends React.Component {
 		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
 		};
 
-		onMarkerClick = (props, marker, e) =>
-		this.setState({
+	  onMarkerClick = (props, marker, e) => {
+	  this.setState({
 		selectedPlace: props,
 		activeMarker: marker,
 		showingInfoWindow: true
-		});
+	  });
+	};
   
 	onClose = props => {
 		if (this.state.showingInfoWindow) {
@@ -38,6 +40,15 @@ export class MapContainer extends React.Component {
 		}
 	};
 
+	//FUNCTION to change state of toggle
+	// onInfoWindowClick =() => {
+	// 	console.log('this is the function for the onclick event')
+	// }
+
+	showDetails = place => {
+		console.log(place);
+		this.props.changeState(1,place.title)
+	  };
 
 
  thing = (data) => 	{
@@ -102,29 +113,40 @@ export class MapContainer extends React.Component {
 						mapTypeControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
 						styles= {stylesArray}>
-
 						{this.thing(this.props.dealsState.merchantInfo)}
 
 						<Marker
-							title={'You are here'}
-							name={'This is you :)'}
-							icon= {marker1}
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-							onClick={this.onMarkerClick}								
-						/>
-
-						<InfoWindow
+							onClick={this.onMarkerClick}
+							icon= {marker1}
+							title={'You are here'}	
+							name={<div>You are here</div>}		
+							/>
+							<InfoWindowEx
 							marker={this.state.activeMarker}
 							visible={this.state.showingInfoWindow}
-							onClose={this.onClose}
-						>
-						<div>
-							<h4>{this.state.selectedPlace.name}</h4>
-						</div>
+							>
+							<div>
+								<h3>{this.state.selectedPlace.name}</h3>
+								<button
+								className="btn btn-tiny waves-effect waves-light" 
+								type="button"
+								onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
+								</button>
+							</div>
+							</InfoWindowEx>
 
-						</InfoWindow>
+						</Map>
 
-					</Map>
+
+
+					
+
+				
+
+
+						
+				
 
 				</div>
       </div>
@@ -134,3 +156,4 @@ export class MapContainer extends React.Component {
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyCLiHJCWYlYrsX5kbjQQ65xIZXulYpAEiI')
 })(MapContainer)
+
