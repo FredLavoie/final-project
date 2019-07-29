@@ -128,6 +128,7 @@ export class MapContainer extends React.Component {
 							<div>
 								<h3>{this.state.selectedPlace.name}</h3>
 								<button
+								className="btn btn-tiny waves-effect waves-light" 
 								type="button"
 								onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
 								</button>
