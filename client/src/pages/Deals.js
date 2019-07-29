@@ -8,22 +8,26 @@ import Map from '../Component/Map';
 
 
 
+
 class Deals extends Component {
   constructor(props){
     super(props)
   }
   state = {
-    toggle : 1,
+    toggle: 1,
     merchantInfo: [],
     userLat: 0,
     userLng: 0,
     loading: true
   }
+  
 
-
-
-  changeState = (num) => {
-    this.setState({toggle: num});
+  changeState = (num,name) => {  
+    this.setState({toggle: num}, () => {
+      var element = document.getElementById(name);
+      element.scrollIntoView();
+    })
+    
   }
 
   componentDidMount() {
@@ -53,34 +57,32 @@ class Deals extends Component {
   
   
   render() {
-    console.log('This is the state after outside of componentDidMount', this.state);
-
     const dealsD = this.props.deals.map(deal => <DealsComponent key={deal.deal_id} deal={deal} add={this.props.add} customClass="m4"/> );
     if(this.state.toggle == 2){
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
-        <div className="navbar-fixed">
+        <div className="navbar-fixed" style={{zIndex: "auto"}}>
           <Nav/>
         </div>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} />
               <span>Sort By Merchant</span>
             </label>
           </p>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:2})} defaultChecked/>
               <span>Sort By Date</span>
             </label>
           </p>
-          <p>
+          <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:3})} />
               <span>Map</span>
             </label>
           </p> 
-          <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
+          <main className="container"  style={{marginTop:'20px', bottom: "20px", zIndex: "-100"}}>
             <div className="row">
               {this.props.isready ? dealsD : <Loading /> }
             </div>
@@ -93,19 +95,19 @@ class Deals extends Component {
         <div className="navbar-fixed">
           <Nav/>
         </div>
-        <p>
+        <p style={{paddingLeft: "1.2em"}}>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} defaultChecked/>
           <span>Sort By Merchant</span>
         </label>
       </p>
-      <p>
+      <p style={{paddingLeft: "1.2em"}}>
         <label>
           <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
           <span>Sort By Date</span>
         </label>
       </p>
-      <p>
+      <p style={{paddingLeft: "1.2em"}}>
       <label>
         <input name="group1" type="radio" onClick={() => this.setState({toggle:3})}/>
         <span>Map</span>

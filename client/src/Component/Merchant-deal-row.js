@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EditDeal from "./Edit_deal";
-var moment = require('moment');
+import moment from 'moment';
 
 export class Row extends Component {
   state = {edit: false}
@@ -8,7 +8,7 @@ export class Row extends Component {
   render() {
 
     let timeStamp = moment(this.props.deal.end_date).format('MMM Do, h:mm a');
-    
+  
     return (
       <tbody>
         <tr>
@@ -28,11 +28,9 @@ export class Row extends Component {
             <a className="waves-effect waves-light btn" onClick={() =>  this.state.edit ? this.setState({edit: false }) : this.setState({edit: true})}>edit</a>
           </td>
         </tr>
-        <tr>
-          <td colSpan="100" className="animate pulse" style={{transition: 'all 1s'}}>
+          <td colSpan="30">
         { this.state.edit && <EditDeal updateDeal={this.props.updateDeal} deal={this.props.deal} /> }
       </td>
-        </tr>
       </tbody>
     );
   }

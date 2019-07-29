@@ -21,25 +21,24 @@ router.post('/new', function(req, res) {
       .then(result => {
         console.log(result);
         res.status(200).json({
-          message:'User created.',
+          message:'User has been created',
           good: true
         });
       }).catch((e) => {
-        console.error('Error',e);
+        console.error('hahah here its is an big err',e);
         res.json({
-          message: 'Email already exist.'
+          message: 'Email exist already.'
         });
       });
     }else{
-      res.status(400).json({message:'Password should match.'})
+      res.status(400).json({message:'password should match'})
     }
   }else{
     res.status(400).json({
-      message:'Invalid input in field(s).'
+      message:'Invalid inputs fields.'
     });
   }
 });
-
 //USER LOGIN
 router.post('/login', function(req, res) {
   const {email, password } = req.body;
@@ -67,7 +66,7 @@ router.post('/login', function(req, res) {
       res.status(400).json({message: 'Invalid input'});
     });
   }else{
-    res.status(400).json({message: 'All fields are required'})
+    res.status(400).json({message: 'All fields  are required'})
   }
 
 });

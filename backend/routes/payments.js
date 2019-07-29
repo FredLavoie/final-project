@@ -6,22 +6,22 @@ const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
 const router 					= express.Router();
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY; 
-const stripe = require('stripe')(STRIPE_SECRET_KEY);
-const app = express();
+const KEY             = process.env.STRIPE_SECRET_KEY; 
+const stripe          = require('stripe')(KEY);
+const app             = express();
 const auth            = require('../auth/auth');
 
 
-app.use(require("body-parser").text())
+app.use(require("body-parser").text());
 
 
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
 
 
-// Make payment with stripe (Step 1)
+// Make payment with stripe
 router.post('/save-stripe-token', auth, async function(req, res) {
-  console.log('req.body!!!!!!', req.body); 
+  console.log('req.body', req.body);
   try {
     let {status} = await stripe.charges.create({
       amount: req.body.amount,
@@ -32,7 +32,7 @@ router.post('/save-stripe-token', auth, async function(req, res) {
     });
     res.json({status});
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).end();
   }
 });
