@@ -5,7 +5,9 @@ const knexConfig      = require('../knexfile');
 const ENV         		= process.env.ENV || "development";
 const knex            = require('knex')(knexConfig[ENV]);
 const express 				= require('express');
+const uuid 			    	= require('uuid/v4');
 const router 					= express.Router();
+const Auth 					  = require('../auth/auth');
 
 //************************************** ROUTES ***************************************/
 //*************************************************************************************/
@@ -14,10 +16,10 @@ const router 					= express.Router();
 router.post('/create', function(req, res) {
   console.log('This is the cart stuff inside backend: ', req.body);
   let orderObj = {};
-  const { cart, userId, total, merchant_id} = req.body;
+  const { cart, userId, total, order_number} = req.body;
   orderObj.user_id = userId;
   orderObj.total = total;
-  orderObj.merchant_id = cart[0].merchant_id;
+  orderObj.order_number = uuid().substring(0,7);
   
   knex
     .insert(orderObj)
@@ -49,7 +51,7 @@ router.post('/create', function(req, res) {
   }
 
   function middleTableEntry(item, data) {
-    console.log('Inside middleTableEntry function');		
+    console.log('Inside middleTableEntry function');	
     let entryObj = {};
     entryObj.deal_id = item.deal_id;
     entryObj.order_id = data;
@@ -76,9 +78,30 @@ router.get('/:id/view', function(req, res) {
     });
 });
 
-router.get('/business/:id', function(req, res) {
-  console.log('REQ USER ID:', req.params.id )
-  res.json({merchant_id: req.params.id})
+
+
+router.get('/user/:id', Auth, function(req, res) {
+  knex
+  .select('orders.id as order_id', 
+  'orders.user_id as user_id', 
+  'orders.order_number as order_number', 
+  'orders.total as total',
+  'orders_deals.deal_id as deal_id',
+  'orders.created_at as created_at',
+  'orders_deals.quantity_purchased as quantity',
+  'orders_deals.deal_price_purchased as deal_price',
+  'deals.merchant_id as merchant_id',
+  'merchants.business_name as merchant_name',
+  'deals.name as product_name',
+  'deals.image_path as image' )
+  .from('orders')
+  .innerJoin('orders_deals', 'orders.id', 'order_id')
+  .innerJoin('deals', 'orders_deals.deal_id', 'deals.id')
+  .innerJoin('merchants', 'merchants.id', 'deals.merchant_id')
+  .where('user_id', req.params.id)
+  .then( result => res.json(result))
+  .catch(error => res.json({message: error}))
+
 })
   
 

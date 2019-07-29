@@ -9,17 +9,11 @@ export class View extends Component {
       <main className="main-page" style={{margin: "auto", width: "85%"}}> 
         <h3>Order History</h3>
         <table>
-          <thead>
             <tr>
-              <th></th>
-              <th>Product???</th>
-              <th></th>
+              <th>Order Number</th>
               <th>Total</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th>Order Date</th>
             </tr>
-          </thead>
           {dataUserDeals}  
         </table>                
       </main>          

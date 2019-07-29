@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 var moment = require('moment');
-import View from './Order_view';
+import ViewButton from './View_button';
 
 export class ViewRow extends Component {
-  state = {edit: false}
+  state = {
+    toggle: false,
+    
+  }
 
+  getOrders = async (userId) => {
+    const request = await fetch(`/api/orders/user/${userId}`, {
+      headers: {"authorization": localStorage.getItem('token')}})
+      if(request.ok){
+      }
+
+  }
 
   componentDidMount() {
 
-    // fetch(`/api/orders/business/${id}`, {
-    //   headers: {"authorization": localStorage.getItem('token')}})
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data)
-    //   });
+    fetch(`/api/orders/`, {
+      headers: {"authorization": localStorage.getItem('token')}})
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      });
   }
 
   render() {
@@ -24,17 +34,14 @@ export class ViewRow extends Component {
     return (
       <tbody>
         <tr>
-          <td></td>
-          <td></td>
+          <td>XY652</td>
           <td>${this.props.deal.total}</td>
           <td>{timeStamp}</td>
-          <td>
-            <a className="waves-effect waves-light btn" onClick={() =>  this.state.edit ? this.setState({edit: false }) : this.setState({edit: true})}>View Order</a>
-          </td>
+            <a className="waves-effect waves-light btn" onClick={() =>  this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle: true})}>View Order</a>
         </tr>
         <tr>
-          <td colSpan="100" className="animate pulse" style={{transition: 'all 1s'}}>
-            { this.state.edit && <View/> }
+          <td className="animate pulse" style={{transition: 'all 1s'}}>
+            { this.state.toggle ? <ViewButton/> : "" }
           </td>
       </tr>
       </tbody>
