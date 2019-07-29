@@ -13,7 +13,7 @@ class Deals extends Component {
     super(props)
   }
   state = {
-    toggle : 3,
+    toggle: 1,
     merchantInfo: [],
     userLat: 0,
     userLng: 0,
@@ -57,7 +57,7 @@ class Deals extends Component {
     if(this.state.toggle == 2){
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
-        <div className="navbar-fixed">
+        <div className="navbar-fixed" style={{zIndex: "auto"}}>
           <Nav/>
         </div>
           <p style={{paddingLeft: "1.2em"}}>
@@ -78,7 +78,7 @@ class Deals extends Component {
               <span>Map</span>
             </label>
           </p> 
-          <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
+          <main className="container"  style={{marginTop:'20px', bottom: "20px", zIndex: "-100"}}>
             <div className="row">
               {this.props.isready ? dealsD : <Loading /> }
             </div>
