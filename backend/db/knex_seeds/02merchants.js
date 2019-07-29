@@ -44,8 +44,8 @@ exports.seed = function(knex) {
           postal_code: 'H2T 1A8',
           phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""),
           type_of_merchant:'Café',
-          latitude: 45.5270421,
-          longitude: -73.5969933
+          latitude: 45.5270602,
+          longitude: -73.599105
         },
         {
           business_name: 'District Café',
@@ -57,8 +57,8 @@ exports.seed = function(knex) {
           postal_code: 'H2T 1A7',
           phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""),
           type_of_merchant:'Café',
-          latitude: 45.5270421,
-          longitude: -73.5969933
+          latitude: 45.5270479,
+          longitude: -73.6002239
         },
         {
           business_name: 'Brooklyn MTL',
@@ -70,8 +70,8 @@ exports.seed = function(knex) {
           postal_code: 'H2T 1A7',
           phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""),
           type_of_merchant:'Café',
-          latitude: 45.5270421,
-          longitude: -73.5969933
+          latitude: 45.5269371,
+          longitude: -73.6003491
         },
         {
           business_name: 'Free time Mile End',
@@ -83,8 +83,8 @@ exports.seed = function(knex) {
           postal_code: 'H2T 2A4',
           phone_number: faker.phone.phoneNumberFormat().replace(/-/g, ""),
           type_of_merchant:'Café',
-          latitude: 45.5270421,
-          longitude: -73.5969933
+          latitude: 45.5283088,
+          longitude: -73.6002345
         },
         {
           business_name: 'Le Falco',
