@@ -23,12 +23,12 @@ export class MapContainer extends React.Component {
 		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
 		};
 
-	onMarkerClick = (props, marker, e) => {
-		this.setState({
-			selectedPlace: props,
-			activeMarker: marker,
-			showingInfoWindow: true
-		});
+	  onMarkerClick = (props, marker, e) => {
+	  this.setState({
+		selectedPlace: props,
+		activeMarker: marker,
+		showingInfoWindow: true
+	  });
 	};
   
 	onClose = props => {
@@ -47,7 +47,7 @@ export class MapContainer extends React.Component {
 
 	showDetails = place => {
 		console.log(place);
-		this.props.changeState(1, place.title)
+		this.props.changeState(1,place.title)
 	  };
 
 
@@ -76,7 +76,6 @@ export class MapContainer extends React.Component {
 	render() {	
 
     return (
-<<<<<<< HEAD
 
 			<div className="row" style={{width:'100%', position: "absolute", flexDirection: "row" , justifyContent: "left"}}>
 
@@ -148,43 +147,6 @@ export class MapContainer extends React.Component {
 
 				</div>
       </div>
-=======
-			<div style={{margin: "0 1em"}}>
-
-				<Map
-					google={this.props.google}
-					zoom={16}
-					style={mapStyle}
-					streetViewControl= {false}
-					mapTypeControl= {false}
-					initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
-					styles= {stylesArray}>
-					{this.thing(this.props.dealsState.merchantInfo)}
-
-					<Marker
-						position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-						onClick={this.onMarkerClick}
-						icon= {marker1}
-						title={'You are here'}	
-						name={<div>You are here</div>}		
-						/>
-						<InfoWindowEx
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}
-						>
-						<div>
-							<h3>{this.state.selectedPlace.name}</h3>
-							<button
-							className="btn btn-tiny waves-effect waves-light" 
-							type="button"
-							onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
-							</button>
-						</div>
-						</InfoWindowEx>
-
-					</Map>
-			</div>
->>>>>>> master
     );
   }
 }
