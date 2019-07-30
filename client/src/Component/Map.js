@@ -77,10 +77,9 @@ export class MapContainer extends React.Component {
 
     return (
 
-			<div style={{position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
+			<div className="row" style={{width:'100%', position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
 
-				<div style={{minHeight: "100%", position: "relative"}}>
-					
+				<div style={{minHeight: "100%", position: "relative"}} className="col s12 m3">
 					<p style={{paddingLeft: "1.2em"}}>
 					<label>
 						<input name="group1" type="radio" onClick={() => this.props.changeState(1)}/>
@@ -88,7 +87,7 @@ export class MapContainer extends React.Component {
 					</label>
 					</p>
 					<p style={{paddingLeft: "1.2em"}}>
-						<label>
+						<label> 
 							<input name="group1" type="radio" onClick={() => this.props.changeState(2)}/>
 							<span>Sort By Date</span>
 						</label>
@@ -102,7 +101,7 @@ export class MapContainer extends React.Component {
 				
 				</div>
 
-				<div style={{margin: "0 1em"}} className='row col s12'>
+				<div style={{margin: "0 1em"}} className='col s12 m9'>
 					<Map
 						google={this.props.google}
 						zoom={16}
