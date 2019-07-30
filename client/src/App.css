@@ -108,5 +108,12 @@ main{
 .Rtable--5cols > .Rtable-cell {
   width: 16.6%
 }
+#themap{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media only screen and (max-width:600px){
+
+}
 /* footer style */
 
