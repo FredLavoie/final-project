@@ -91,9 +91,7 @@ export class MapContainer extends React.Component {
 				
 				</div>
 
-				<div style={{margin: "0 1em"}}>
-
-
+				<div style={{margin: "0 1em"}} className='row col s12'>
 					<Map
 						google={this.props.google}
 						zoom={16}
