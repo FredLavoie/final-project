@@ -46,7 +46,7 @@ class App extends Component {
   addTocart = (data) => {
     const incomingData = data;
     const itemInCart = this.state.shoppingcart.find(item => item.deal_id === incomingData.deal_id);
-    console.log(`Test add2cart`, incomingData, itemInCart)
+    
     if (itemInCart) {
       const updateQuantity = this.state.shoppingcart.map(item => {
         if (item.deal_id === incomingData.deal_id) {

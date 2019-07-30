@@ -21,7 +21,7 @@ class DealMerchant extends Component {
 
   const merchantDeal = merchantDealArr.map(merchant => {
     const deals = merchant.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add} customClass="m12"/> );
-    console.log('merchant', merchant.business_name)
+   
       return (
         <div id={merchant.business_name} className={merchant.business_name} key={merchant.business_name}>
           <h2 className="merchantname">{merchant.business_name}</h2>

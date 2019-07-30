@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 var moment = require('moment');
+import M from "materialize-css";
 
 const titleCardStyle = {
   transform:'translateY(-180px) translateX(-10px)',
@@ -14,20 +15,21 @@ export class Deals extends Component {
   constructor(props) {
     super(props)
   }
-
-  addToCartAnimation() {
+  
+  addToCartAnimation = () => {
     this.props.add(this.props.deal);
-    
+    M.toast({html: `Added ${this.props.deal.name} to your cart!`, classes: "card-panel green"});
   }
   
   render() {
+
     let timeLeft = moment(this.props.deal.end_date).fromNow();
 
     const addToCart = () => {
       if(localStorage.getItem('user_id')) {
         return (
         <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-          <a className="animated infinite bounce delay-2s" style={{cursor:"pointer"}}  onClick={() => this.addToCartAnimation()}>add to cart</a>
+          <a style={{cursor:"pointer"}}  onClick={() => this.addToCartAnimation()}>add to cart</a>
         </div>
         )
       }
@@ -58,3 +60,4 @@ export class Deals extends Component {
 
 
 export default Deals;
+
