@@ -8,10 +8,9 @@ import marker2 from '../../public/img/baseline-location_on.svg';
 
 
 const mapStyle = {
-	width: '87vw',
-	height: '83.5vh'
+	width: '100wh',
+	height: 'calc(100vh - 257px)'
 };
-
 export class MapContainer extends React.Component {
 	constructor(props){
 		super(props)
@@ -23,12 +22,12 @@ export class MapContainer extends React.Component {
 		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
 		};
 
-	onMarkerClick = (props, marker, e) => {
-		this.setState({
-			selectedPlace: props,
-			activeMarker: marker,
-			showingInfoWindow: true
-		});
+	  onMarkerClick = (props, marker, e) => {
+	  this.setState({
+		selectedPlace: props,
+		activeMarker: marker,
+		showingInfoWindow: true
+	  });
 	};
   
 	onClose = props => {
@@ -46,8 +45,7 @@ export class MapContainer extends React.Component {
 	// }
 
 	showDetails = place => {
-		console.log(place);
-		this.props.changeState(1, place.title)
+		this.props.changeState(1,place.title);
 	  };
 
 
@@ -66,9 +64,6 @@ export class MapContainer extends React.Component {
 	return allPoints
 }
 	
-
-
-
 	componentDidMount() {
 
 	}
@@ -76,41 +71,42 @@ export class MapContainer extends React.Component {
 	render() {	
 
     return (
-			<div style={{margin: "0 1em"}}>
 
-				<Map
-					google={this.props.google}
-					zoom={16}
-					style={mapStyle}
-					streetViewControl= {false}
-					mapTypeControl= {false}
-					initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
-					styles= {stylesArray}>
-					{this.thing(this.props.dealsState.merchantInfo)}
+			<div className="row">
+				<div className='col s12 m9'>
+					<Map
+						google={this.props.google}
+						zoom={16}
+						
+						streetViewControl= {false}
+						mapTypeControl= {false}
+						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
+						styles= {stylesArray}>
+						{this.thing(this.props.dealsState.merchantInfo)}
+						<Marker
+							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
+							onClick={this.onMarkerClick}
+							icon= {marker1}
+							title={'You are here'}	
+							name={<div>You are here</div>}		
+							/>
+							<InfoWindowEx
+							marker={this.state.activeMarker}
+							visible={this.state.showingInfoWindow}
+							>
+							<div>
+								<h3>{this.state.selectedPlace.name}</h3>
+								<button
+								className="btn btn-tiny waves-effect waves-light" 
+								type="button"
+								onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
+								</button>
+							</div>
+							</InfoWindowEx>
 
-					<Marker
-						position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-						onClick={this.onMarkerClick}
-						icon= {marker1}
-						title={'You are here'}	
-						name={<div>You are here</div>}		
-						/>
-						<InfoWindowEx
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}
-						>
-						<div>
-							<h3>{this.state.selectedPlace.name}</h3>
-							<button
-							className="btn btn-tiny waves-effect waves-light" 
-							type="button"
-							onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
-							</button>
-						</div>
-						</InfoWindowEx>
-
-					</Map>
-			</div>
+						</Map>
+				</div>
+      </div>
     );
   }
 }
