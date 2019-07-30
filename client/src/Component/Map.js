@@ -76,79 +76,6 @@ export class MapContainer extends React.Component {
 	render() {	
 
     return (
-<<<<<<< HEAD
-
-			<div className="row" style={{width:'100%', position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
-
-				<div style={{minHeight: "100%", position: "relative"}} className="col s12 m3">
-					<p style={{paddingLeft: "1.2em"}}>
-					<label>
-						<input name="group1" type="radio" onClick={() => this.props.changeState(1)}/>
-						<span>Sort By Merchant</span>
-					</label>
-					</p>
-					<p style={{paddingLeft: "1.2em"}}>
-						<label> 
-							<input name="group1" type="radio" onClick={() => this.props.changeState(2)}/>
-							<span>Sort By Date</span>
-						</label>
-						</p>
-					<p style={{paddingLeft: "1.2em"}}>
-						<label>
-							<input name="group1" type="radio" onClick={() => this.props.changeState(3)} defaultChecked/>
-							<span>Map</span>
-						</label>
-						</p>
-				
-				</div>
-
-				<div style={{margin: "0 1em"}} className='col s12 m9'>
-					<Map
-						google={this.props.google}
-						zoom={16}
-						style={mapStyle}
-						streetViewControl= {false}
-						mapTypeControl= {false}
-						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
-						styles= {stylesArray}>
-						{this.thing(this.props.dealsState.merchantInfo)}
-
-						<Marker
-							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
-							onClick={this.onMarkerClick}
-							icon= {marker1}
-							title={'You are here'}	
-							name={<div>You are here</div>}		
-							/>
-							<InfoWindowEx
-							marker={this.state.activeMarker}
-							visible={this.state.showingInfoWindow}
-							>
-							<div>
-								<h3>{this.state.selectedPlace.name}</h3>
-								<button
-								className="btn btn-tiny waves-effect waves-light" 
-								type="button"
-								onClick={this.showDetails.bind(this,this.state.selectedPlace)}>Show Deals
-								</button>
-							</div>
-							</InfoWindowEx>
-
-						</Map>
-
-
-
-					
-
-				
-
-
-						
-				
-
-				</div>
-      </div>
-=======
 			<div style={{margin: "0 1em"}}>
 
 				<Map
@@ -184,7 +111,6 @@ export class MapContainer extends React.Component {
 
 					</Map>
 			</div>
->>>>>>> 0640c0969d674c4a4427949bb02e9ebb37e7c406
     );
   }
 }
