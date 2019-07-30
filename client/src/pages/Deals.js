@@ -61,7 +61,7 @@ class Deals extends Component {
     if(this.state.toggle == 2){
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
-        <div className="navbar-fixed" style={{zIndex: "auto"}}>
+        <div className="navbar-fixed">
           <Nav/>
         </div>
           <p style={{paddingLeft: "1.2em"}}>
@@ -82,7 +82,7 @@ class Deals extends Component {
               <span>Map</span>
             </label>
           </p> 
-          <main className="container"  style={{marginTop:'20px', bottom: "20px", zIndex: "-100"}}>
+          <main className="container"  style={{marginTop:'20px', bottom: "20px"}}>
             <div className="row">
               {this.props.isready ? dealsD : <Loading /> }
             </div>
@@ -96,23 +96,23 @@ class Deals extends Component {
           <Nav/>
         </div>
         <p style={{paddingLeft: "1.2em"}}>
-        <label>
-          <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} defaultChecked/>
-          <span>Sort By Merchant</span>
-        </label>
-      </p>
-      <p style={{paddingLeft: "1.2em"}}>
-        <label>
-          <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
-          <span>Sort By Date</span>
-        </label>
-      </p>
-      <p style={{paddingLeft: "1.2em"}}>
-      <label>
-        <input name="group1" type="radio" onClick={() => this.setState({toggle:3})}/>
-        <span>Map</span>
-      </label>
-    </p>
+          <label>
+            <input name="group1" type="radio" onClick={() => this.setState({toggle:1})} defaultChecked/>
+            <span>Sort By Merchant</span>
+          </label>
+        </p>
+        <p style={{paddingLeft: "1.2em"}}>
+          <label>
+            <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
+            <span>Sort By Date</span>
+          </label>
+        </p>
+        <p style={{paddingLeft: "1.2em"}}>
+          <label>
+            <input name="group1" type="radio" onClick={() => this.setState({toggle:3})}/>
+            <span>Map</span>
+          </label>
+        </p>
         {this.props.isready ? <DealMerchant deals={this.props.deals} add={this.props.add}/> : <Loading /> }
       </div>
     );
