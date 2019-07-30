@@ -77,7 +77,7 @@ export class MapContainer extends React.Component {
 
     return (
 
-			<div className="row" style={{width:'100%', position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
+			<div className="row" style={{width:'100%', position: "absolute", flexDirection: "row" , justifyContent: "left"}}>
 
 				<div style={{minHeight: "100%", position: "relative"}} className="col s12 m3">
 					<p style={{paddingLeft: "1.2em"}}>
