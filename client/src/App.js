@@ -167,6 +167,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App" style={{ minHeight: "100vh", position: "relative", paddingBottom: "70px" }}>
         <Switch>
@@ -186,6 +187,7 @@ class App extends Component {
         </Switch>
         <Footer />
       </div>
+     
     );
   }
 }

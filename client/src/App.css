@@ -108,5 +108,37 @@ main{
 .Rtable--5cols > .Rtable-cell {
   width: 16.6%
 }
+
+/*-------CSS for Shopping Cart-------------------------*/ 
+.checkout-button{
+  display: flex;
+  justify-content: center;
+}
+
+/*-------CSS for Map-------------------------*/ 
+#themap{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media only screen and (max-width:600px){
+
+}
 /* footer style */
 
+.viewBox {
+display: flex;
+position: absolute;
+top: 0;
+left: 0;
+background: white;
+z-index: 2;
+box-shadow: 0px 16px 20px 4px #ebebeb;
+overflow-x: scroll;
+width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+  .viewBox {
+    top: calc(100% - 360px);
+  }
+}
