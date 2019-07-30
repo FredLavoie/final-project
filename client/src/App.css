@@ -108,6 +108,14 @@ main{
 .Rtable--5cols > .Rtable-cell {
   width: 16.6%
 }
+
+/*-------CSS for Shopping Cart-------------------------*/ 
+.checkout-button{
+  display: flex;
+  justify-content: center;
+}
+
+/*-------CSS for Map-------------------------*/ 
 #themap{
   padding: 0 !important;
   margin: 0 !important;
