@@ -36,23 +36,38 @@ export class ViewRow extends Component {
       }
     }).value()
 
+    const handleToggleState = (index) => {
+      if (!index.length) {
+        this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle:`button${index}`})
+      }
+      else {
+        this.setState({toggle: false })
+      }
+    }
+
     const orderDeal = viewDeal.map((order, index) => {
       let timeStamp = moment(order.deals[0].created_at).format('MMM Do, h:mm a');
       return (
-        <tbody key={order.order_number}>
-          <tr>
-            <td>{order.order_number}</td>
+        <tr key={order.order_number}>
+          <td>{order.order_number}</td>
             <td>${order.deals[0].total}</td>
             <td>{timeStamp}</td>
             <td>
-              <a className="waves-effect waves-light btn" name={`button${index}`} onClick={() =>  this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle:`button${index}`})}>View Order</a>
+              <a className="waves-effect waves-light btn" name={`button${index}`} onClick={() => handleToggleState(index)}>View Order</a>
             </td>
-          </tr>
-          { this.state.toggle === `button${index}` ? <ViewButton deals={order.deals}/> : "" }
-        </tbody>
+            { this.state.toggle === `button${index}` ? 
+                (
+                  <tr className="viewBox">          
+                    <span style={{ position: "absolute", top: 0, left: 0 }} onClick={() => handleToggleState(index)} ><i class="material-icons">close</i></span>
+                    <ViewButton deals={order.deals} />
+                  </tr>
+                )
+             : "" }
+        </tr>
       );
     });
     return orderDeal
   }
 }
 export default ViewRow;
+
