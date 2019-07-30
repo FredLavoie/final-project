@@ -8,10 +8,9 @@ import marker2 from '../../public/img/baseline-location_on.svg';
 
 
 const mapStyle = {
-	width: '100vw',
-	height: '100vh'
+	width: '100wh',
+	height: 'calc(100vh - 257px)'
 };
-
 export class MapContainer extends React.Component {
 	constructor(props){
 		super(props)
@@ -74,11 +73,11 @@ export class MapContainer extends React.Component {
     return (
 
 			<div className="row">
-				<div style={{margin: "0 1em"}} className='col s12 m9'>
+				<div className='col s12 m9'>
 					<Map
 						google={this.props.google}
 						zoom={16}
-						style={mapStyle}
+						
 						streetViewControl= {false}
 						mapTypeControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
