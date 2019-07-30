@@ -117,3 +117,20 @@ main{
 }
 /* footer style */
 
+.viewBox {
+display: flex;
+position: absolute;
+top: 0;
+left: 0;
+background: white;
+z-index: 2;
+box-shadow: 0px 16px 20px 4px #ebebeb;
+overflow-x: scroll;
+width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+  .viewBox {
+    top: calc(100% - 360px);
+  }
+}
