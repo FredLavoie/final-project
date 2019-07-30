@@ -122,9 +122,31 @@ class Deals extends Component {
     }
     return ( 
       <div>
-    <Nav />
-    <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
-    </div>
+        <Nav/>
+       
+          <div style={{minHeight: "100%", position: "relative"}}>	
+            <p style={{paddingLeft: "1.2em"}}>
+            <label>
+              <input name="group1" type="radio" onClick={() => this.setState({toggle:1})}/>
+              <span>Sort By Merchant</span>
+            </label>
+            </p>
+            <p style={{paddingLeft: "1.2em"}}>
+              <label>
+                <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
+                <span>Sort By Date</span>
+              </label>
+              </p>
+            <p style={{paddingLeft: "1.2em"}}>
+              <label>
+                <input name="group1" type="radio" onClick={() => this.setState({toggle:3})} defaultChecked/>
+                <span>Map</span>
+              </label>
+              </p>
+          </div>
+          <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
+       
+      </div>
      );
   }
 }

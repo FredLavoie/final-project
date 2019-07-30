@@ -14,6 +14,11 @@ export class Deals extends Component {
   constructor(props) {
     super(props)
   }
+
+  addToCartAnimation() {
+    this.props.add(this.props.deal);
+    
+  }
   
   render() {
     let timeLeft = moment(this.props.deal.end_date).fromNow();
@@ -22,7 +27,7 @@ export class Deals extends Component {
       if(localStorage.getItem('user_id')) {
         return (
         <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
-          <a style={{cursor:"pointer"}}  onClick={() => this.props.add(this.props.deal)}>add to cart</a>
+          <a className="animated infinite bounce delay-2s" style={{cursor:"pointer"}}  onClick={() => this.addToCartAnimation()}>add to cart</a>
         </div>
         )
       }
