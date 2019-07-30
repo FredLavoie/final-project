@@ -14,8 +14,6 @@ export class New_deal extends Component {
     message: '',
     isCreated: false
     };
-
-
   handleChangeUsername = (event) => this.setState({username: event.target.value});
 
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
@@ -24,7 +22,6 @@ export class New_deal extends Component {
 
     handleUploadError = (error) => {
     this.setState({isUploading: false});
-    console.error(error);
     }
 
     handleUploadSuccess = (filename) => {
@@ -92,9 +89,9 @@ export class New_deal extends Component {
                 <FileUploader style={{
                   backgroundColor: 'steelblue', 
                   color: 'white', 
-                  auth: process.env.TOKEN ,
-                  padding: 10, 
-                  borderRadius: 4
+                  auth: process.env.TOKEN,
+                  padding: 10,
+                  borderRadius:4
                   }} 
                   accept="image/*" name="avatar" randomizeFilename storageRef={firebase.storage().ref('images')} onUploadStart={this.handleUploadStart} onUploadError={this.handleUploadError} onUploadSuccess={this.handleUploadSuccess} onProgress={this.handleProgress} />
               </div>

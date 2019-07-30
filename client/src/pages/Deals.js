@@ -123,8 +123,7 @@ class Deals extends Component {
     return ( 
       <div>
         <Nav/>
-       
-          <div style={{minHeight: "100%", position: "relative"}}>	
+          <div>	
             <p style={{paddingLeft: "1.2em"}}>
             <label>
               <input name="group1" type="radio" onClick={() => this.setState({toggle:1})}/>
@@ -144,8 +143,9 @@ class Deals extends Component {
               </label>
               </p>
           </div>
+          <div className="map">
           <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
-       
+          </div>
       </div>
      );
   }

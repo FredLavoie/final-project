@@ -38,7 +38,6 @@ class Login extends Component {
       <main className="container">
         <div className="row">
           <form className="col s12" onSubmit={this.handleSubmit}>
-          
           <h2 className="center-align">Merchant login</h2>
           <p style={{color: 'red'}}>{this.state.message}</p>
           <p className="center-align"><strong>Login as a <a href="/users/login">User</a></strong></p>          
@@ -54,7 +53,6 @@ class Login extends Component {
                 <label htmlFor="pass">Password</label>
               </div>
             </div>
-            
             <div className="row">
               <div className="col m12">
                 <p className="right-align">
