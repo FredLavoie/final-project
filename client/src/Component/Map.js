@@ -8,10 +8,9 @@ import marker2 from '../../public/img/baseline-location_on.svg';
 
 
 const mapStyle = {
-	width: '87vw',
-	height: '83.5vh'
+	width: '100wh',
+	height: 'calc(100vh - 257px)'
 };
-
 export class MapContainer extends React.Component {
 	constructor(props){
 		super(props)
@@ -46,8 +45,7 @@ export class MapContainer extends React.Component {
 	// }
 
 	showDetails = place => {
-		console.log(place);
-		this.props.changeState(1,place.title)
+		this.props.changeState(1,place.title);
 	  };
 
 
@@ -66,9 +64,6 @@ export class MapContainer extends React.Component {
 	return allPoints
 }
 	
-
-
-
 	componentDidMount() {
 
 	}
@@ -77,44 +72,17 @@ export class MapContainer extends React.Component {
 
     return (
 
-			<div style={{position: "absolute", display: "flex", flexDirection: "row" , justifyContent: "left"}}>
-
-				<div style={{minHeight: "100%", position: "relative"}}>
-					
-					<p style={{paddingLeft: "1.2em"}}>
-					<label>
-						<input name="group1" type="radio" onClick={() => this.props.changeState(1)}/>
-						<span>Sort By Merchant</span>
-					</label>
-					</p>
-					<p style={{paddingLeft: "1.2em"}}>
-						<label>
-							<input name="group1" type="radio" onClick={() => this.props.changeState(2)}/>
-							<span>Sort By Date</span>
-						</label>
-						</p>
-					<p style={{paddingLeft: "1.2em"}}>
-						<label>
-							<input name="group1" type="radio" onClick={() => this.props.changeState(3)} defaultChecked/>
-							<span>Map</span>
-						</label>
-						</p>
-				
-				</div>
-
-				<div style={{margin: "0 1em"}}>
-
-
+			<div className="row">
+				<div className='col s12 m9'>
 					<Map
 						google={this.props.google}
 						zoom={16}
-						style={mapStyle}
+						
 						streetViewControl= {false}
 						mapTypeControl= {false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
 						styles= {stylesArray}>
 						{this.thing(this.props.dealsState.merchantInfo)}
-
 						<Marker
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}
@@ -137,17 +105,6 @@ export class MapContainer extends React.Component {
 							</InfoWindowEx>
 
 						</Map>
-
-
-
-					
-
-				
-
-
-						
-				
-
 				</div>
       </div>
     );

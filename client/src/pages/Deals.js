@@ -122,12 +122,35 @@ class Deals extends Component {
     }
     return ( 
       <div>
-    <Nav />
-    <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
-    </div>
+        <Nav/>
+        <div className="row" id="themap"> 
+          <div className="col s12 m3" style={{padding: '20px'}} id="themap">	
+            <p style={{paddingLeft: "1.2em"}}>
+            <label>
+              <input name="group1" type="radio" onClick={() => this.setState({toggle:1})}/>
+              <span>Sort By Merchant</span>
+            </label>
+            </p>
+            <p style={{paddingLeft: "1.2em"}}>
+              <label>
+                <input name="group1" type="radio" onClick={() => this.setState({toggle:2})}/>
+                <span>Sort By Date</span>
+              </label>
+              </p>
+            <p style={{paddingLeft: "1.2em"}}>
+              <label>
+                <input name="group1" type="radio" onClick={() => this.setState({toggle:3})} defaultChecked/>
+                <span>Map</span>
+              </label>
+              </p>
+          </div>
+          <div className="col m9 s12" id="themap" style={{padding: '0 !important'}} style={{background: 'yellow', zIndex: '2222',padding:'none', position: "relative", height: "90vh"}}>
+          <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
+          </div>
+          </div>
+      </div>
      );
   }
 }
 }
-
 export default Deals;
