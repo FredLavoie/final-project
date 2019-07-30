@@ -1,4 +1,4 @@
-# FoodCylcle
+# FoodCycle
 
 FoodCycle is an application that allows merchants to post an add for food that remains at the end of the day or week that would otherwise be thrown out. The merchant is then about to recouperate some lost revenue by selling these remaining items at a discount. Users of the app can browse deals in their area and pay for them directly on the site, then simply pick them up before the end of the day.
 
@@ -39,8 +39,8 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 ## Getting started
 - clone repository to your local machine
 - create a ```.env``` file as per ```.env.example``` and fill out the information required
-- in terminal, run ```knex migrate:latest``` in the porject directory
-- in terminal, run ```knex seed:run``` in the porject directory
+- in terminal, run ```knex migrate:latest``` in the 'backend' directory
+- in terminal, run ```knex seed:run``` in the 'backend' directory
 - in terminal, run ```npm install``` and then ```npm start``` in the 'client' directory
 - in terminal, run ```npm install``` and then ```npm run dev``` in the 'backend' directory
 - navigate to ```localhost:3000``` in your browser

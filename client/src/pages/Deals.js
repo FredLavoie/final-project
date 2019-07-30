@@ -8,6 +8,7 @@ import Map from '../Component/Map';
 
 
 
+
 class Deals extends Component {
   constructor(props){
     super(props)
@@ -19,11 +20,14 @@ class Deals extends Component {
     userLng: 0,
     loading: true
   }
+  
 
-
-
-  changeState = (num) => {
-    this.setState({toggle: num});
+  changeState = (num,name) => {  
+    this.setState({toggle: num}, () => {
+      var element = document.getElementById(name);
+      element.scrollIntoView();
+    })
+    
   }
 
   componentDidMount() {

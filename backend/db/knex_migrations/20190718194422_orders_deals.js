@@ -6,7 +6,7 @@ exports.up = function(knex) {
   table.foreign('deal_id').references('deals.id').onDelete('CASCADE');
   table.integer('order_id').unsigned();
   table.foreign('order_id').references('orders.id').onDelete('CASCADE');
-  table.decimal('deal_price_purchased')
+  table.decimal('deal_price_purchased');
   table.decimal('total_price_purchased');
   table.integer('quantity_purchased');
   table.timestamps(true, true);
@@ -14,5 +14,5 @@ exports.up = function(knex) {
 }
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('orders_deals');  
+    return knex.schema.dropTable('orders_deals');
 };

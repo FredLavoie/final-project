@@ -31,7 +31,7 @@ class UserLogin extends Component {
     if(request.status === 400){
       let response = await request.json();
       this.setState({message: response.message})
-  }
+    }
   }
   loginUser();
 }

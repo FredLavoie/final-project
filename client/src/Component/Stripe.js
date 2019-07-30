@@ -3,11 +3,11 @@ import StripeCheckout from 'react-stripe-checkout';
  
 export class TakeMoney extends React.Component {
   state = {
-    redirect:false
+    redirect:false,
+    userEmail: "",
   }
   onToken = (token) => {
     token["amount"] = parseInt(this.props.price.toString().split('.').join(''));
-    console.log('token is this: ',localStorage.getItem('token'))
     fetch('/api/payments/save-stripe-token', {
       method: 'POST',
       headers:{ "Content-Type" : "application/json" ,
@@ -16,13 +16,15 @@ export class TakeMoney extends React.Component {
       body: JSON.stringify(token),
     }).then(response => {
 
-      console.log('res', response);
       if(response.ok){
-        
         fetch('/api/orders/create', {
           method:'POST',
           headers:{ "Content-Type" : "application/json" },
-          body: JSON.stringify({ cart: JSON.parse(localStorage.getItem('saveShoppingcart')),  userId: JSON.parse(localStorage.getItem('user_id')), total: JSON.parse(this.props.priceDecimal) })
+          body: JSON.stringify({ 
+            cart: JSON.parse(localStorage.getItem('saveShoppingcart')),
+            userId: JSON.parse(localStorage.getItem('user_id')),
+            total: JSON.parse(this.props.priceDecimal)
+          })
         
         }).then(function(response) {
           return response.json();
@@ -35,15 +37,31 @@ export class TakeMoney extends React.Component {
         }
     });
   }
+
+  userEmail = async (id) => {
+    const query = await fetch(`/api/users/${id}`, {
+      method: 'GET',
+      headers: {"Content-Type" : "application/json", 'Authorization' : localStorage.getItem('token') },
+    })
+    if(query.ok) {
+      let response = await query.json();
+      this.setState({userEmail: response.email})
+    }
+  }
  
- 
+  componentDidMount() {
+    this.userEmail(localStorage.getItem('user_id'));
+  }
+
+
   render() {
     return (
       <StripeCheckout
-      amount={this.props.price}
+        amount={this.props.price}
         token={this.onToken}
         stripeKey="pk_test_xyzuV3eSI7O71o5N8zJp4Kea00ZTb5iMQI"
         label="Checkout"
+        email={this.state.userEmail}
         style={{margin: "20px 20px 20px 100px", "& span":{ background: "red"}}}
       />
     )

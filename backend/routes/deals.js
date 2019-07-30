@@ -15,7 +15,15 @@ router.get('/', function(req, res) {
   let currentTime = new Date();
   
   knex
-    .select("deals.id as deal_id","deals.name", "deals.description", "deals.quantity_available", "deals.image_path", "deals.current_price", "deals.end_date", "merchants.business_name", "merchants.id as merchant_id")
+    .select("deals.id as deal_id",
+    "deals.name", 
+    "deals.description", 
+    "deals.quantity_available", 
+    "deals.image_path", 
+    "deals.current_price", 
+    "deals.end_date", 
+    "merchants.business_name", 
+    "merchants.id as merchant_id")
     .from("deals")
     .innerJoin("merchants", "deals.merchant_id", "merchants.id")
     .where("deals.quantity_available", ">", 0)
@@ -116,5 +124,3 @@ router.post('/:deal_id/delete', function(req, res) {
 });
 
 module.exports = router;
-
-

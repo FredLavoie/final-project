@@ -6,7 +6,7 @@ function auth(req, res, next) {
 
   jwt.verify(authorization, process.env.JWT_SECRET, function (err, payload) {
     if(err) {
-      console.log(err);
+      res.status(401).json({message: 'invalid token !'})
     } else {
       req.merchant_id = payload.merchant_id;
       next();
