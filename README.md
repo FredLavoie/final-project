@@ -35,7 +35,7 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 ### Checkout
 <img src="./docs/checkout.png" width="800">
 
-### Checkout
+### Order history
 <img src="./docs/order_history.png" width="800">
 
 ### Merchant dashboard
