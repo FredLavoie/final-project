@@ -22,7 +22,7 @@ export class MainShoppingCart extends Component {
     const tax =parseFloat(Math.round((price*0.15) * 100) / 100).toFixed(2);
 
     //calcalate total price in decimal
-    const decimalPriceTotal =  (tax*100 + decimalPrice*100)/100
+    const decimalPriceTotal =  ((tax*100 + decimalPrice*100)/100).toFixed(2);
 
    
 
@@ -74,7 +74,7 @@ export class MainShoppingCart extends Component {
           
         </table>
         <div className="checkout-button">
-        <TakeMoney  price={decimalPriceTotal*100} priceDecimal={decimalPriceTotal}/> 
+        <TakeMoney  price={decimalPrice*100} priceDecimal={decimalPriceTotal}/> 
         </div>
         
       </main>

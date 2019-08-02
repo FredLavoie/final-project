@@ -5,7 +5,7 @@ FoodCycle is an application that allows merchants to post an add for food that r
 The project team consists of [Karine Seguin](https://github.com/karineseguin22), [Yu Liang](https://github.com/keefu), [Saad Hafa](https://github.com/leboss125) & [Fred Lavoie](https://github.com/FredLavoie).
 
 ### Front-end:
-The html content is rendered on the client side using the [ReactJS](https://reactjs.org/) framework/library. React allow the developer to create the interactive parts of the app in JavaScript and render the html  needed as well as change the html elements quickly making the application dynamic. 
+The html content is rendered on the client side using the [ReactJS](https://reactjs.org/) framework/library. React allow the developer to create the interactive parts of the app in JavaScript and render the html  needed as well as change the html elements quickly making the application dynamic.
 
 Using a front-end framework called [Materialize](https://materializecss.com/), the application has a modern and responsive look that users expect. The application also makes use of [Sass](https://sass-lang.com/) to give additional style customization to the content. 
 
@@ -23,14 +23,20 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 ### Deals page sorted by merchant
 <img src="./docs/deals_page.png" width="800">
 
+### Deals page sorted by expiry date
+<img src="./docs/deals_by_date.png" width="800">
+
 ### Map view showing merchants
-<img src="./docs/map_deals.png" width="800">
+<img src="./docs/map_view.png" width="800">
 
 ### Shopping cart
 <img src="./docs/shopping_cart2.png" width="800">
 
 ### Checkout
 <img src="./docs/checkout.png" width="800">
+
+### Checkout
+<img src="./docs/order_history.png" width="800">
 
 ### Merchant dashboard
 <img src="./docs/merchant_dashboard.png" width="800">

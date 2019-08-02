@@ -41,25 +41,25 @@ class Login extends Component {
           <h2 className="center-align">Merchant login</h2>
           <p style={{color: 'red'}}>{this.state.message}</p>
           <p className="center-align"><strong>Login as a <a href="/users/login">User</a></strong></p>          
-            <div className="row">
-              <div className="input-field col s12">
-                <input name="email" id="email" type="email" className="validate"/>
-                <label htmlFor="email">Email</label>
-              </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input name="email" id="email" type="email" className="validate"/>
+              <label htmlFor="email">Email</label>
             </div>
-            <div className="row">
-              <div className="input-field col s12">
-                <input name="password" id="pass" type="password" className="validate"/>
-                <label htmlFor="pass">Password</label>
-              </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input name="password" id="pass" type="password" className="validate"/>
+              <label htmlFor="pass">Password</label>
             </div>
-            <div className="row">
-              <div className="col m12">
-                <p className="right-align">
-                  <button className="btn btn-large waves-effect waves-light" type="submit" name="action">Login</button>
-                </p>
-              </div>
+          </div>
+          <div className="row">
+            <div className="col m12">
+              <p className="right-align">
+                <button className="btn btn-large waves-effect waves-light" type="submit" name="action">Login</button>
+              </p>
             </div>
+          </div>
           </form>
         </div>
       </main>

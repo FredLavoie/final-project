@@ -144,7 +144,7 @@ class Deals extends Component {
               </label>
               </p>
           </div>
-          <div className="col m9 s12" id="themap" style={{padding: '0 !important'}} style={{background: 'yellow', zIndex: '2222',padding:'none', position: "relative", height: "90vh"}}>
+          <div className="col m9 s12" id="themap" style={{padding: '0 !important'}} style={{zIndex: '2222',padding:'none', position: "relative", height: "90vh"}}>
           <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
           </div>
           </div>

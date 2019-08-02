@@ -58,7 +58,7 @@ export class ViewRow extends Component {
             { this.state.toggle === `button${index}` ? 
                 (
                   <tr className="viewBox">          
-                    <span style={{ position: "absolute", top: 0, left: 0 }} onClick={() => handleToggleState(index)} ><i class="material-icons">close</i></span>
+                    <span style={{cursor:"pointer", position: "absolute", top: 0, left: 0 }} onClick={() => handleToggleState(index)} ><i class="material-icons">close</i></span>
                     <ViewButton deals={order.deals} />
                   </tr>
                 )

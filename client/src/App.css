@@ -139,6 +139,6 @@ width: 80%;
 
 @media screen and (min-width: 768px) {
   .viewBox {
-    top: calc(100% - 360px);
+    top: calc(100% - 200px);
   }
 }
