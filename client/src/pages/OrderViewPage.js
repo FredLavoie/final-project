@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-import MainOrderView from '../Component/Order_view';
+import OrderView from '../Component/OrderView';
 import M from "materialize-css";
 import { Redirect } from 'react-router-dom';
 
-export class ViewOrder extends Component {
+export class ViewOrderPage extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ export class ViewOrder extends Component {
       headers: {"authorization": localStorage.getItem('token')}})
       .then(res => res.json())
       .then(data => {   
-      this.setState({ user_deals: data });
+        this.setState({ user_deals: data });
       }); 
   }
 
@@ -36,10 +36,10 @@ export class ViewOrder extends Component {
     return (
       <div>
         <Nav /> 
-        <MainOrderView deals={this.state.user_deals} /> 
+        <OrderView deals={this.state.user_deals} /> 
       </div>
     );
   }
 }
   
-export default ViewOrder;
+export default ViewOrderPage;

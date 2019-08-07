@@ -13,14 +13,14 @@ class DealMerchant extends Component {
 
   render() {
     
-  let merchantDealArr = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
-    return {
-      business_name: key, deals: value
-    }
-  }).value()
+    let merchantDealArr = _(this.props.deals).groupBy(deal => deal.business_name).map( (value, key)=> {
+      return {
+        business_name: key, deals: value
+      };
+    }).value();
 
-  const merchantDeal = merchantDealArr.map(merchant => {
-    const deals = merchant.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add} customClass="m12"/> );
+    const merchantDeal = merchantDealArr.map(merchant => {
+      const deals = merchant.deals.map((deal, index) => <DealsComponent key={index} deal={deal} add={this.props.add} customClass="m12"/> );
    
       return (
         <div id={merchant.business_name} className={merchant.business_name} key={merchant.business_name}>
@@ -61,8 +61,8 @@ class DealMerchant extends Component {
             {deals}
           </Carousel>
         </div>
-      )
-  });
+      );
+    });
     
     return (
       <div style={{minHeight: "100%", position: "relative"}}>

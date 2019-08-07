@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
  
 export class TakeMoney extends React.Component {
@@ -7,12 +7,12 @@ export class TakeMoney extends React.Component {
     userEmail: "",
   }
   onToken = (token) => {
-    token["amount"] = parseInt(this.props.price.toString().split('.').join(''));
+    token["amount"] = parseInt(this.props.price.toString().split('.').join(''),);
     fetch('/api/payments/save-stripe-token', {
       method: 'POST',
       headers:{ "Content-Type" : "application/json" ,
-      Authorization: localStorage.getItem('token')
-    },
+        Authorization: localStorage.getItem('token')
+      },
       body: JSON.stringify(token),
     }).then(response => {
 
@@ -32,9 +32,9 @@ export class TakeMoney extends React.Component {
         });        
         
         //delete cart (need to create function that update state and then call local storage)
-          window.location.assign('/order');
-          localStorage.removeItem('saveShoppingcart')        
-        }
+        window.location.assign('/order');
+        localStorage.removeItem('saveShoppingcart');        
+      }
     });
   }
 
@@ -42,10 +42,10 @@ export class TakeMoney extends React.Component {
     const query = await fetch(`/api/users/${id}`, {
       method: 'GET',
       headers: {"Content-Type" : "application/json", 'Authorization' : localStorage.getItem('token') },
-    })
+    });
     if(query.ok) {
       let response = await query.json();
-      this.setState({userEmail: response.email})
+      this.setState({userEmail: response.email});
     }
   }
  
@@ -64,7 +64,7 @@ export class TakeMoney extends React.Component {
         email={this.state.userEmail}
         style={{margin: "20px 20px 20px 100px", "& span":{ background: "red"}}}
       />
-    )
+    );
   }
 }
 

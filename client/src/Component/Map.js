@@ -1,74 +1,60 @@
-import React, { Component } from 'react';
-import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
-import InfoWindowEx from './Info_window'; 
-import stylesArray from './mapStyles';
+import React from 'react';
+import {GoogleApiWrapper, Map, Marker} from 'google-maps-react';
+import InfoWindowEx from './InfoWindowEx'; 
+import mapStyles from './mapStyles';
 import marker1 from '../../public/img/person_pin_circle.svg';
 import marker2 from '../../public/img/baseline-location_on.svg';
 
 
-
-const mapStyle = {
-	width: '100wh',
-	height: 'calc(100vh - 257px)'
-};
 export class MapContainer extends React.Component {
-	constructor(props){
-		super(props)
-	}
 
-	state = {
-		showingInfoWindow: false,  //Hides or the shows the infoWindow
-		activeMarker: {},          //Shows the active marker upon click
-		selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-		};
 
-	  onMarkerClick = (props, marker, e) => {
-	  this.setState({
-		selectedPlace: props,
-		activeMarker: marker,
-		showingInfoWindow: true
-	  });
-	};
+  state = {
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+  };
+
+  onMarkerClick = (props, marker) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  };
   
-	onClose = props => {
-		if (this.state.showingInfoWindow) {
-			this.setState({
-				showingInfoWindow: false,
-				activeMarker: null
-			});
-		}
-	};
+  onClose = () => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
-	//FUNCTION to change state of toggle
-	// onInfoWindowClick =() => {
-	// 	console.log('this is the function for the onclick event')
-	// }
+  showDetails = place => {
+    this.props.changeState(1,place.title);
+  };
 
-	showDetails = place => {
-		this.props.changeState(1,place.title);
-	  };
-
-
- thing = (data) => 	{
-
-	const allPoints = data.map((merchant, index) => {
-		return (<Marker
-			title={merchant.name} 
-			name={merchant.name} 
+  createMerchantMarkers = (data) => 	{
+    const allPoints = data.map((merchant, index) => {
+      return (<Marker
+			title={merchant.name}
+			name={merchant.name}
 			position={{lat: merchant.lat, lng: merchant.lng}}
 			key={index}
-			icon= {marker2}	
-			onClick={this.onMarkerClick}	
-			/>)
-	});
-	return allPoints
-}
+			icon={marker2}
+			onClick={this.onMarkerClick}
+			/>);
+    });
+    return allPoints;
+  }
 	
-	componentDidMount() {
+  componentDidMount() {
 
-	}
+  }
 		
-	render() {	
+  render() {
 
     return (
 
@@ -78,15 +64,15 @@ export class MapContainer extends React.Component {
 						google={this.props.google}
 						zoom={16}
 						
-						streetViewControl= {false}
-						mapTypeControl= {false}
+						streetViewControl={false}
+						mapTypeControl={false}
 						initialCenter={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}
-						styles= {stylesArray}>
-						{this.thing(this.props.dealsState.merchantInfo)}
+						styles={mapStyles}>
+						{this.createMerchantMarkers(this.props.dealsState.merchantInfo)}
 						<Marker
 							position={{lat: this.props.dealsState.userLat, lng: this.props.dealsState.userLng}}	
 							onClick={this.onMarkerClick}
-							icon= {marker1}
+							icon={marker1}
 							title={'You are here'}	
 							name={<div>You are here</div>}		
 							/>
@@ -112,5 +98,5 @@ export class MapContainer extends React.Component {
 }
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyCLiHJCWYlYrsX5kbjQQ65xIZXulYpAEiI')
-})(MapContainer)
+})(MapContainer);
 

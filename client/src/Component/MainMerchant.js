@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Row from './Merchant-deal-row';
+import Row from './MerchantDealRow';
 
 export class Main extends Component {
   render() {

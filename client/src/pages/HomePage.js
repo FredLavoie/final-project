@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Component/Header';
 
-export class Home extends Component {
+export class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
@@ -11,4 +11,4 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default HomePage;

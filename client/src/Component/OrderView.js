@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ViewRow from './Order_view_row';
+import OrderViewRow from './OrderViewRow';
 
-export class View extends Component {
+export class OrderView extends Component {
   render() {
 
     return (
@@ -16,11 +16,11 @@ export class View extends Component {
               <th></th>
             </tr>
             </thead>
-            <ViewRow />
+            <OrderViewRow />
         </table>                
       </main>          
     );
   }
 }
-export default View;
+export default OrderView;
 
