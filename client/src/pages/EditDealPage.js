@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import Nav from '../Component/Nav';
-import NewDealComponent from '../Component/New_deal';
+import EditDeal from '../Component/EditDeal';
+ 
 
 
-export class New_deal extends Component {
+export class EditDealPage extends Component {
   render() {
     return (
       <div>
         <Nav/>
-        <NewDealComponent/>
+        <EditDeal/>
       </div>
     );
   }
 }
 
-export default New_deal;
+export default EditDealPage;

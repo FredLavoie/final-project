@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 var moment = require('moment');
-import ViewButton from './View_button';
+import ViewButton from './ViewButton';
 import _ from 'lodash';
 
 
@@ -13,19 +13,18 @@ export class ViewRow extends Component {
 
   getOrders = async (userId) => {
     const request = await fetch(`/api/orders/user/${userId}`, {
-      headers: {"authorization": localStorage.getItem('token')}})
-      if(request.ok){
-        let response = await request.json()
-        this.setState({data: response})
-        console.log('RESPONSE:', response)
-      } else {
-        let response = await request.json()
-        this.setState({message: response.message})
-      }
+      headers: {"authorization": localStorage.getItem('token')}});
+    if(request.ok){
+      let response = await request.json();
+      this.setState({data: response});
+    } else {
+      let response = await request.json();
+      this.setState({message: response.message});
+    }
   }
 
   componentDidMount() {
-    this.getOrders(localStorage.getItem('user_id'))
+    this.getOrders(localStorage.getItem('user_id'));
   }
 
   render() {
@@ -33,17 +32,17 @@ export class ViewRow extends Component {
     let viewDeal = _(this.state.data).groupBy(dealview => dealview.order_number).map( (value, key)=> {
       return {
         order_number: key, deals: value
-      }
-    }).value()
+      };
+    }).value();
 
     const handleToggleState = (index) => {
       if (!index.length) {
-        this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle:`button${index}`})
+        this.state.toggle ? this.setState({toggle: false }) : this.setState({toggle:`button${index}`});
       }
       else {
-        this.setState({toggle: false })
+        this.setState({toggle: false });
       }
-    }
+    };
 
     const orderDeal = viewDeal.map((order, index) => {
       let timeStamp = moment(order.deals[0].created_at).format('MMM Do, h:mm a');
@@ -58,7 +57,7 @@ export class ViewRow extends Component {
             { this.state.toggle === `button${index}` ? 
                 (
                   <tr className="viewBox">          
-                    <span style={{cursor:"pointer", position: "absolute", top: 0, left: 0 }} onClick={() => handleToggleState(index)} ><i class="material-icons">close</i></span>
+                    <span style={{cursor:"pointer", position: "absolute", top: 0, left: 0 }} onClick={() => handleToggleState(index)} ><i className="material-icons">close</i></span>
                     <ViewButton deals={order.deals} />
                   </tr>
                 )
@@ -66,7 +65,7 @@ export class ViewRow extends Component {
         </tr>
       );
     });
-    return orderDeal
+    return orderDeal;
   }
 }
 export default ViewRow;

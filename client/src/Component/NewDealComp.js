@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
-export class New_deal extends Component {
+export class NewDealComp extends Component {
 
   state = {
     username: '',
@@ -13,21 +13,21 @@ export class New_deal extends Component {
     avatarURL: '',
     message: '',
     isCreated: false
-    };
+  };
   handleChangeUsername = (event) => this.setState({username: event.target.value});
 
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
 
   handleProgress = (progress) => this.setState({progress});
 
-    handleUploadError = (error) => {
+  handleUploadError = () => {
     this.setState({isUploading: false});
-    }
+  }
 
-    handleUploadSuccess = (filename) => {
-      this.setState({avatar: filename, progress: 100, isUploading: false});
-      firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
-      };
+  handleUploadSuccess = (filename) => {
+    this.setState({avatar: filename, progress: 100, isUploading: false});
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+  };
   handleSubmit = event => {
     event.preventDefault();
     const createDeal = async () =>{
@@ -43,23 +43,23 @@ export class New_deal extends Component {
           date: event.target.date.value,
           time: event.target.time.value
         })
-        });
-        if(request.status === 400){
-          let response = await request.json();
-          this.setState({message: response.message})
-        }
-        if(request.ok){
-          let response = await request.json();
-            this.setState({isCreated: true, message: response.message})
-        }else{
-          this.setState({message: 'Empty field'})
-        }
-    }
-    createDeal()
+      });
+      if(request.status === 400){
+        let response = await request.json();
+        this.setState({message: response.message});
+      }
+      if(request.ok){
+        let response = await request.json();
+        this.setState({isCreated: true, message: response.message});
+      }else{
+        this.setState({message: 'Empty field'});
+      }
+    };
+    createDeal();
   }
   render() {
     if(this.state.isCreated){
-      return <Redirect to='/merchants/dashboard'/>
+      return <Redirect to='/merchants/dashboard'/>;
     }
     return (
       <div className="container">
@@ -92,7 +92,7 @@ export class New_deal extends Component {
                   auth: process.env.TOKEN,
                   padding: 10,
                   borderRadius:4
-                  }} 
+                }} 
                   accept="image/*" name="avatar" randomizeFilename storageRef={firebase.storage().ref('images')} onUploadStart={this.handleUploadStart} onUploadError={this.handleUploadError} onUploadSuccess={this.handleUploadSuccess} onProgress={this.handleProgress} />
               </div>
             </div>
@@ -135,4 +135,4 @@ export class New_deal extends Component {
   }
 }
 
-export default New_deal;
+export default NewDealComp;

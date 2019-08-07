@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditDeal from "./Edit_deal";
+import EditDeal from "./EditDeal";
 import moment from 'moment';
 
 export class Row extends Component {
@@ -29,8 +29,8 @@ export class Row extends Component {
           </td>
         </tr>
           <td colSpan="30">
-        { this.state.edit && <EditDeal updateDeal={this.props.updateDeal} deal={this.props.deal} /> }
-      </td>
+            { this.state.edit && <EditDeal updateDeal={this.props.updateDeal} deal={this.props.deal} /> }
+          </td>
       </tbody>
     );
   }

@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import DealsComponent from '../Component/Deals';
 import Loading from '../Component/Loading';
-import DealMerchant from '../pages/DealMerchant';
+import DealMerchant from './DealMerchant';
 import Map from '../Component/Map';
 
 
 
 
-
-class Deals extends Component {
-  constructor(props){
-    super(props)
-  }
+class DealsPage extends Component {
+  
   state = {
     toggle: 1,
     merchantInfo: [],
@@ -20,13 +17,12 @@ class Deals extends Component {
     userLng: 0,
     loading: true
   }
-  
 
   changeState = (num,name) => {  
     this.setState({toggle: num}, () => {
       var element = document.getElementById(name);
       element.scrollIntoView();
-    })
+    });
     
   }
 
@@ -36,29 +32,29 @@ class Deals extends Component {
       .then(res => res.json())
       .then(data => {
         for(let ea of data) {
-          let obj = {}
-          obj.name = ea.business_name,
-          obj.lat = ea.latitude,
-          obj.lng = ea.longitude
-          merchantPoints.push(obj)
+          let obj = {};
+          obj.name = ea.business_name;
+          obj.lat = ea.latitude;
+          obj.lng = ea.longitude;
+          merchantPoints.push(obj);
         }
-    }).then (
+      }).then (
       this.setState({merchantInfo: merchantPoints})
     );  
     
     //set current point
     navigator.geolocation.getCurrentPosition(position => {
-      const {latitude, longitude} = position.coords
-      this.setState({userLat: latitude, userLng: longitude, loading: false})
+      const {latitude, longitude} = position.coords;
+      this.setState({userLat: latitude, userLng: longitude, loading: false});
     }, () => {
-      this.setState({loadding: false})
-    })
+      this.setState({loadding: false});
+    });
   }
   
   
   render() {
     const dealsD = this.props.deals.map(deal => <DealsComponent key={deal.deal_id} deal={deal} add={this.props.add} customClass="m4"/> );
-    if(this.state.toggle == 2){
+    if(this.state.toggle === 2){
       return( 
       <div style={{minHeight: "100%", position: "relative"}}>
         <div className="navbar-fixed">
@@ -88,9 +84,9 @@ class Deals extends Component {
             </div>
           </main>
        </div>
-       )
-    } else if(this.state.toggle == 1) {
-    return (
+      );
+    } else if(this.state.toggle === 1) {
+      return (
       <div style={{minHeight: "100%", position: "relative"}}>
         <div className="navbar-fixed">
           <Nav/>
@@ -115,12 +111,12 @@ class Deals extends Component {
         </p>
         {this.props.isready ? <DealMerchant deals={this.props.deals} add={this.props.add}/> : <Loading /> }
       </div>
-    );
-  } else if(this.state.toggle == 3) {
-    if (this.state.loading) {
-      return null;
-    }
-    return ( 
+      );
+    } else if(this.state.toggle === 3) {
+      if (this.state.loading) {
+        return null;
+      }
+      return ( 
       <div>
         <Nav/>
         <div className="row" id="themap"> 
@@ -144,13 +140,13 @@ class Deals extends Component {
               </label>
               </p>
           </div>
-          <div className="col m9 s12" id="themap" style={{padding: '0 !important'}} style={{zIndex: '2222',padding:'none', position: "relative", height: "90vh"}}>
+          <div className="col m9 s12" id="themap" style={{padding: '0 !important', zIndex: '2222', position: "relative", height: "90vh"}}>
           <Map stateForMap={this.props.stateForMap} dealsState={this.state} isready={this.props.readydom} changeState={this.changeState} />
           </div>
           </div>
       </div>
-     );
+      );
+    }
   }
 }
-}
-export default Deals;
+export default DealsPage;

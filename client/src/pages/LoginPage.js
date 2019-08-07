@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from '../Component/Nav';
 import LoginComponent from '../Component/Login';
 
-class Login extends Component {
+class LoginPage extends Component {
   render() {    
     return (
       <div>
@@ -13,4 +13,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default LoginPage;

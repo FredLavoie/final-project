@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-export class Edit_deal extends Component {
+
+
+export class EditDeal extends Component {
   state = {
     message: '',
     name: this.props.deal.name,
@@ -9,11 +11,9 @@ export class Edit_deal extends Component {
     dealId: this.props.deal.id,
   }
 
-  // here is the fetch saad was here : ) 
-
   handleSubmit = async (event) =>{
     // lol i dont need the event target sorry it allready in the state  xd
-    event.preventDefault()
+    event.preventDefault();
     const bodyOfRequest = {
       merchant_id: this.state.dealId,
       name:this.state.name,
@@ -21,7 +21,7 @@ export class Edit_deal extends Component {
       quantity_available: this.state.quantityAvailable,
       current_price: this.state.currentPrice,
       image_path:  this.props.deal.image_path
-    }
+    };
 
     const request = await fetch(`/api/deals/${this.state.dealId}/update`,{
       method: 'POST',
@@ -29,35 +29,35 @@ export class Edit_deal extends Component {
         "content-type": "application/json"
       },
       body: JSON.stringify(bodyOfRequest)
-    })
+    });
 
     if(request.ok){
       location.reload();
     }
     if(request.status === 400){
       let response = request.json();
-      this.setState({message: response.message })
+      this.setState({message: response.message });
     }
   } 
 
   nameChange = (event) =>{
-    this.setState({name: event.target.value})
+    this.setState({name: event.target.value});
   }
 
   descriptionChange = (event) =>{
-    this.setState({description: event.target.value})
+    this.setState({description: event.target.value});
   }
 
   descriptionChange = (event) =>{
-    this.setState({description: event.target.value})
+    this.setState({description: event.target.value});
   }
 
   quantityAvailableChange = (event) =>{
-    this.setState({quantityAvailable: event.target.value})
+    this.setState({quantityAvailable: event.target.value});
   }
 
   currentPriceChange = (event) =>{
-    this.setState({currentPrice: event.target.value})
+    this.setState({currentPrice: event.target.value});
   } 
 
   render() {
@@ -131,4 +131,4 @@ export class Edit_deal extends Component {
   }
 }
 
-export default Edit_deal;
+export default EditDeal;

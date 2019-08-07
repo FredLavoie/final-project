@@ -11,10 +11,6 @@ const titleCardStyle = {
 };
 
 export class Deals extends Component {
-
-  constructor(props) {
-    super(props)
-  }
   
   addToCartAnimation = () => {
     this.props.add(this.props.deal);
@@ -31,11 +27,9 @@ export class Deals extends Component {
         <div className="card-action" style={{display:'flex', justifyContent:'center'}}>
           <a style={{cursor:"pointer"}}  onClick={() => this.addToCartAnimation()}>add to cart</a>
         </div>
-        )
+        );
       }
-
-
-    }
+    };
 
     return (
       <div className={"col s12 " + this.props.customClass} style={{position:'relative'}}>

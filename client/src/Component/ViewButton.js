@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import _ from 'lodash';
 
 export class ViewButton extends Component {
@@ -9,8 +9,8 @@ export class ViewButton extends Component {
     const merchantFilter = _(this.state.deals).groupBy(merchant => merchant.merchant_name).map((value, key) => {
       return {
         merchant_name: key, deals: value
-      }
-    }).value()
+      };
+    }).value();
 
     const viewDeal = merchantFilter.map(deal => {
 
@@ -26,8 +26,8 @@ export class ViewButton extends Component {
               <td>${dansmap.deal_price} </td>
               <td>{dansmap.quantity}</td>
             </tbody>
-        )
-      })
+        );
+      });
       return (
         <td style={{ borderRight: '1px solid #d6d6d6' }}>
           <h5>{deal.merchant_name}</h5>
@@ -43,12 +43,12 @@ export class ViewButton extends Component {
             {mapDansMap}
           </table>
         </td>
-      )
-    })
+      );
+    });
 
 
     return viewDeal;
   }
 }
 
-export default ViewButton
+export default ViewButton;
