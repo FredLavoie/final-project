@@ -23,9 +23,6 @@ The back-end server is built using [node.js](https://nodejs.org) and [Express.js
 ### Deals page sorted by merchant
 <img src="./docs/deals_page.png" width="800">
 
-### Deals page sorted by expiry date
-<img src="./docs/deals_by_date.png" width="800">
-
 ### Map view showing merchants
 <img src="./docs/map_view.png" width="800">
 
