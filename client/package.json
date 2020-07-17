@@ -6,7 +6,7 @@
   "dependencies": {
     "firebase": "^6.3.3",
     "google-maps-react": "^2.0.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "materialize-css": "^1.0.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
